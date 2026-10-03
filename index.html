@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,11 +47,16 @@
 
             <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
                 <a href="#produtos" class="hover:text-brand-caramel transition-colors">Cardápio</a>
+                <a href="#rastreio-section" class="hover:text-brand-caramel transition-colors">Acompanhar Pedido</a>
                 <a href="#sobre" class="hover:text-brand-caramel transition-colors">Sobre Nós</a>
                 <a href="#contato" class="hover:text-brand-caramel transition-colors">Contato</a>
             </nav>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+                <!-- Botão Rastreio Mobile -->
+                <a href="#rastreio-section" class="md:hidden bg-stone-800 text-brand-caramel p-3 rounded-full text-sm flex items-center justify-center shadow" title="Rastrear Pedido">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </a>
                 <!-- Botão Carrinho -->
                 <button onclick="toggleCart()" class="relative bg-brand-caramel hover:bg-amber-700 text-white p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center" aria-label="Carrinho de Compras">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
@@ -62,41 +67,41 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-brand-dark text-brand-cream py-20 lg:py-28 overflow-hidden">
+    <section class="relative bg-brand-dark text-brand-cream py-16 sm:py-24 overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c68b59_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30">
                 Confeitaria artesanal com alma de chocolate nobre
             </span>
-            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto text-brand-cream">
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 max-w-4xl mx-auto text-brand-cream">
                 Onde cada mordida é um abraço de chocolate.
             </h1>
-            <p class="text-lg sm:text-xl text-stone-300 font-light max-w-2xl mx-auto mb-10 italic">
+            <p class="text-base sm:text-xl text-stone-300 font-light max-w-2xl mx-auto mb-8 italic">
                 "Feito à mão e recheado de afeto!"
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="#produtos" class="w-full sm:w-auto bg-brand-caramel hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl transition-all transform hover:-translate-y-0.5 text-center">
                     Ver Cardápio & Pedir
                 </a>
-                <a href="https://wa.me/5521995335948?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20direto." target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Direto
+                <a href="#rastreio-section" class="w-full sm:w-auto bg-stone-800 hover:bg-stone-700 text-brand-cream font-semibold px-8 py-4 rounded-xl shadow-xl transition-all border border-brand-caramel/40 text-center">
+                    <i class="fa-solid fa-magnifying-glass mr-2 text-brand-caramel"></i> Rastrear Pedido
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Cardápio / Produtos -->
-    <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Mais Vendidos & Promoções Especiais</h2>
+    <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Cardápio & Kits Especiais</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto">Escolha suas delícias favoritas, adicione ao pedido e finalize com facilidade.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade.</p>
         </div>
 
         <!-- Grade de Produtos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <!-- Produto 1 -->
+            <!-- Produto 1: Nutella -->
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
                 <div>
                     <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
@@ -117,13 +122,13 @@
                         <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
                         <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
                     </div>
-                    <button onclick="addItem('Brownie de Nutella', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2">
+                    <button onclick="addItem('Brownie de Nutella', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
                         <i class="fa-solid fa-plus"></i> Adicionar
                     </button>
                 </div>
             </div>
 
-            <!-- Produto 2 -->
+            <!-- Produto 2: Casadinho -->
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
                 <div>
                     <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
@@ -144,13 +149,13 @@
                         <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
                         <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
                     </div>
-                    <button onclick="addItem('Brownie de Casadinho', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2">
+                    <button onclick="addItem('Brownie de Casadinho', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
                         <i class="fa-solid fa-plus"></i> Adicionar
                     </button>
                 </div>
             </div>
 
-            <!-- Produto 3 -->
+            <!-- Produto 3: Doce de Leite -->
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
                 <div>
                     <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
@@ -171,13 +176,13 @@
                         <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
                         <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
                     </div>
-                    <button onclick="addItem('Brownie de Doce de Leite', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2">
+                    <button onclick="addItem('Brownie de Doce de Leite', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
                         <i class="fa-solid fa-plus"></i> Adicionar
                     </button>
                 </div>
             </div>
 
-            <!-- Produto 4 -->
+            <!-- Produto 4: Brigadeiro Gourmet 50% -->
             <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
                 <div>
                     <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
@@ -198,14 +203,14 @@
                         <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
                         <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
                     </div>
-                    <button onclick="addItem('Brownie Brigadeiro Gourmet 50%', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2">
+                    <button onclick="addItem('Brownie Brigadeiro Gourmet 50%', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
                         <i class="fa-solid fa-plus"></i> Adicionar
                     </button>
                 </div>
             </div>
 
-            <!-- Produto 5 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between md:col-span-2 lg:col-span-1">
+            <!-- Produto 5: Fatia Tradicional -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
                 <div>
                     <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
                         <span class="absolute top-4 left-4 bg-brand-caramel text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">CLÁSSICO</span>
@@ -225,7 +230,208 @@
                         <span class="text-xs text-stone-400 block">&nbsp;</span>
                         <span class="text-xl font-bold text-emerald-600">R$ 9,99</span>
                     </div>
-                    <button onclick="addItem('Fatia de Brownie Tradicional', 9.99)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2">
+                    <button onclick="addItem('Fatia de Brownie Tradicional', 9.99)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <!-- NOVO PRODUTO: Kit com 3 Brownies -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-brand-caramel text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">KIT</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit com 3 Brownies</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <div>
+                        <span class="text-xs text-stone-400 block">Especial Sortido</span>
+                        <span class="text-xl font-bold text-emerald-600">R$ 35,00</span>
+                    </div>
+                    <button onclick="addItem('Kit com 3 Brownies', 35.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <!-- NOVO PRODUTO: Caixa Presenteável com 4 -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PRESENTE</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Caixa Presenteável (4 Unidades)</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <div>
+                        <span class="text-xs text-stone-400 block">&nbsp;</span>
+                        <span class="text-xl font-bold text-emerald-600">R$ 59,90</span>
+                    </div>
+                    <button onclick="addItem('Caixa Presenteável com 4 Brownies', 59.90)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <!-- NOVO PRODUTO: Kit Reunião / Eventos 20un -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">EVENTOS</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit Reunião e Eventos (20 un)</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Perfeito para reuniões e pequenos encontros corporativos ou familiares.
+                        </p>
+                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                            <div class="flex justify-between items-center">
+                                <span>Tradicional (R$ 180,00)</span>
+                                <button onclick="addItem('Kit Reunião 20un - Tradicional', 180.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t">
+                                <span>Recheado (R$ 210,00)</span>
+                                <button onclick="addItem('Kit Reunião 20un - Recheado', 210.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
+                </div>
+            </div>
+
+            <!-- NOVO PRODUTO: Kit Festa 50un (4x4) -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">FESTAS</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit Festa 50 Brownies (4x4)</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Ideal para comemorações e aniversários com pedaços tamanho 4x4.
+                        </p>
+                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                            <div class="flex justify-between items-center">
+                                <span>Tradicional (R$ 280,00)</span>
+                                <button onclick="addItem('Kit Festa 50un 4x4 - Tradicional', 280.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t">
+                                <span>Recheado (R$ 350,00)</span>
+                                <button onclick="addItem('Kit Festa 50un 4x4 - Recheado', 350.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
+                </div>
+            </div>
+
+            <!-- NOVO PRODUTO: Kit 100 Brownies (3x3) -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">GRANDE FESTA</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit 100 Brownies (3x3)</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Grandes eventos e casamentos com pedaços tamanho 3x3.
+                        </p>
+                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                            <div class="flex justify-between items-center">
+                                <span>Tradicional (R$ 350,00)</span>
+                                <button onclick="addItem('Kit 100un 3x3 - Tradicional', 350.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                            <div class="flex justify-between items-center pt-1 border-t">
+                                <span>Recheado (R$ 400,00)</span>
+                                <button onclick="addItem('Kit 100un 3x3 - Recheado', 400.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
+                </div>
+            </div>
+
+            <!-- BEBIDA: Refrigerante -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-stone-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">BEBIDA</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-bottle-water"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Refrigerante Coca-Cola 350ml</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            Lata 350ml bem gelada para acompanhar seu momento doce.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <div>
+                        <span class="text-xs text-stone-400 block">Lata 350ml</span>
+                        <span class="text-xl font-bold text-emerald-600">R$ 6,00</span>
+                    </div>
+                    <button onclick="addItem('Refrigerante Coca-Cola 350ml', 6.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <!-- BEBIDA: Água -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
+                <div>
+                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                        <span class="absolute top-4 left-4 bg-stone-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">BEBIDA</span>
+                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark">Água Mineral 300ml</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            Água mineral sem gás 300ml refrescante.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                    <div>
+                        <span class="text-xs text-stone-400 block">Garrafa 300ml</span>
+                        <span class="text-xl font-bold text-emerald-600">R$ 3,00</span>
+                    </div>
+                    <button onclick="addItem('Água Mineral 300ml', 3.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
                         <i class="fa-solid fa-plus"></i> Adicionar
                     </button>
                 </div>
@@ -233,8 +439,28 @@
 
         </div>
 
+        <!-- Seção de Acompanhar Pedido (Rastreio) -->
+        <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Tempo Real</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Acompanhe seu Pedido</h3>
+                <p class="text-stone-600 text-sm">Digite o número do seu pedido (ex: #LILE-1045) ou seu telefone cadastrado para consultar o status de entrega na cozinha.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                    <input type="text" id="tracking-input" placeholder="Ex: #LILE-1045 ou Telefone" class="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                    <button onclick="trackOrder()" class="bg-brand-dark hover:bg-brand-chocolate text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow">
+                        Consultar Status
+                    </button>
+                </div>
+
+                <div id="tracking-result" class="hidden mt-6 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-left space-y-4">
+                    <!-- Conteúdo injetado via JS -->
+                </div>
+            </div>
+        </div>
+
         <!-- Banner WhatsApp Direto -->
-        <div class="mt-16 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="mt-12 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="space-y-3 text-center md:text-left">
                 <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-600">Atendimento Personalizado</span>
                 <h3 class="font-serif text-2xl sm:text-3xl font-bold">Prefere encomendar direto com a gente?</h3>
@@ -273,8 +499,76 @@
                     <span>Total:</span>
                     <span id="cart-total" class="text-emerald-600">R$ 0,00</span>
                 </div>
-                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido via WhatsApp
+                <button onclick="openCheckoutModal()" class="w-full bg-brand-caramel hover:bg-amber-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-credit-card"></i> Ir para Pagamento e Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Checkout e Pagamento Real -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
+                <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
+                <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 flex-1">
+                <form id="checkout-form" onsubmit="processPayment(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Nome Completo</label>
+                        <input type="text" id="client-name" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Seu nome">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Telefone / WhatsApp</label>
+                        <input type="tel" id="client-phone" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="(21) 99999-9999">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Endereço de Entrega</label>
+                        <textarea id="client-address" required rows="2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Rua, Número, Bairro, Complemento"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Forma de Pagamento</label>
+                        <select id="payment-method" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                            <option value="pix">PIX (Aprovação Instantânea)</option>
+                            <option value="cartao">Cartão de Crédito na Entrega</option>
+                            <option value="dinheiro">Dinheiro (Troco se necessário)</option>
+                        </select>
+                    </div>
+
+                    <!-- Bloco PIX Simulado -->
+                    <div id="pix-box" class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center space-y-2">
+                        <p class="text-xs font-bold text-amber-900 uppercase">Chave PIX (CNPJ / Copia e Cola)</p>
+                        <div class="bg-white p-2 rounded-xl border border-amber-300 text-xs font-mono select-all text-stone-700">
+                            liledocesartesanais@gmail.com
+                        </div>
+                        <p class="text-xs text-amber-800">Faça o PIX do valor exato e clique em confirmar pagamento abaixo.</p>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 mt-4">
+                        <i class="fa-solid fa-lock"></i> Confirmar Pagamento & Enviar Pedido
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação e Acompanhamento Imediato -->
+    <div id="success-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 text-center space-y-4">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif font-bold text-2xl text-brand-dark">Pedido Aprovado com Sucesso!</h3>
+            <p id="success-order-id" class="text-sm font-bold text-brand-caramel"></p>
+            <p class="text-sm text-stone-600 leading-relaxed">
+                Seu pagamento foi confirmado! O pedido já foi encaminhado para a nossa cozinha e está sendo preparado com muito carinho.
+            </p>
+            <div class="pt-4 space-y-2">
+                <button onclick="closeSuccessModal()" class="w-full bg-brand-dark hover:bg-brand-chocolate text-white font-semibold py-3 rounded-xl transition-colors">
+                    Acompanhar Status da Entrega
                 </button>
             </div>
         </div>
@@ -296,7 +590,7 @@
         </div>
     </footer>
 
-    <!-- Lógica de Carrinho e WhatsApp JavaScript -->
+    <!-- Lógica JavaScript Vanilla & Persistência Local/Simulação Firebase -->
     <script>
         let cart = [];
 
@@ -305,6 +599,174 @@
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                renderCart();
             } else {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
+            }
+        }
+
+        function addItem(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateBadge();
+            
+            // Feedback visual sutil
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.remove('scale-125'), 200);
+        }
+
+        function updateBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-badge').innerText = totalItems;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const totalEl = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
+                totalEl.innerText = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                html += `
+                    <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${item.name}</h4>
+                            <span class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-semibold">Qtd: ${item.quantity}</span>
+                            <button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash text-xs"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateBadge();
+            renderCart();
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+            toggleCart();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.getElementById('checkout-modal').classList.add('flex');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('flex');
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function processPayment(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const address = document.getElementById('client-address').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
+
+            // Simulação de salvamento no Firebase / LocalStorage para rastreio
+            const orderData = {
+                orderId,
+                name,
+                phone,
+                address,
+                paymentMethod,
+                items: [...cart],
+                total,
+                status: 'Pagamento Aprovado / Em Preparo na Cozinha',
+                timestamp: new Date().toLocaleTimeString()
+            };
+
+            let orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('lile_orders', JSON.stringify(orders));
+
+            // Limpa carrinho
+            cart = [];
+            updateBadge();
+            closeCheckoutModal();
+
+            // Mostra tela de sucesso
+            document.getElementById('success-order-id').innerText = `Pedido: ${orderId}`;
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.remove('flex');
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('rastreio-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function trackOrder() {
+            const query = document.getElementById('tracking-input').value.trim();
+            const resultBox = document.getElementById('tracking-result');
+            
+            if (!query) {
+                alert('Digite o número do pedido ou telefone.');
+                return;
+            }
+
+            const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
+
+            resultBox.classList.remove('hidden');
+
+            if (found) {
+                resultBox.innerHTML = `
+                    <div class="flex justify-between items-center border-b pb-3">
+                        <span class="font-bold text-brand-dark">${found.orderId}</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-stone-600 pt-2">
+                        <p><strong>Cliente:</strong> ${found.name}</p>
+                        <p><strong>Endereço:</strong> ${found.address}</p>
+                        <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                    <div class="relative pt-4">
+                        <div class="flex items-center justify-between text-xs font-semibold text-stone-500">
+                            <span class="text-emerald-600">1. Aprovado</span>
+                            <span class="text-amber-600">2. Em Preparo</span>
+                            <span class="text-stone-400">3. Saiu p/ Entrega</span>
+                            <span class="text-stone-400">4. Entregue</span>
+                        </div>
+                        <div class="w-full bg-stone-200 h-2 rounded-full mt-2 overflow-hidden">
+                            <div class="bg-emerald-600 h-full w-2/4"></div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}". Verifique os dados informados.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
