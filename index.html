@@ -331,7 +331,7 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Otimizada -->
+    <!-- Lógica JavaScript Corrigida e Definitiva -->
     <script>
         let products = [
             { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', icon: 'fa-ice-cream', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
@@ -349,14 +349,36 @@
             { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', icon: 'fa-cake-candles', desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
             { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', icon: 'fa-champagne-glasses', desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
             { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', icon: 'fa-bottle-water', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', icon: 'fa-droplet', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' },
-            { id: 17, name: 'Suco Natural 300ml', price: 7.00, badge: 'BEBIDA', icon: 'fa-cup-straw', desc: 'Suco natural da fruta bem gelado.', available: true, type: 'single' }
+            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', icon: 'fa-droplet', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
         ];
 
         let cart = [];
         let discountApplied = false;
 
-        // Inicialização e Carregamento de Estoque Salvo
+        // Carrega o estoque salvo ou cria o registro inicial sem sobrescrever nas próximas vezes
+        function initStock() {
+            const savedStock = localStorage.getItem('lile_products_stock');
+            if (savedStock) {
+                const stockMap = JSON.parse(savedStock);
+                products = products.map(p => {
+                    if (stockMap[p.id] !== undefined) {
+                        return { ...p, available: stockMap[p.id] };
+                    }
+                    return p;
+                });
+            } else {
+                saveStockToStorage();
+            }
+        }
+
+        function saveStockToStorage() {
+            const stockMap = {};
+            products.forEach(p => {
+                stockMap[p.id] = p.available;
+            });
+            localStorage.setItem('lile_products_stock', JSON.stringify(stockMap));
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             if (!localStorage.getItem('lile_visited')) {
                 localStorage.setItem('lile_visited', 'true');
@@ -365,34 +387,16 @@
                 localStorage.setItem('lile_first_access', 'false');
             }
             
-            loadStockFromStorage();
+            initStock();
             renderProducts();
         });
-
-        // Sincroniza o estoque caso mude em outra aba/dispositivo na mesma sessão
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'lile_products_stock') {
-                loadStockFromStorage();
-                renderProducts();
-            }
-        });
-
-        function loadStockFromStorage() {
-            if(localStorage.getItem('lile_products_stock')) {
-                const savedStock = JSON.parse(localStorage.getItem('lile_products_stock'));
-                products = products.map(p => {
-                    const found = savedStock.find(s => s.id === p.id);
-                    return found ? {...p, available: found.available} : p;
-                });
-            }
-        }
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             if(!grid) return;
             let html = '';
 
-            // Organiza: Disponíveis no topo, Indisponíveis abaixo
+            // Disponíveis acima, Indisponíveis abaixo
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
@@ -506,7 +510,7 @@
             const prod = products.find(p => p.id === id);
             if (prod) {
                 prod.available = !prod.available;
-                localStorage.setItem('lile_products_stock', JSON.stringify(products.map(p => ({id: p.id, available: p.available}))));
+                saveStockToStorage();
                 openStockModal();
                 renderProducts();
             }
