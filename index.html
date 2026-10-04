@@ -90,54 +90,12 @@
         </div>
     </section>
 
-    <!-- Seção Sobre Nós -->
-    <section id="sobre" class="py-16 sm:py-24 bg-white border-b border-stone-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            <div class="text-center">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">A arte de transformar chocolate em momentos inesquecíveis</h2>
-                <div class="w-24 h-1 bg-brand-caramel mx-auto rounded-full"></div>
-            </div>
-
-            <div class="space-y-8 text-stone-700 leading-relaxed text-base sm:text-lg">
-                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
-                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-heart text-brand-caramel"></i> O Propósito
-                    </h3>
-                    <p>
-                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que você precisa ao rigor de uma confeitaria fina.
-                    </p>
-                </div>
-
-                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
-                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-fire-burner text-brand-caramel"></i> Os Segredos da Casa
-                    </h3>
-                    <p>
-                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
-                    </p>
-                </div>
-
-                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
-                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-gift text-brand-caramel"></i> A Nossa Promessa
-                    </h3>
-                    <p class="mb-4">
-                        Seja para acompanhar o seu café, presentear alguém especial ou salvar o seu dia com uma dose de doçura na medida certa, a LILE entrega mais do que doces: entregamos cuidado em formato de caixas kraft prontas para encantar.
-                    </p>
-                    <p class="font-serif italic font-semibold text-brand-chocolate text-center text-lg pt-2">
-                        Experimente o extraordinário no conforto da sua casa.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Cardápio / Descrições sensoriais da LILE -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div class="text-center mb-12">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
         <!-- Grade de Produtos Dinâmica -->
@@ -177,13 +135,6 @@
             </a>
         </div>
     </main>
-
-    <!-- Botão Flutuante de Gestão de Estoque -->
-    <div class="fixed bottom-6 left-6 z-30">
-        <button onclick="openStockModal()" class="bg-brand-dark hover:bg-brand-chocolate text-brand-cream px-4 py-3 rounded-2xl shadow-2xl border border-brand-caramel/40 text-xs font-semibold flex items-center gap-2 transition-transform hover:scale-105">
-            <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade
-        </button>
-    </div>
 
     <!-- Modal de Gestão de Estoque -->
     <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -292,9 +243,55 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="contato" class="bg-brand-dark text-stone-400 py-12 border-t border-brand-caramel/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <!-- Footer / Rodapé com Sobre Nós e Gerenciamento de Estoque -->
+    <footer id="contato" class="bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-caramel/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mb-16">
+            <div class="text-center">
+                <h2 id="sobre" class="font-serif text-2xl sm:text-3xl font-bold text-brand-cream mb-3">A arte de transformar chocolate em momentos inesquecíveis</h2>
+                <div class="w-20 h-1 bg-brand-caramel mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-6 text-stone-300 leading-relaxed text-sm sm:text-base">
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-heart"></i> O Propósito
+                    </h3>
+                    <p>
+                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que você precisa ao rigor de uma confeitaria fina.
+                    </p>
+                </div>
+
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-burner"></i> Os Segredos da Casa
+                    </h3>
+                    <p>
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
+                    </p>
+                </div>
+
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-gift"></i> A Nossa Promessa
+                    </h3>
+                    <p class="mb-3">
+                        Seja para acompanhar o seu café, presentear alguém especial ou salvar o seu dia com uma dose de doçura na medida certa, a LILE entrega mais do que doces: entregamos cuidado em formato de caixas kraft prontas para encantar.
+                    </p>
+                    <p class="font-serif italic font-semibold text-brand-caramel text-center text-base pt-1">
+                        Experimente o extraordinário no conforto da sua casa.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de Acesso ao Painel de Estoque no Rodapé -->
+        <div class="max-w-xl mx-auto px-4 text-center mb-12">
+            <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
+                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Interno)
+            </button>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 border-t border-stone-800 pt-8">
             <div class="flex justify-center items-center space-x-3 mb-2">
                 <div class="w-8 h-8 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold">
                     L
@@ -302,7 +299,7 @@
                 <span class="font-serif text-lg font-bold text-brand-cream">Lile Doces Artesanais</span>
             </div>
             <p class="text-sm">Cardápio Digital & Delivery — Rio de Janeiro, RJ</p>
-            <p class="text-xs text-stone-500 pt-4 border-t border-stone-800">
+            <p class="text-xs text-stone-500 pt-4">
                 &copy; 2026 Lile Doces Artesanais. Todos os direitos reservados.
             </p>
         </div>
@@ -519,6 +516,14 @@
 
         function openCheckoutModal() {
             if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+            
+            // Validação do Pedido Mínimo de R$ 20,00
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            if (total < 20.00) {
+                alert('O valor mínimo para pedidos é de R$ 20,00. Adicione mais itens ao carrinho para continuar.');
+                return;
+            }
+
             toggleCart();
             document.getElementById('checkout-modal').classList.remove('hidden');
             document.getElementById('checkout-modal').classList.add('flex');
