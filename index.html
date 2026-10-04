@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDKs (Compat / Modular) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -98,9 +103,9 @@
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica (Disponíveis no topo, Indisponíveis abaixo) -->
+        <!-- Grade de Produtos Dinâmica -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Renderizado via JavaScript -->
+            <!-- Renderizado via JavaScript em Tempo Real -->
         </div>
 
         <!-- Seção de Acompanhar Pedido (Rastreio) -->
@@ -142,7 +147,7 @@
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
                 <div>
                     <h3 class="font-serif font-bold text-lg">Painel de Disponibilidade</h3>
-                    <p class="text-xs text-stone-400">Ative ou desative produtos do cardápio em tempo real</p>
+                    <p class="text-xs text-stone-400">Ative ou desative produtos do cardápio em tempo real (Sincronizado na Nuvem)</p>
                 </div>
                 <button onclick="closeStockModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
@@ -313,7 +318,7 @@
         <!-- Botão de Acesso ao Painel de Estoque no Rodapé -->
         <div class="max-w-xl mx-auto px-4 text-center mb-12">
             <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
-                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Interno)
+                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Firebase)
             </button>
         </div>
 
@@ -331,9 +336,25 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Completa -->
+    <!-- Lógica JavaScript com Firebase Firestore -->
     <script>
-        let products = [
+        // CONFIGURAÇÃO DO FIREBASE (Insira suas credenciais do seu projeto Firebase)
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "SEU_PROJETO.firebaseapp.com",
+            projectId: "SEU_PROJETO_ID",
+            storageBucket: "SEU_PROJETO.appspot.com",
+            messagingSenderId: "SEU_SENDER_ID",
+            appId: "SEU_APP_ID"
+        };
+
+        // Inicializa o Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = firebase.firestore();
+
+        let baseProducts = [
             { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', icon: 'fa-ice-cream', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
             { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', icon: 'fa-seedling', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
             { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', icon: 'fa-pepper-hot', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
@@ -352,18 +373,11 @@
             { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', icon: 'fa-droplet', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
         ];
 
-        if(localStorage.getItem('lile_products_stock')) {
-            const savedStock = JSON.parse(localStorage.getItem('lile_products_stock'));
-            products = products.map(p => {
-                const found = savedStock.find(s => s.id === p.id);
-                return found ? {...p, available: found.available} : p;
-            });
-        }
-
+        let products = [...baseProducts];
         let cart = [];
         let discountApplied = false;
 
-        // Validação de Primeiro Acesso para o Cupom
+        // Validação de Primeiro Acesso
         window.addEventListener('DOMContentLoaded', () => {
             if (!localStorage.getItem('lile_visited')) {
                 localStorage.setItem('lile_visited', 'true');
@@ -371,14 +385,45 @@
             } else {
                 localStorage.setItem('lile_first_access', 'false');
             }
-            renderProducts();
+            
+            // Ouve em tempo real as mudanças de estoque do Firestore para todos os usuários
+            listenToStockChanges();
         });
+
+        // Sincronização em tempo real com Firebase Firestore
+        function listenToStockChanges() {
+            db.collection("lile_estoque").doc("status").onSnapshot((doc) => {
+                if (doc.exists) {
+                    const stockData = doc.data();
+                    products = baseProducts.map(p => {
+                        return {
+                            ...p,
+                            available: stockData[p.id] !== undefined ? stockData[p.id] : true
+                        };
+                    });
+                } else {
+                    // Se o documento não existir na nuvem ainda, cria o padrão
+                    initializeCloudStock();
+                }
+                renderProducts();
+            }, (error) => {
+                console.error("Erro ao sincronizar estoque com o Firebase: ", error);
+                renderProducts();
+            });
+        }
+
+        function initializeCloudStock() {
+            let initialStock = {};
+            baseProducts.forEach(p => { initialStock[p.id] = true; });
+            db.collection("lile_estoque").doc("status").set(initialStock);
+        }
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
+            if(!grid) return;
             let html = '';
 
-            // Organiza os produtos: Disponíveis primeiro, Indisponíveis abaixo
+            // Organiza: Disponíveis acima, Indisponíveis abaixo
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
@@ -484,15 +529,23 @@
         function closeStockModal() {
             document.getElementById('stock-modal').classList.remove('flex');
             document.getElementById('stock-modal').classList.add('hidden');
-            renderProducts();
         }
 
+        // Atualiza diretamente no Firebase Firestore para refletir para todos os clientes
         function toggleProductStock(id) {
             const prod = products.find(p => p.id === id);
             if (prod) {
-                prod.available = !prod.available;
-                localStorage.setItem('lile_products_stock', JSON.stringify(products.map(p => ({id: p.id, available: p.available}))));
-                openStockModal();
+                const newStatus = !prod.available;
+                db.collection("lile_estoque").doc("status").update({
+                    [id]: newStatus
+                }).then(() => {
+                    // Atualiza localmente imediato para feedback ágil
+                    prod.available = newStatus;
+                    openStockModal();
+                }).catch((error) => {
+                    console.error("Erro ao atualizar estoque no Firebase:", error);
+                    alert("Erro ao salvar alteração na nuvem. Verifique sua conexão.");
+                });
             }
         }
 
@@ -660,11 +713,9 @@
                 timestamp: new Date().toLocaleTimeString()
             };
 
-            let orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
-            orders.push(orderData);
-            localStorage.setItem('lile_orders', JSON.stringify(orders));
+            // Salva pedido também no Firestore para persistência global
+            db.collection("lile_pedidos").add(orderData).catch(err => console.log("Erro ao salvar pedido na nuvem:", err));
 
-            // Marca o cupom como usado para que o primeiro acesso expire nas próximas visitas
             if (discountApplied) {
                 localStorage.setItem('lile_first_access', 'false');
             }
@@ -704,24 +755,36 @@
             const query = document.getElementById('tracking-input').value.trim();
             const resultBox = document.getElementById('tracking-result');
             if (!query) { alert('Digite o número do pedido ou telefone.'); return; }
-            const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
-            const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
-            resultBox.classList.remove('hidden');
-            if (found) {
-                resultBox.innerHTML = `
-                    <div class="flex justify-between items-center border-b pb-3">
-                        <span class="font-bold text-brand-dark">${found.orderId}</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
-                    </div>
-                    <div class="space-y-2 text-xs text-stone-600 pt-2">
-                        <p><strong>Cliente:</strong> ${found.name}</p>
-                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}</p>
-                        <p><strong>Endereço:</strong> ${found.address}</p>
-                        <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
-                    </div>`;
-            } else {
-                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
-            }
+            
+            db.collection("lile_pedidos").get().then((querySnapshot) => {
+                let found = null;
+                querySnapshot.forEach((doc) => {
+                    const o = doc.data();
+                    if (o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query)) {
+                        found = o;
+                    }
+                });
+
+                resultBox.classList.remove('hidden');
+                if (found) {
+                    resultBox.innerHTML = `
+                        <div class="flex justify-between items-center border-b pb-3">
+                            <span class="font-bold text-brand-dark">${found.orderId}</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
+                        </div>
+                        <div class="space-y-2 text-xs text-stone-600 pt-2">
+                            <p><strong>Cliente:</strong> ${found.name}</p>
+                            <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}</p>
+                            <p><strong>Endereço:</strong> ${found.address}</p>
+                            <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
+                        </div>`;
+                } else {
+                    resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
+                }
+            }).catch(error => {
+                resultBox.classList.remove('hidden');
+                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Erro ao consultar pedido.</p>`;
+            });
         }
     </script>
 </body>
