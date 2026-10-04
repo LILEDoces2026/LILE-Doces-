@@ -98,7 +98,7 @@
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica (Disponíveis acima, Indisponíveis abaixo) -->
+        <!-- Grade de Produtos Dinâmica (Disponíveis em cima, Indisponíveis embaixo) -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <!-- Renderizado via JavaScript -->
         </div>
@@ -331,7 +331,7 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Corrigida e Definitiva -->
+    <!-- Lógica JavaScript Limpa e Consistente -->
     <script>
         let products = [
             { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', icon: 'fa-ice-cream', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
@@ -355,7 +355,6 @@
         let cart = [];
         let discountApplied = false;
 
-        // Carrega o estoque salvo ou cria o registro inicial sem sobrescrever nas próximas vezes
         function initStock() {
             const savedStock = localStorage.getItem('lile_products_stock');
             if (savedStock) {
@@ -366,8 +365,6 @@
                     }
                     return p;
                 });
-            } else {
-                saveStockToStorage();
             }
         }
 
@@ -396,7 +393,7 @@
             if(!grid) return;
             let html = '';
 
-            // Disponíveis acima, Indisponíveis abaixo
+            // Produtos disponíveis sempre no topo, indisponíveis embaixo
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
