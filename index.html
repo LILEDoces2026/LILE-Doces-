@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,11 +49,11 @@
                 <a href="#produtos" class="hover:text-brand-caramel transition-colors">Cardápio</a>
                 <a href="#rastreio-section" class="hover:text-brand-caramel transition-colors">Acompanhar Pedido</a>
                 <a href="#sobre" class="hover:text-brand-caramel transition-colors">Sobre Nós</a>
-                <a href="#contato" class="hover:text-brand-caramel transition-colors">Contato</a>
+                <a href="#contato" class="hover:text-brand-caramel transition-colors">Contacto</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Botão Rastreio Mobile -->
+                <!-- Botão Rastreio Telemóvel -->
                 <a href="#rastreio-section" class="md:hidden bg-stone-800 text-brand-caramel p-3 rounded-full text-sm flex items-center justify-center shadow" title="Rastrear Pedido">
                     <i class="fa-solid fa-truck-fast"></i>
                 </a>
@@ -95,10 +95,10 @@
         <div class="text-center mb-12">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha as suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica (Disponíveis em cima, Indisponíveis embaixo) -->
+        <!-- Grade de Produtos Dinâmica -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <!-- Renderizado via JavaScript -->
         </div>
@@ -107,13 +107,13 @@
         <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
             <div class="max-w-2xl mx-auto text-center space-y-4">
                 <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Tempo Real</span>
-                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Acompanhe seu Pedido</h3>
-                <p class="text-stone-600 text-sm">Digite o número do seu pedido (ex: #LILE-1045) ou seu telefone cadastrado para consultar o status de entrega na cozinha.</p>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Acompanhe o seu Pedido</h3>
+                <p class="text-stone-600 text-sm">Digite o número do seu pedido (ex: #LILE-1045) ou o seu telemóvel cadastrado para consultar o estado de entrega na cozinha.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-3 pt-4">
-                    <input type="text" id="tracking-input" placeholder="Ex: #LILE-1045 ou Telefone" class="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                    <input type="text" id="tracking-input" placeholder="Ex: #LILE-1045 ou Telemóvel" class="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
                     <button onclick="trackOrder()" class="bg-brand-dark hover:bg-brand-chocolate text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow">
-                        Consultar Status
+                        Consultar Estado
                     </button>
                 </div>
 
@@ -125,7 +125,7 @@
         <div class="mt-12 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="space-y-3 text-center md:text-left">
                 <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-600">Atendimento Personalizado</span>
-                <h3 class="font-serif text-2xl sm:text-3xl font-bold">Prefere encomendar direto com a gente?</h3>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold">Prefere encomendar diretamente connosco?</h3>
                 <p class="text-emerald-100 text-sm sm:text-base max-w-xl font-light">
                     Clique no botão ao lado para falar diretamente no nosso WhatsApp. Tire dúvidas sobre tamanhos para festas ou cardápio sob encomenda!
                 </p>
@@ -136,7 +136,7 @@
         </div>
     </main>
 
-    <!-- Modal de Gestão de Estoque -->
+    <!-- Modal de Gestão de Stock -->
     <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
@@ -159,17 +159,17 @@
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-bag-shopping text-brand-caramel text-xl"></i>
-                    <h3 class="font-serif font-bold text-xl">Seu Carrinho</h3>
+                    <h3 class="font-serif font-bold text-xl">O seu Carrinho</h3>
                 </div>
                 <button onclick="toggleCart()" class="text-stone-400 hover:text-white p-2 rounded-lg transition-colors">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
             <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
-                <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
+                <p class="text-stone-500 text-center py-12">O seu carrinho está vazio.</p>
             </div>
             
-            <!-- Seção de Cupom de Desconto Exclusivo (Primeiro Acesso) -->
+            <!-- Seção de Cupom de Desconto Exclusivo -->
             <div class="p-4 bg-stone-100 border-t border-stone-200">
                 <div id="coupon-area" class="space-y-2">
                     <p class="text-xs font-semibold text-brand-dark flex items-center gap-1">
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    <!-- Modal de Checkout e Pagamento Real -->
+    <!-- Modal de Checkout e Pagamento -->
     <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
@@ -210,10 +210,10 @@
                 <form id="checkout-form" onsubmit="processPayment(event)" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Nome Completo</label>
-                        <input type="text" id="client-name" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Seu nome">
+                        <input type="text" id="client-name" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="O seu nome">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Telefone / WhatsApp</label>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Telemóvel / WhatsApp</label>
                         <input type="tel" id="client-phone" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="(21) 99999-9999">
                     </div>
                     <div>
@@ -259,17 +259,17 @@
             <h3 class="font-serif font-bold text-2xl text-brand-dark">Pedido Aprovado com Sucesso!</h3>
             <p id="success-order-id" class="text-sm font-bold text-brand-caramel"></p>
             <p class="text-sm text-stone-600 leading-relaxed">
-                Seu pagamento foi confirmado! O pedido já foi encaminhado para a nossa cozinha e está sendo preparado com muito carinho.
+                O seu pagamento foi confirmado! O pedido já foi encaminhado para a nossa cozinha e está a ser preparado com muito carinho.
             </p>
             <div class="pt-4 space-y-2">
                 <button onclick="closeSuccessModal()" class="w-full bg-brand-dark hover:bg-brand-chocolate text-white font-semibold py-3 rounded-xl transition-colors">
-                    Acompanhar Status da Entrega
+                    Acompanhar Estado da Entrega
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer / Rodapé com Sobre Nós e Gerenciamento de Estoque -->
+    <!-- Footer / Rodapé -->
     <footer id="contato" class="bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-caramel/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mb-16">
             <div class="text-center">
@@ -283,7 +283,7 @@
                         <i class="fa-solid fa-heart"></i> O Propósito
                     </h3>
                     <p>
-                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que você precisa ao rigor de uma confeitaria fina.
+                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que precisa ao rigor de uma confeitaria fina.
                     </p>
                 </div>
 
@@ -292,7 +292,7 @@
                         <i class="fa-solid fa-fire-burner"></i> Os Segredos da Casa
                     </h3>
                     <p>
-                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa.
                     </p>
                 </div>
 
@@ -310,10 +310,10 @@
             </div>
         </div>
 
-        <!-- Botão de Acesso ao Painel de Estoque no Rodapé -->
+        <!-- Botão de Acesso ao Painel de Stock no Rodapé -->
         <div class="max-w-xl mx-auto px-4 text-center mb-12">
             <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
-                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Interno)
+                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerir Stock / Disponibilidade (Painel Interno)
             </button>
         </div>
 
@@ -331,25 +331,25 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Limpa e Consistente -->
+    <!-- Lógica JavaScript Atualizada com as Fotos Reais -->
     <script>
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', icon: 'fa-ice-cream', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
-            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', icon: 'fa-seedling', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
-            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', icon: 'fa-pepper-hot', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
-            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', icon: 'fa-seedling', desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
-            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas. Cremosidade e sabor absoluto em cada fatia.', available: true, type: 'single' },
-            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
-            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Nosso clássico inconfundível de massa úmida e casquinha perfeita, generosamente recheado com um doce de leite artesanal de textura aveludada. Leva um toque aromático exclusivo da casa que equilibra a doçura e entrega um perfil de sabor sofisticado e marcante.', available: true, type: 'single' },
-            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
-            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', icon: 'fa-cake-candles', desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso, enriquecido com bolsões de chocolate meio amargo nobre e um segredo de infusão da casa que desperta e potencializa o sabor do cacau a cada mordida. Uma experiência inesquecível.', available: true, type: 'single' },
-            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', icon: 'fa-box', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
-            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', icon: 'fa-gift', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
-            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', icon: 'fa-users', desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
-            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', icon: 'fa-cake-candles', desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
-            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', icon: 'fa-champagne-glasses', desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
-            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', icon: 'fa-bottle-water', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', icon: 'fa-droplet', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523157.jpg', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
+            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517107.jpg', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
+            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523161.jpg', desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517106.jpg', desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
+            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517106.jpg', desc: 'Nosso clássico inconfundível de massa úmida, generosamente recheado com um doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
+            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso.', available: true, type: 'single' },
+            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523161.jpg', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
+            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
+            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
+            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
+            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
         ];
 
         let cart = [];
@@ -393,7 +393,6 @@
             if(!grid) return;
             let html = '';
 
-            // Produtos disponíveis sempre no topo, indisponíveis embaixo
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
@@ -403,16 +402,14 @@
                     html += `
                         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
                             <div>
-                                <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">${p.badge}</span>
-                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">ESGOTADO</span>' : ''}
-                                    <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                                        <i class="fa-solid ${p.icon}"></i>
-                                    </div>
-                                    <h3 class="font-serif text-xl font-bold text-brand-dark">${p.name}</h3>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
                                 </div>
                                 <div class="p-6">
-                                    <p class="text-stone-600 text-sm leading-relaxed mb-6">${p.desc}</p>
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
+                                    <p class="text-stone-600 text-sm leading-relaxed">${p.desc}</p>
                                 </div>
                             </div>
                             <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
@@ -435,15 +432,13 @@
                     html += `
                         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
                             <div>
-                                <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">${p.badge}</span>
-                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">ESGOTADO</span>' : ''}
-                                    <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                                        <i class="fa-solid ${p.icon}"></i>
-                                    </div>
-                                    <h3 class="font-serif text-xl font-bold text-brand-dark">${p.name}</h3>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
                                 </div>
                                 <div class="p-6">
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
                                     <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
                                     ${p.available ? `
                                         <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
@@ -572,7 +567,7 @@
             const discountValueEl = document.getElementById('discount-value');
 
             if (cart.length === 0) {
-                container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
+                container.innerHTML = `<p class="text-stone-500 text-center py-12">O seu carrinho está vazio.</p>`;
                 totalEl.innerText = 'R$ 0,00';
                 discountLine.classList.add('hidden');
                 discountApplied = false;
@@ -632,7 +627,7 @@
         }
 
         function openCheckoutModal() {
-            if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+            if (cart.length === 0) { alert('O seu carrinho está vazio!'); return; }
             
             let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let finalTotal = discountApplied ? subtotal * 0.90 : subtotal;
@@ -688,7 +683,7 @@
             const meuWhatsApp = '5521995335948';
             const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
                                 `*Cliente:* ${name}\n` +
-                                `*Telefone:* ${phone}\n` +
+                                `*Telemóvel:* ${phone}\n` +
                                 `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}\n` +
                                 `*Endereço:* ${address}\n` +
                                 `*Pagamento:* ${paymentMethod.toUpperCase()}\n` +
@@ -719,7 +714,7 @@
         function trackOrder() {
             const query = document.getElementById('tracking-input').value.trim();
             const resultBox = document.getElementById('tracking-result');
-            if (!query) { alert('Digite o número do pedido ou telefone.'); return; }
+            if (!query) { alert('Digite o número do pedido ou telemóvel.'); return; }
             const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
             const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
             resultBox.classList.remove('hidden');
