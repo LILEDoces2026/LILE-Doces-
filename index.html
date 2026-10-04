@@ -98,7 +98,7 @@
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica -->
+        <!-- Grade de Produtos Dinâmica (Disponíveis no topo, Indisponíveis abaixo) -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <!-- Renderizado via JavaScript -->
         </div>
@@ -168,7 +168,26 @@
             <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
                 <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
             </div>
-            <div class="p-6 bg-white border-t border-stone-200 space-y-4 shadow-lg">
+            
+            <!-- Seção de Cupom de Desconto Exclusivo (Primeiro Acesso) -->
+            <div class="p-4 bg-stone-100 border-t border-stone-200">
+                <div id="coupon-area" class="space-y-2">
+                    <p class="text-xs font-semibold text-brand-dark flex items-center gap-1">
+                        <i class="fa-solid fa-tag text-brand-caramel"></i> Cupom de Primeira Compra:
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-input" placeholder="Digite menos10%" class="flex-1 bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs uppercase font-mono focus:outline-none focus:border-brand-caramel">
+                        <button onclick="applyCoupon()" class="bg-stone-800 hover:bg-brand-dark text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors">Aplicar</button>
+                    </div>
+                    <p id="coupon-msg" class="text-xs font-medium"></p>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white border-t border-stone-200 space-y-3 shadow-lg">
+                <div id="discount-line" class="hidden justify-between items-center text-sm font-semibold text-emerald-600">
+                    <span>Desconto (menos10%):</span>
+                    <span id="discount-value">- R$ 0,00</span>
+                </div>
                 <div class="flex justify-between items-center text-lg font-bold text-brand-dark">
                     <span>Total:</span>
                     <span id="cart-total" class="text-emerald-600">R$ 0,00</span>
@@ -198,8 +217,15 @@
                         <input type="tel" id="client-phone" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="(21) 99999-9999">
                     </div>
                     <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Opção de Entrega / Retirada</label>
+                        <select id="delivery-type" onchange="toggleAddressField()" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel mb-2">
+                            <option value="entrega">Entrega no Endereço (Delivery)</option>
+                            <option value="retirada">Retirada na Loja (Grátis)</option>
+                        </select>
+                    </div>
+                    <div id="address-container">
                         <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Endereço de Entrega</label>
-                        <textarea id="client-address" required rows="2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Rua, Número, Bairro, Complemento"></textarea>
+                        <textarea id="client-address" rows="2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Rua, Número, Bairro, Complemento"></textarea>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Forma de Pagamento</label>
@@ -335,12 +361,27 @@
         }
 
         let cart = [];
+        let discountApplied = false;
+
+        // Validação de Primeiro Acesso para o Cupom
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('lile_visited')) {
+                localStorage.setItem('lile_visited', 'true');
+                localStorage.setItem('lile_first_access', 'true');
+            } else {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+            renderProducts();
+        });
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             let html = '';
 
-            products.forEach(p => {
+            // Organiza os produtos: Disponíveis primeiro, Indisponíveis abaixo
+            const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
+
+            sortedProducts.forEach(p => {
                 const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
                 
                 if (p.type === 'single') {
@@ -474,6 +515,9 @@
             const badge = document.getElementById('cart-badge');
             badge.classList.add('scale-125');
             setTimeout(() => badge.classList.remove('scale-125'), 200);
+            if(!document.getElementById('cart-modal').classList.contains('hidden')) {
+                renderCart();
+            }
         }
 
         function updateBadge() {
@@ -481,17 +525,45 @@
             document.getElementById('cart-badge').innerText = totalItems;
         }
 
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toLowerCase();
+            const msgEl = document.getElementById('coupon-msg');
+            const isFirstAccess = localStorage.getItem('lile_first_access') === 'true';
+
+            if (code !== 'menos10%') {
+                msgEl.innerText = 'Cupom inválido.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            if (!isFirstAccess) {
+                msgEl.innerText = 'Este cupom é exclusivo para o primeiro acesso/compra no site.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            discountApplied = true;
+            msgEl.innerText = 'Cupom "menos10%" aplicado com sucesso! (10% OFF)';
+            msgEl.className = 'text-xs font-medium text-emerald-600';
+            renderCart();
+        }
+
         function renderCart() {
             const container = document.getElementById('cart-items-container');
             const totalEl = document.getElementById('cart-total');
+            const discountLine = document.getElementById('discount-line');
+            const discountValueEl = document.getElementById('discount-value');
+
             if (cart.length === 0) {
                 container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
                 totalEl.innerText = 'R$ 0,00';
+                discountLine.classList.add('hidden');
+                discountApplied = false;
                 return;
             }
-            let html = '', total = 0;
+            let html = '', subtotal = 0;
             cart.forEach((item, index) => {
-                total += item.price * item.quantity;
+                subtotal += item.price * item.quantity;
                 html += `
                     <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-200">
                         <div>
@@ -505,7 +577,19 @@
                     </div>`;
             });
             container.innerHTML = html;
-            totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            let finalTotal = subtotal;
+            if (discountApplied) {
+                const discountAmount = subtotal * 0.10;
+                finalTotal = subtotal - discountAmount;
+                discountLine.classList.remove('hidden');
+                discountLine.classList.add('flex');
+                discountValueEl.innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+            } else {
+                discountLine.classList.add('hidden');
+            }
+
+            totalEl.innerText = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
         }
 
         function removeItem(index) {
@@ -514,12 +598,29 @@
             renderCart();
         }
 
+        function toggleAddressField() {
+            const deliveryType = document.getElementById('delivery-type').value;
+            const addressContainer = document.getElementById('address-container');
+            const addressInput = document.getElementById('client-address');
+
+            if (deliveryType === 'retirada') {
+                addressContainer.classList.add('hidden');
+                addressInput.removeAttribute('required');
+                addressInput.value = 'Retirada na Loja Física';
+            } else {
+                addressContainer.classList.remove('hidden');
+                addressInput.setAttribute('required', 'true');
+                addressInput.value = '';
+            }
+        }
+
         function openCheckoutModal() {
             if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
             
-            // Validação do Pedido Mínimo de R$ 20,00
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            if (total < 20.00) {
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let finalTotal = discountApplied ? subtotal * 0.90 : subtotal;
+
+            if (finalTotal < 20.00) {
                 alert('O valor mínimo para pedidos é de R$ 20,00. Adicione mais itens ao carrinho para continuar.');
                 return;
             }
@@ -538,9 +639,12 @@
             event.preventDefault();
             const name = document.getElementById('client-name').value;
             const phone = document.getElementById('client-phone').value;
-            const address = document.getElementById('client-address').value;
+            const deliveryType = document.getElementById('delivery-type').value;
+            const address = deliveryType === 'retirada' ? 'Retirada na Loja' : document.getElementById('client-address').value;
             const paymentMethod = document.getElementById('payment-method').value;
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let total = discountApplied ? subtotal * 0.90 : subtotal;
             const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
 
             let itemsText = '';
@@ -550,6 +654,7 @@
 
             const orderData = {
                 orderId, name, phone, address, paymentMethod,
+                deliveryType,
                 items: [...cart], total,
                 status: 'Pagamento Aprovado / Em Preparo na Cozinha',
                 timestamp: new Date().toLocaleTimeString()
@@ -559,18 +664,26 @@
             orders.push(orderData);
             localStorage.setItem('lile_orders', JSON.stringify(orders));
 
+            // Marca o cupom como usado para que o primeiro acesso expire nas próximas visitas
+            if (discountApplied) {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+
             const meuWhatsApp = '5521995335948';
             const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
                                 `*Cliente:* ${name}\n` +
                                 `*Telefone:* ${phone}\n` +
+                                `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}\n` +
                                 `*Endereço:* ${address}\n` +
-                                `*Pagamento:* ${paymentMethod.toUpperCase()}\n\n` +
+                                `*Pagamento:* ${paymentMethod.toUpperCase()}\n` +
+                                `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}\n` +
                                 `*Itens do Pedido:*\n${itemsText}\n` +
                                 `*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
 
             const urlWhatsApp = `https://wa.me/${meuWhatsApp}?text=${encodeURIComponent(mensagemWpp)}`;
 
             cart = [];
+            discountApplied = false;
             updateBadge();
             closeCheckoutModal();
 
@@ -602,6 +715,7 @@
                     </div>
                     <div class="space-y-2 text-xs text-stone-600 pt-2">
                         <p><strong>Cliente:</strong> ${found.name}</p>
+                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}</p>
                         <p><strong>Endereço:</strong> ${found.address}</p>
                         <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
                     </div>`;
@@ -609,8 +723,6 @@
                 resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
             }
         }
-
-        window.onload = renderProducts;
     </script>
 </body>
 </html>
