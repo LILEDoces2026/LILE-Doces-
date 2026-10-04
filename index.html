@@ -90,353 +90,59 @@
         </div>
     </section>
 
-    <!-- Cardápio / Produtos -->
+    <!-- Seção Sobre Nós -->
+    <section id="sobre" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">A arte de transformar chocolate em momentos inesquecíveis</h2>
+                <div class="w-24 h-1 bg-brand-caramel mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-8 text-stone-700 leading-relaxed text-base sm:text-lg">
+                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-brand-caramel"></i> O Propósito
+                    </h3>
+                    <p>
+                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que você precisa ao rigor de uma confeitaria fina.
+                    </p>
+                </div>
+
+                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-burner text-brand-caramel"></i> Os Segredos da Casa
+                    </h3>
+                    <p>
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
+                    </p>
+                </div>
+
+                <div class="bg-brand-cream/50 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-gift text-brand-caramel"></i> A Nossa Promessa
+                    </h3>
+                    <p class="mb-4">
+                        Seja para acompanhar o seu café, presentear alguém especial ou salvar o seu dia com uma dose de doçura na medida certa, a LILE entrega mais do que doces: entregamos cuidado em formato de caixas kraft prontas para encantar.
+                    </p>
+                    <p class="font-serif italic font-semibold text-brand-chocolate text-center text-lg pt-2">
+                        Experimente o extraordinário no conforto da sua casa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cardápio / Descrições sensoriais da LILE -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div class="text-center mb-12">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Cardápio & Kits Especiais</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade.</p>
         </div>
 
-        <!-- Grade de Produtos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-
-            <!-- Produto 1: Nutella -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PROMOÇÃO</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cookie-bite"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Brownie de Nutella</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Dupla camada de brownie suculento abraçando um recheio puro, cremoso e irresistível de Nutella.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
-                    </div>
-                    <button onclick="addItem('Brownie de Nutella', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- Produto 2: Casadinho -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PROMOÇÃO</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cookie-bite"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Brownie de Casadinho</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
-                    </div>
-                    <button onclick="addItem('Brownie de Casadinho', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- Produto 3: Doce de Leite -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PROMOÇÃO</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cookie-bite"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Brownie de Doce de Leite</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Generosamente recheado com doce de leite cremoso artesanal que desmancha na boca a cada fatia.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
-                    </div>
-                    <button onclick="addItem('Brownie de Doce de Leite', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- Produto 4: Brigadeiro Gourmet 50% -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PROMOÇÃO</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cookie-bite"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Brownie Brigadeiro Gourmet 50%</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 line-through block">R$ 17,00</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 12,50</span>
-                    </div>
-                    <button onclick="addItem('Brownie Brigadeiro Gourmet 50%', 12.50)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- Produto 5: Fatia Tradicional -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-brand-caramel text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">CLÁSSICO</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cake-candles"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Fatia de Brownie Tradicional</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Casquinha crocante por fora, miolo ultra-úmido com intensidade perfeita de cacau 50%.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 block">&nbsp;</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 9,99</span>
-                    </div>
-                    <button onclick="addItem('Fatia de Brownie Tradicional', 9.99)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- NOVO PRODUTO: Kit com 3 Brownies -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-brand-caramel text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">KIT</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-box"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit com 3 Brownies</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 block">Especial Sortido</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 35,00</span>
-                    </div>
-                    <button onclick="addItem('Kit com 3 Brownies', 35.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- NOVO PRODUTO: Caixa Presenteável com 4 -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">PRESENTE</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-gift"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Caixa Presenteável (4 Unidades)</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 block">&nbsp;</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 59,90</span>
-                    </div>
-                    <button onclick="addItem('Caixa Presenteável com 4 Brownies', 59.90)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- NOVO PRODUTO: Kit Reunião / Eventos 20un -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">EVENTOS</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit Reunião e Eventos (20 un)</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                            Perfeito para reuniões e pequenos encontros corporativos ou familiares.
-                        </p>
-                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
-                            <div class="flex justify-between items-center">
-                                <span>Tradicional (R$ 180,00)</span>
-                                <button onclick="addItem('Kit Reunião 20un - Tradicional', 180.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                            <div class="flex justify-between items-center pt-1 border-t">
-                                <span>Recheado (R$ 210,00)</span>
-                                <button onclick="addItem('Kit Reunião 20un - Recheado', 210.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
-                </div>
-            </div>
-
-            <!-- NOVO PRODUTO: Kit Festa 50un (4x4) -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">FESTAS</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-cake-candles"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit Festa 50 Brownies (4x4)</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                            Ideal para comemorações e aniversários com pedaços tamanho 4x4.
-                        </p>
-                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
-                            <div class="flex justify-between items-center">
-                                <span>Tradicional (R$ 280,00)</span>
-                                <button onclick="addItem('Kit Festa 50un 4x4 - Tradicional', 280.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                            <div class="flex justify-between items-center pt-1 border-t">
-                                <span>Recheado (R$ 350,00)</span>
-                                <button onclick="addItem('Kit Festa 50un 4x4 - Recheado', 350.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
-                </div>
-            </div>
-
-            <!-- NOVO PRODUTO: Kit 100 Brownies (3x3) -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">GRANDE FESTA</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-champagne-glasses"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Kit 100 Brownies (3x3)</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                            Grandes eventos e casamentos com pedaços tamanho 3x3.
-                        </p>
-                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
-                            <div class="flex justify-between items-center">
-                                <span>Tradicional (R$ 350,00)</span>
-                                <button onclick="addItem('Kit 100un 3x3 - Tradicional', 350.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                            <div class="flex justify-between items-center pt-1 border-t">
-                                <span>Recheado (R$ 400,00)</span>
-                                <button onclick="addItem('Kit 100un 3x3 - Recheado', 400.00)" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <span class="text-xs text-stone-500">Escolha o tipo acima</span>
-                </div>
-            </div>
-
-            <!-- BEBIDA: Refrigerante -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-stone-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">BEBIDA</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-bottle-water"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Refrigerante Coca-Cola 350ml</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Lata 350ml bem gelada para acompanhar seu momento doce.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 block">Lata 350ml</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 6,00</span>
-                    </div>
-                    <button onclick="addItem('Refrigerante Coca-Cola 350ml', 6.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- BEBIDA: Água -->
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between">
-                <div>
-                    <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
-                        <span class="absolute top-4 left-4 bg-stone-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">BEBIDA</span>
-                        <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
-                            <i class="fa-solid fa-droplet"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-brand-dark">Água Mineral 300ml</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                            Água mineral sem gás 300ml refrescante.
-                        </p>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                    <div>
-                        <span class="text-xs text-stone-400 block">Garrafa 300ml</span>
-                        <span class="text-xl font-bold text-emerald-600">R$ 3,00</span>
-                    </div>
-                    <button onclick="addItem('Água Mineral 300ml', 3.00)" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-plus"></i> Adicionar
-                    </button>
-                </div>
-            </div>
-
+        <!-- Grade de Produtos Dinâmica -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Renderizado via JavaScript -->
         </div>
 
         <!-- Seção de Acompanhar Pedido (Rastreio) -->
@@ -453,9 +159,7 @@
                     </button>
                 </div>
 
-                <div id="tracking-result" class="hidden mt-6 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-left space-y-4">
-                    <!-- Conteúdo injetado via JS -->
-                </div>
+                <div id="tracking-result" class="hidden mt-6 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-left space-y-4"></div>
             </div>
         </div>
 
@@ -474,10 +178,33 @@
         </div>
     </main>
 
+    <!-- Botão Flutuante de Gestão de Estoque -->
+    <div class="fixed bottom-6 left-6 z-30">
+        <button onclick="openStockModal()" class="bg-brand-dark hover:bg-brand-chocolate text-brand-cream px-4 py-3 rounded-2xl shadow-2xl border border-brand-caramel/40 text-xs font-semibold flex items-center gap-2 transition-transform hover:scale-105">
+            <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade
+        </button>
+    </div>
+
+    <!-- Modal de Gestão de Estoque -->
+    <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
+                <div>
+                    <h3 class="font-serif font-bold text-lg">Painel de Disponibilidade</h3>
+                    <p class="text-xs text-stone-400">Ative ou desative produtos do cardápio em tempo real</p>
+                </div>
+                <button onclick="closeStockModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div id="stock-items-list" class="p-6 overflow-y-auto space-y-3 flex-1 divide-y divide-stone-100"></div>
+            <div class="p-4 bg-stone-50 border-t text-center">
+                <button onclick="closeStockModal()" class="bg-brand-caramel text-white font-semibold px-6 py-2.5 rounded-xl text-sm shadow">Salvar & Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal do Carrinho de Compras -->
     <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-end transition-all">
         <div class="bg-brand-cream w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
-            <!-- Topo do Carrinho -->
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-bag-shopping text-brand-caramel text-xl"></i>
@@ -487,13 +214,9 @@
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
-
-            <!-- Lista de Itens -->
             <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
                 <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
             </div>
-
-            <!-- Rodapé / Finalizar -->
             <div class="p-6 bg-white border-t border-stone-200 space-y-4 shadow-lg">
                 <div class="flex justify-between items-center text-lg font-bold text-brand-dark">
                     <span>Total:</span>
@@ -511,9 +234,7 @@
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
                 <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
-                <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
+                <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-6 overflow-y-auto space-y-4 flex-1">
                 <form id="checkout-form" onsubmit="processPayment(event)" class="space-y-4">
@@ -537,8 +258,6 @@
                             <option value="dinheiro">Dinheiro (Troco se necessário)</option>
                         </select>
                     </div>
-
-                    <!-- Bloco PIX Simulado -->
                     <div id="pix-box" class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center space-y-2">
                         <p class="text-xs font-bold text-amber-900 uppercase">Chave PIX (CNPJ / Copia e Cola)</p>
                         <div class="bg-white p-2 rounded-xl border border-amber-300 text-xs font-mono select-all text-stone-700">
@@ -546,7 +265,6 @@
                         </div>
                         <p class="text-xs text-amber-800">Faça o PIX do valor exato e clique em confirmar pagamento abaixo.</p>
                     </div>
-
                     <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 mt-4">
                         <i class="fa-solid fa-lock"></i> Confirmar Pagamento & Enviar Pedido
                     </button>
@@ -555,7 +273,7 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmação e Acompanhamento Imediato -->
+    <!-- Modal de Confirmação -->
     <div id="success-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 text-center space-y-4">
             <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
@@ -590,9 +308,155 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Vanilla & Persistência Local/Simulação Firebase -->
+    <!-- Lógica JavaScript Completa -->
     <script>
+        let products = [
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', icon: 'fa-ice-cream', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
+            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', icon: 'fa-seedling', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', icon: 'fa-pepper-hot', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
+            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', icon: 'fa-seedling', desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas. Cremosidade e sabor absoluto em cada fatia.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
+            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Nosso clássico inconfundível de massa úmida e casquinha perfeita, generosamente recheado com um doce de leite artesanal de textura aveludada. Leva um toque aromático exclusivo da casa que equilibra a doçura e entrega um perfil de sabor sofisticado e marcante.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', icon: 'fa-cookie-bite', desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
+            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', icon: 'fa-cake-candles', desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso, enriquecido com bolsões de chocolate meio amargo nobre e um segredo de infusão da casa que desperta e potencializa o sabor do cacau a cada mordida. Uma experiência inesquecível.', available: true, type: 'single' },
+            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', icon: 'fa-box', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', icon: 'fa-gift', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
+            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', icon: 'fa-users', desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
+            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', icon: 'fa-cake-candles', desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
+            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', icon: 'fa-champagne-glasses', desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', icon: 'fa-bottle-water', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
+            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', icon: 'fa-droplet', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
+        ];
+
+        if(localStorage.getItem('lile_products_stock')) {
+            const savedStock = JSON.parse(localStorage.getItem('lile_products_stock'));
+            products = products.map(p => {
+                const found = savedStock.find(s => s.id === p.id);
+                return found ? {...p, available: found.available} : p;
+            });
+        }
+
         let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            let html = '';
+
+            products.forEach(p => {
+                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+                
+                if (p.type === 'single') {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">ESGOTADO</span>' : ''}
+                                    <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                                        <i class="fa-solid ${p.icon}"></i>
+                                    </div>
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark">${p.name}</h3>
+                                </div>
+                                <div class="p-6">
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-6">${p.desc}</p>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <div>
+                                    <span class="text-xs text-stone-400 block">&nbsp;</span>
+                                    <span class="text-xl font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                                </div>
+                                ${p.available ? 
+                                    `<button onclick="addItem('${p.name}',${p.price})" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                                        <i class="fa-solid fa-plus"></i> Adicionar
+                                    </button>` :
+                                    `<button disabled class="bg-stone-300 text-stone-500 px-4 py-2.5 rounded-xl text-sm font-medium cursor-not-allowed">
+                                        Indisponível
+                                    </button>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 p-6 text-center border-b border-stone-100">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">ESGOTADO</span>' : ''}
+                                    <div class="w-16 h-16 mx-auto bg-brand-chocolate/10 rounded-full flex items-center justify-center text-brand-chocolate text-2xl mb-2">
+                                        <i class="fa-solid ${p.icon}"></i>
+                                    </div>
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark">${p.name}</h3>
+                                </div>
+                                <div class="p-6">
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
+                                    ${p.available ? `
+                                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                                            <div class="flex justify-between items-center">
+                                                <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                            <div class="flex justify-between items-center pt-1 border-t">
+                                                <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                        </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Produto temporariamente indisponível</p>'
+                                    }
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <span class="text-xs text-stone-500">${p.available ? 'Escolha o tipo acima' : 'Esgotado no momento'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function openStockModal() {
+            const listContainer = document.getElementById('stock-items-list');
+            let stockHtml = '';
+
+            products.forEach(p => {
+                stockHtml += `
+                    <div class="flex items-center justify-between py-2.5">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${p.name}</h4>
+                            <span class="text-xs text-stone-500">${p.badge}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-semibold ${p.available ? 'text-emerald-600' : 'text-red-600'}">${p.available ? 'Disponível' : 'Indisponível'}</span>
+                            <button onclick="toggleProductStock(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.available ? 'bg-red-100 text-red-700 hover:bg-red-200' : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'}">
+                                ${p.available ? 'Marcar Indisponível' : 'Marcar Disponível'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            listContainer.innerHTML = stockHtml;
+            document.getElementById('stock-modal').classList.remove('hidden');
+            document.getElementById('stock-modal').classList.add('flex');
+        }
+
+        function closeStockModal() {
+            document.getElementById('stock-modal').classList.remove('flex');
+            document.getElementById('stock-modal').classList.add('hidden');
+            renderProducts();
+        }
+
+        function toggleProductStock(id) {
+            const prod = products.find(p => p.id === id);
+            if (prod) {
+                prod.available = !prod.available;
+                localStorage.setItem('lile_products_stock', JSON.stringify(products.map(p => ({id: p.id, available: p.available}))));
+                openStockModal();
+            }
+        }
 
         function toggleCart() {
             const modal = document.getElementById('cart-modal');
@@ -608,14 +472,8 @@
 
         function addItem(name, price) {
             const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ name, price, quantity: 1 });
-            }
+            if (existing) { existing.quantity += 1; } else { cart.push({ name, price, quantity: 1 }); }
             updateBadge();
-            
-            // Feedback visual sutil
             const badge = document.getElementById('cart-badge');
             badge.classList.add('scale-125');
             setTimeout(() => badge.classList.remove('scale-125'), 200);
@@ -629,19 +487,14 @@
         function renderCart() {
             const container = document.getElementById('cart-items-container');
             const totalEl = document.getElementById('cart-total');
-            
             if (cart.length === 0) {
                 container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
                 totalEl.innerText = 'R$ 0,00';
                 return;
             }
-
-            let html = '';
-            let total = 0;
-
+            let html = '', total = 0;
             cart.forEach((item, index) => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
+                total += item.price * item.quantity;
                 html += `
                     <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-200">
                         <div>
@@ -652,10 +505,8 @@
                             <span class="text-sm font-semibold">Qtd: ${item.quantity}</span>
                             <button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash text-xs"></i></button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             });
-
             container.innerHTML = html;
             totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
@@ -667,10 +518,7 @@
         }
 
         function openCheckoutModal() {
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio!');
-                return;
-            }
+            if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
             toggleCart();
             document.getElementById('checkout-modal').classList.remove('hidden');
             document.getElementById('checkout-modal').classList.add('flex');
@@ -683,24 +531,21 @@
 
         function processPayment(event) {
             event.preventDefault();
-            
             const name = document.getElementById('client-name').value;
             const phone = document.getElementById('client-phone').value;
             const address = document.getElementById('client-address').value;
             const paymentMethod = document.getElementById('payment-method').value;
-            
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
 
-            // Simulação de salvamento no Firebase / LocalStorage para rastreio
+            let itemsText = '';
+            cart.forEach(item => {
+                itemsText += `- ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')})\n`;
+            });
+
             const orderData = {
-                orderId,
-                name,
-                phone,
-                address,
-                paymentMethod,
-                items: [...cart],
-                total,
+                orderId, name, phone, address, paymentMethod,
+                items: [...cart], total,
                 status: 'Pagamento Aprovado / Em Preparo na Cozinha',
                 timestamp: new Date().toLocaleTimeString()
             };
@@ -709,15 +554,26 @@
             orders.push(orderData);
             localStorage.setItem('lile_orders', JSON.stringify(orders));
 
-            // Limpa carrinho
+            const meuWhatsApp = '5521995335948';
+            const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
+                                `*Cliente:* ${name}\n` +
+                                `*Telefone:* ${phone}\n` +
+                                `*Endereço:* ${address}\n` +
+                                `*Pagamento:* ${paymentMethod.toUpperCase()}\n\n` +
+                                `*Itens do Pedido:*\n${itemsText}\n` +
+                                `*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            const urlWhatsApp = `https://wa.me/${meuWhatsApp}?text=${encodeURIComponent(mensagemWpp)}`;
+
             cart = [];
             updateBadge();
             closeCheckoutModal();
 
-            // Mostra tela de sucesso
             document.getElementById('success-order-id').innerText = `Pedido: ${orderId}`;
             document.getElementById('success-modal').classList.remove('hidden');
             document.getElementById('success-modal').classList.add('flex');
+
+            window.open(urlWhatsApp, '_blank');
         }
 
         function closeSuccessModal() {
@@ -729,17 +585,10 @@
         function trackOrder() {
             const query = document.getElementById('tracking-input').value.trim();
             const resultBox = document.getElementById('tracking-result');
-            
-            if (!query) {
-                alert('Digite o número do pedido ou telefone.');
-                return;
-            }
-
+            if (!query) { alert('Digite o número do pedido ou telefone.'); return; }
             const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
             const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
-
             resultBox.classList.remove('hidden');
-
             if (found) {
                 resultBox.innerHTML = `
                     <div class="flex justify-between items-center border-b pb-3">
@@ -750,23 +599,13 @@
                         <p><strong>Cliente:</strong> ${found.name}</p>
                         <p><strong>Endereço:</strong> ${found.address}</p>
                         <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
-                    </div>
-                    <div class="relative pt-4">
-                        <div class="flex items-center justify-between text-xs font-semibold text-stone-500">
-                            <span class="text-emerald-600">1. Aprovado</span>
-                            <span class="text-amber-600">2. Em Preparo</span>
-                            <span class="text-stone-400">3. Saiu p/ Entrega</span>
-                            <span class="text-stone-400">4. Entregue</span>
-                        </div>
-                        <div class="w-full bg-stone-200 h-2 rounded-full mt-2 overflow-hidden">
-                            <div class="bg-emerald-600 h-full w-2/4"></div>
-                        </div>
-                    </div>
-                `;
+                    </div>`;
             } else {
-                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}". Verifique os dados informados.</p>`;
+                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
             }
         }
+
+        window.onload = renderProducts;
     </script>
 </body>
-                            </html>
+</html>
