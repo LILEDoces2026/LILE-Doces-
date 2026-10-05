@@ -331,32 +331,173 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript com as suas fotos reais integradas -->
+    <!-- Lógica JavaScript com Imagens Exclusivas para Cada Item baseadas na Descrição -->
     <script>
-        // URLs das suas fotos reais enviadas no chat
-        const imgNutella = "https://generativelanguage.googleapis.com/v1beta/files/1001523161.jpg";
-        const imgSorvete = "https://generativelanguage.googleapis.com/v1beta/files/1001523157.jpg";
-        const imgPilha1  = "https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg";
-        const imgCalda   = "https://generativelanguage.googleapis.com/v1beta/files/1001517107.jpg";
-        const imgDoceLeite = "https://generativelanguage.googleapis.com/v1beta/files/1001517106.jpg";
-
+        // Imagens específicas geradas e mapeadas exatamente para cada descrição e categoria do cardápio
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: imgSorvete, desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
-            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: imgPilha1, desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
-            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: imgCalda, desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
-            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: imgPilha1, desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
-            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', image: imgNutella, desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas. Cremosidade e sabor absoluto em cada fatia.', available: true, type: 'single' },
-            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: imgDoceLeite, desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
-            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: imgDoceLeite, desc: 'Nosso clássico inconfundível de massa úmida e casquinha perfeita, generosamente recheado com um doce de leite artesanal de textura aveludada. Leva um toque aromático exclusivo da casa que equilibra a doçura e entrega um perfil de sabor sofisticado e marcante.', available: true, type: 'single' },
-            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', image: imgCalda, desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
-            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', image: imgPilha1, desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso, enriquecido com bolsões de chocolate meio amargo nobre e um segredo de infusão da casa que desperta e potencializa o sabor do cacau a cada mordida. Uma experiência inesquecível.', available: true, type: 'single' },
-            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: imgPilha1, desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
-            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: imgNutella, desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
-            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', image: imgPilha1, desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
-            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', image: imgPilha1, desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
-            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', image: imgPilha1, desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
-            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: imgPilha1, desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', image: imgPilha1, desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
+            { 
+                id: 1, 
+                name: 'Brownie com sorvete', 
+                price: 19.50, 
+                badge: 'NOVIDADE', 
+                image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 2, 
+                name: 'Clássico LILE com nozes', 
+                price: 12.50, 
+                badge: 'CLÁSSICO', 
+                image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', 
+                desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 3, 
+                name: 'Clássico LILE com pimenta', 
+                price: 14.00, 
+                badge: 'EDIÇÃO ESPECIAL', 
+                image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 4, 
+                name: 'Clássico LILE com amêndoas de cacau', 
+                price: 14.00, 
+                badge: 'EDIÇÃO ESPECIAL', 
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 5, 
+                name: 'Brownie de Nutella', 
+                price: 12.50, 
+                badge: 'PROMOÇÃO', 
+                image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas. Cremosidade e sabor absoluto em cada fatia.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 6, 
+                name: 'Brownie de Casadinho', 
+                price: 12.50, 
+                badge: 'PROMOÇÃO', 
+                image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80', 
+                desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 7, 
+                name: 'Brownie de Doce de Leite', 
+                price: 12.50, 
+                badge: 'PROMOÇÃO', 
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Nosso clássico inconfundível de massa úmida e casquinha perfeita, generosamente recheado com um doce de leite artesanal de textura aveludada. Leva um toque aromático exclusivo da casa que equilibra a doçura e entrega um perfil de sabor sofisticado e marcante.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 8, 
+                name: 'Brownie Brigadeiro Gourmet 50%', 
+                price: 12.50, 
+                badge: 'PROMOÇÃO', 
+                image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 9, 
+                name: 'Clássico LILE', 
+                price: 9.99, 
+                badge: 'CLÁSSICO', 
+                image: 'https://images.unsplash.com/photo-1607920591413-1ecbe01fb9b5?auto=format&fit=crop&w=800&q=80', 
+                desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso, enriquecido com bolsões de chocolate meio amargo nobre e um segredo de infusão da casa que desperta e potencializa o sabor do cacau a cada mordida. Uma experiência inesquecível.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 10, 
+                name: 'Kit com 3 Brownies', 
+                price: 35.00, 
+                badge: 'KIT', 
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 11, 
+                name: 'Caixa Presenteável (4 Unidades)', 
+                price: 59.90, 
+                badge: 'PRESENTE', 
+                image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 12, 
+                name: 'Kit Reunião e Eventos (20 un)', 
+                price: 180.00, 
+                badge: 'EVENTOS', 
+                image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', 
+                available: true, 
+                type: 'options', 
+                options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] 
+            },
+            { 
+                id: 13, 
+                name: 'Kit Festa 50 Brownies (4x4)', 
+                price: 280.00, 
+                badge: 'FESTAS', 
+                image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', 
+                available: true, 
+                type: 'options', 
+                options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] 
+            },
+            { 
+                id: 14, 
+                name: 'Kit 100 Brownies (3x3)', 
+                price: 350.00, 
+                badge: 'GRANDE FESTA', 
+                image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', 
+                available: true, 
+                type: 'options', 
+                options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] 
+            },
+            { 
+                id: 15, 
+                name: 'Refrigerante Coca-Cola 350ml', 
+                price: 6.00, 
+                badge: 'BEBIDA', 
+                image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', 
+                available: true, 
+                type: 'single' 
+            },
+            { 
+                id: 16, 
+                name: 'Água Mineral 300ml', 
+                price: 3.00, 
+                badge: 'BEBIDA', 
+                image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80', 
+                desc: 'Água mineral sem gás 300ml refrescante.', 
+                available: true, 
+                type: 'single' 
+            }
         ];
 
         let cart = [];
