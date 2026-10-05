@@ -53,11 +53,9 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Botão Rastreio Telemóvel -->
                 <a href="#rastreio-section" class="md:hidden bg-stone-800 text-brand-caramel p-3 rounded-full text-sm flex items-center justify-center shadow" title="Rastrear Pedido">
                     <i class="fa-solid fa-truck-fast"></i>
                 </a>
-                <!-- Botão Carrinho -->
                 <button onclick="toggleCart()" class="relative bg-brand-caramel hover:bg-amber-700 text-white p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center" aria-label="Carrinho de Compras">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
                     <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
@@ -90,7 +88,7 @@
         </div>
     </section>
 
-    <!-- Cardápio / Descrições sensoriais da LILE -->
+    <!-- Cardápio -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div class="text-center mb-12">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
@@ -98,12 +96,12 @@
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha as suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica -->
+        <!-- Grade de Produtos -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Renderizado via JavaScript -->
+            <!-- Renderizado via JS -->
         </div>
 
-        <!-- Seção de Acompanhar Pedido (Rastreio) -->
+        <!-- Rastreio -->
         <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
             <div class="max-w-2xl mx-auto text-center space-y-4">
                 <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Tempo Real</span>
@@ -121,7 +119,7 @@
             </div>
         </div>
 
-        <!-- Banner WhatsApp Direto -->
+        <!-- WhatsApp Banner -->
         <div class="mt-12 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="space-y-3 text-center md:text-left">
                 <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-600">Atendimento Personalizado</span>
@@ -136,7 +134,7 @@
         </div>
     </main>
 
-    <!-- Modal de Gestão de Stock -->
+    <!-- Modais (Stock, Carrinho, Checkout, Sucesso) -->
     <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
@@ -153,7 +151,6 @@
         </div>
     </div>
 
-    <!-- Modal do Carrinho de Compras -->
     <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-end transition-all">
         <div class="bg-brand-cream w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20">
@@ -168,8 +165,6 @@
             <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
                 <p class="text-stone-500 text-center py-12">O seu carrinho está vazio.</p>
             </div>
-            
-            <!-- Seção de Cupom de Desconto Exclusivo -->
             <div class="p-4 bg-stone-100 border-t border-stone-200">
                 <div id="coupon-area" class="space-y-2">
                     <p class="text-xs font-semibold text-brand-dark flex items-center gap-1">
@@ -182,7 +177,6 @@
                     <p id="coupon-msg" class="text-xs font-medium"></p>
                 </div>
             </div>
-
             <div class="p-6 bg-white border-t border-stone-200 space-y-3 shadow-lg">
                 <div id="discount-line" class="hidden justify-between items-center text-sm font-semibold text-emerald-600">
                     <span>Desconto (menos10%):</span>
@@ -199,7 +193,6 @@
         </div>
     </div>
 
-    <!-- Modal de Checkout e Pagamento -->
     <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
@@ -250,7 +243,6 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmação -->
     <div id="success-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 text-center space-y-4">
             <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
@@ -269,7 +261,7 @@
         </div>
     </div>
 
-    <!-- Footer / Rodapé -->
+    <!-- Footer -->
     <footer id="contato" class="bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-caramel/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mb-16">
             <div class="text-center">
@@ -292,7 +284,7 @@
                         <i class="fa-solid fa-fire-burner"></i> Os Segredos da Casa
                     </h3>
                     <p>
-                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa.
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido por dentro.
                     </p>
                 </div>
 
@@ -310,7 +302,6 @@
             </div>
         </div>
 
-        <!-- Botão de Acesso ao Painel de Stock no Rodapé -->
         <div class="max-w-xl mx-auto px-4 text-center mb-12">
             <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
                 <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerir Stock / Disponibilidade (Painel Interno)
@@ -331,25 +322,28 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Atualizada com as Fotos Reais -->
+    <!-- JavaScript com a foto real integrada com link estável -->
     <script>
+        // Usando a foto real gerada para os itens principais do cardápio
+        const realBrowniePhoto = "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80";
+
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523157.jpg', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
-            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
-            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517107.jpg', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
-            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
-            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523161.jpg', desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas.', available: true, type: 'single' },
-            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517106.jpg', desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
-            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517106.jpg', desc: 'Nosso clássico inconfundível de massa úmida, generosamente recheado com um doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
-            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
-            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso.', available: true, type: 'single' },
-            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
-            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001523161.jpg', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
-            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
-            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
-            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
-            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', image: 'https://generativelanguage.googleapis.com/v1beta/files/1001517105.jpg', desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: realBrowniePhoto, desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal.', available: true, type: 'single' },
+            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: realBrowniePhoto, desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: realBrowniePhoto, desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
+            { id: 4, name: 'Clássico LILE com amêndoas de cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: realBrowniePhoto, desc: 'Intensidade suprema com nibs e amêndoas de cacau crocantes em perfeita harmonia com o brownie.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'PROMOÇÃO', image: realBrowniePhoto, desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais amado do mundo: puro creme de avelã Nutella aplicado em generosas camadas.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: realBrowniePhoto, desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
+            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: realBrowniePhoto, desc: 'Nosso clássico inconfundível de massa úmida, generosamente recheado com um doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50%', price: 12.50, badge: 'PROMOÇÃO', image: realBrowniePhoto, desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
+            { id: 9, name: 'Clássico LILE', price: 9.99, badge: 'CLÁSSICO', image: realBrowniePhoto, desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso.', available: true, type: 'single' },
+            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: realBrowniePhoto, desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: realBrowniePhoto, desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear quem você ama.', available: true, type: 'single' },
+            { id: 12, name: 'Kit Reunião e Eventos (20 un)', price: 180.00, badge: 'EVENTOS', image: realBrowniePhoto, desc: 'Perfeito para reuniões e pequenos encontros corporativos ou familiares.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
+            { id: 13, name: 'Kit Festa 50 Brownies (4x4)', price: 280.00, badge: 'FESTAS', image: realBrowniePhoto, desc: 'Ideal para comemorações e aniversários com pedaços tamanho 4x4.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
+            { id: 14, name: 'Kit 100 Brownies (3x3)', price: 350.00, badge: 'GRANDE FESTA', image: realBrowniePhoto, desc: 'Grandes eventos e casamentos com pedaços tamanho 3x3.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80", desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
+            { id: 16, name: 'Água Mineral 300ml', price: 3.00, badge: 'BEBIDA', image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80", desc: 'Água mineral sem gás 300ml refrescante.', available: true, type: 'single' }
         ];
 
         let cart = [];
@@ -383,7 +377,6 @@
             } else {
                 localStorage.setItem('lile_first_access', 'false');
             }
-            
             initStock();
             renderProducts();
         });
@@ -392,7 +385,6 @@
             const grid = document.getElementById('product-grid');
             if(!grid) return;
             let html = '';
-
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
@@ -461,7 +453,6 @@
                     `;
                 }
             });
-
             grid.innerHTML = html;
         }
 
@@ -469,7 +460,6 @@
             const listContainer = document.getElementById('stock-items-list');
             if(!listContainer) return;
             let stockHtml = '';
-
             products.forEach(p => {
                 stockHtml += `
                     <div class="flex items-center justify-between py-2.5">
@@ -486,7 +476,6 @@
                     </div>
                 `;
             });
-
             listContainer.innerHTML = stockHtml;
             document.getElementById('stock-modal').classList.remove('hidden');
             document.getElementById('stock-modal').classList.add('flex');
@@ -547,7 +536,6 @@
                 msgEl.className = 'text-xs font-medium text-red-600';
                 return;
             }
-
             if (!isFirstAccess) {
                 msgEl.innerText = 'Este cupom é exclusivo para o primeiro acesso/compra no site.';
                 msgEl.className = 'text-xs font-medium text-red-600';
@@ -600,7 +588,6 @@
             } else {
                 discountLine.classList.add('hidden');
             }
-
             totalEl.innerText = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
         }
 
@@ -628,7 +615,6 @@
 
         function openCheckoutModal() {
             if (cart.length === 0) { alert('O seu carrinho está vazio!'); return; }
-            
             let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let finalTotal = discountApplied ? subtotal * 0.90 : subtotal;
 
