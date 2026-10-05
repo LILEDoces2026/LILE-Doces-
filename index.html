@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LILE Doces Artesanais</title>
-    <!-- Tailwind CSS -->
+    <title>Lile Doces Artesanais - Confeitaria Artesanal</title>
+    <!-- Google Fonts & Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter & Playfair Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -16,416 +14,726 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#fcf8f5',
-                            100: '#f4eae1',
-                            600: '#8c5230',
-                            700: '#6d3f24',
-                            800: '#4e2d19',
-                            900: '#331d10',
+                            dark: '#3b1f14',
+                            chocolate: '#5c2c16',
+                            caramel: '#c68b59',
+                            cream: '#f9f5f0',
+                            accent: '#d97706'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', 'sans-serif']
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-brand-50 text-brand-900 font-sans antialiased selection:bg-brand-600 selection:text-white">
+<body class="bg-brand-cream text-brand-dark font-sans antialiased selection:bg-brand-caramel selection:text-white">
 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-100 shadow-sm">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md text-brand-cream shadow-md border-b border-brand-caramel/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-brand-700">LILE</span>
-                <span class="text-xs uppercase tracking-widest text-brand-600 font-medium border-l border-brand-200 pl-2 hidden sm:inline-block">Doces Artesanais</span>
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold text-xl shadow-inner">
+                    L
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-brand-cream block leading-tight">Lile Doces</span>
+                    <span class="text-xs tracking-widest text-brand-caramel uppercase font-medium">Artesanais</span>
+                </div>
             </div>
-            
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#inicio" class="text-brand-800 hover:text-brand-600 transition-colors">Início</a>
-                <a href="#destaques" class="text-brand-800 hover:text-brand-600 transition-colors">Destaques</a>
-                <a href="#cardapio" class="text-brand-800 hover:text-brand-600 transition-colors">Cardápio</a>
-                <a href="#sobre" class="text-brand-800 hover:text-brand-600 transition-colors">Nossa História</a>
-                <a href="#contato" class="text-brand-800 hover:text-brand-600 transition-colors">Encomendas</a>
+
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#produtos" class="hover:text-brand-caramel transition-colors">Cardápio</a>
+                <a href="#rastreio-section" class="hover:text-brand-caramel transition-colors">Acompanhar Pedido</a>
+                <a href="#sobre" class="hover:text-brand-caramel transition-colors">Sobre Nós</a>
+                <a href="#contato" class="hover:text-brand-caramel transition-colors">Contato</a>
             </nav>
 
-            <div class="flex items-center space-x-4">
-                <a href="#contato" class="bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
-                    Pedir Agora
+            <div class="flex items-center space-x-3">
+                <!-- Botão Rastreio Mobile -->
+                <a href="#rastreio-section" class="md:hidden bg-stone-800 text-brand-caramel p-3 rounded-full text-sm flex items-center justify-center shadow" title="Rastrear Pedido">
+                    <i class="fa-solid fa-truck-fast"></i>
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-brand-800 focus:outline-none p-2">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <!-- Botão Carrinho -->
+                <button onclick="toggleCart()" class="relative bg-brand-caramel hover:bg-amber-700 text-white p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center" aria-label="Carrinho de Compras">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-brand-100 px-6 py-4 space-y-3 shadow-lg">
-            <a href="#inicio" class="block text-brand-800 font-medium py-1">Início</a>
-            <a href="#destaques" class="block text-brand-800 font-medium py-1">Destaques</a>
-            <a href="#cardapio" class="block text-brand-800 font-medium py-1">Cardápio</a>
-            <a href="#sobre" class="block text-brand-800 font-medium py-1">Nossa História</a>
-            <a href="#contato" class="block text-brand-800 font-medium py-1">Encomendas</a>
-        </div>
     </header>
 
-    <section id="inicio" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-brand-100/60 to-brand-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 bg-white px-3.5 py-1.5 rounded-full shadow-sm border border-brand-100 text-brand-700 text-xs font-semibold tracking-wide uppercase">
-                        <i class="fa-solid fa-heart text-amber-600"></i>
-                        <span>Feito com amor e ingredientes nobres</span>
-                    </div>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-900 leading-tight">
-                        Doçura que abraça <span class="text-brand-700 italic">o seu dia</span>
-                    </h1>
-                    <p class="text-lg text-brand-800/80 max-w-xl mx-auto lg:mx-0">
-                        Descubra brownies quentinhos com sorvete artesanal, texturas inconfundíveis e sabores que transformam momentos comuns em memórias inesquecíveis.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#cardapio" class="w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white font-medium px-8 py-4 rounded-full shadow-md hover:shadow-xl transition-all text-center">
-                            Ver Cardápio Completo
-                        </a>
-                        <a href="#contato" class="w-full sm:w-auto bg-white hover:bg-brand-100/50 text-brand-800 border border-brand-200 font-medium px-8 py-4 rounded-full transition-all text-center">
-                            Fazer Encomenda
-                        </a>
-                    </div>
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-brand-200/60 max-w-md mx-auto lg:mx-0">
-                        <div>
-                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-800">100%</p>
-                            <p class="text-xs text-brand-700 font-medium uppercase tracking-wider mt-0.5">Artesanal</p>
-                        </div>
-                        <div>
-                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-800">Belga</p>
-                            <p class="text-xs text-brand-700 font-medium uppercase tracking-wider mt-0.5">Cacau Puro</p>
-                        </div>
-                        <div>
-                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-800">5.0</p>
-                            <p class="text-xs text-brand-700 font-medium uppercase tracking-wider mt-0.5">Avaliações</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Image with the exact brownie & ice cream uploaded -->
-                <div class="lg:col-span-6 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Decorative blob background -->
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-200 to-amber-100 rounded-3xl transform rotate-2 filter blur-sm opacity-70"></div>
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                            <!-- User provided brownie image integrated -->
-                            <img src="1001525935.jpg" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=800'" 
-                                 alt="Brownie quentinho com sorvete de baunilha" 
-                                 class="w-full h-[420px] sm:h-[480px] object-cover transform hover:scale-105 transition-transform duration-700">
-                            
-                            <!-- Floating Card Badge -->
-                            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-brand-100 flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <div class="bg-brand-100 p-2.5 rounded-lg text-brand-700">
-                                        <i class="fa-solid fa-fire text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-brand-900 text-sm">Brownie da Casa com Sorvete</h4>
-                                        <p class="text-xs text-brand-800/70">Assado na hora, úmido por dentro</p>
-                                    </div>
-                                </div>
-                                <span class="font-serif font-bold text-brand-700 text-lg">R$ 28,90</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="destaques" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-brand-600 text-sm uppercase tracking-widest font-bold">Favoritos da LILE</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-2">Nossos Queridinhos</h2>
-                <div class="w-16 h-1 bg-brand-600 mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="bg-brand-50/50 rounded-2xl overflow-hidden border border-brand-100/80 shadow-sm hover:shadow-md transition-all group">
-                    <div class="h-60 overflow-hidden relative">
-                        <img src="1001525935.jpg" alt="Brownie com Sorvete" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-4 right-4 bg-brand-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Mais Vendido</span>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-brand-900">Brownie Supreme com Sorvete</h3>
-                            <span class="font-bold text-brand-700">R$ 28,90</span>
-                        </div>
-                        <p class="text-sm text-brand-800/80 leading-relaxed">
-                            Nosso clássico brownie de chocolate belga fofinho por dentro, crosta crocante, coberto com bola de sorvete de baunilha artesanal e calda.
-                        </p>
-                        <a href="#contato" class="inline-flex items-center space-x-2 text-sm font-semibold text-brand-700 hover:text-brand-800 pt-2">
-                            <span>Pedir este doce</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="bg-brand-50/50 rounded-2xl overflow-hidden border border-brand-100/80 shadow-sm hover:shadow-md transition-all group">
-                    <div class="h-60 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=600" alt="Bolo de Cenoura com Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-brand-900">Bolo da Vovó com Calda</h3>
-                            <span class="font-bold text-brand-700">R$ 45,00</span>
-                        </div>
-                        <p class="text-sm text-brand-800/80 leading-relaxed">
-                            Massa leve de cenoura fresquinha coberta generosamente com ganache de chocolate meio amargo cremoso.
-                        </p>
-                        <a href="#contato" class="inline-flex items-center space-x-2 text-sm font-semibold text-brand-700 hover:text-brand-800 pt-2">
-                            <span>Pedir este doce</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="bg-brand-50/50 rounded-2xl overflow-hidden border border-brand-100/80 shadow-sm hover:shadow-md transition-all group">
-                    <div class="h-60 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=600" alt="Tortinha de Frutas Vermelhas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-4 right-4 bg-amber-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Especial</span>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-serif font-bold text-xl text-brand-900">Tortinha Frutas Vermelhas</h3>
-                            <span class="font-bold text-brand-700">R$ 16,50</span>
-                        </div>
-                        <p class="text-sm text-brand-800/80 leading-relaxed">
-                            Massa sablé amanteigada, recheio de creme pâtissier aveludado e coroa de frutas vermelhas frescas selecionadas.
-                        </p>
-                        <a href="#contato" class="inline-flex items-center space-x-2 text-sm font-semibold text-brand-700 hover:text-brand-800 pt-2">
-                            <span>Pedir este doce</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="cardapio" class="py-20 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-brand-600 text-sm uppercase tracking-widest font-bold">Cardápio Artesanal</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-2">Escolha sua Tentação</h2>
-                <div class="w-16 h-1 bg-brand-600 mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Category 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-100">
-                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-brand-100">
-                        <div class="bg-brand-100 p-3 rounded-xl text-brand-700">
-                            <i class="fa-solid fa-cookie-bite text-xl"></i>
-                        </div>
-                        <h3 class="font-serif font-bold text-2xl text-brand-900">Brownies & Sobremesas</h3>
-                    </div>
-                    <ul class="space-y-6">
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Brownie Clássico LILE</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">Cacau 70%, úmido por dentro e casquinha crocante.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 14,00</span>
-                        </li>
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Brownie com Sorvete e Calda</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">O queridinho acompanhado de sorvete de baunilha e caramelo.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 28,90</span>
-                        </li>
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Cookie Americano com Gotas</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">Macio por dentro, com pedaços generosos de chocolate.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 11,50</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Category 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-100">
-                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-brand-100">
-                        <div class="bg-brand-100 p-3 rounded-xl text-brand-700">
-                            <i class="fa-solid fa-cake-candles text-xl"></i>
-                        </div>
-                        <h3 class="font-serif font-bold text-2xl text-brand-900">Bolos & Tortas Especiais</h3>
-                    </div>
-                    <ul class="space-y-6">
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Bolo Caseiro de Cenoura com Chocolate</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">Fofinho e regado com calda cremosa artesanal.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 45,00</span>
-                        </li>
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Tortinha de Frutas Vermelhas</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">Massa amanteigada, creme suave e frutas frescas.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 16,50</span>
-                        </li>
-                        <li class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-brand-900">Torta Holandesa Cremosa</h4>
-                                <p class="text-xs text-brand-800/70 mt-0.5">Biscoito amanteigado, creme leve e cobertura de ganache.</p>
-                            </div>
-                            <span class="font-serif font-bold text-brand-700">R$ 18,90</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600" alt="Cozinha artesanal" class="rounded-2xl shadow-md w-full h-48 sm:h-64 object-cover">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600" alt="Ingredientes de alta qualidade" class="rounded-2xl shadow-md w-full h-48 sm:h-64 object-cover mt-8">
-                    </div>
-                </div>
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="text-brand-600 text-sm uppercase tracking-widest font-bold">Nossa História</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 leading-tight">
-                        Feito com paixão, servido com carinho.
-                    </h2>
-                    <p class="text-brand-800/80 leading-relaxed">
-                        A **LILE Doces Artesanais** nasceu do desejo de criar confeitos que proporcionem um momento de pausa e pura felicidade no dia a dia. Cada brownie, bolo e torta é preparado em pequenos lotes, priorizando ingredientes selecionados, manteiga de verdade e chocolates nobres.
-                    </p>
-                    <p class="text-brand-800/80 leading-relaxed">
-                        Nosso objetivo é aquecer o seu coração através do sabor autêntico e caseiro, mantendo sempre o padrão de excelência que você e sua família merecem.
-                    </p>
-                    <div class="pt-2 flex items-center space-x-4">
-                        <div class="flex items-center space-x-2 text-brand-700 font-medium text-sm">
-                            <i class="fa-solid fa-circle-check text-brand-600"></i>
-                            <span>Ingredientes Selecionados</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-brand-700 font-medium text-sm">
-                            <i class="fa-solid fa-circle-check text-brand-600"></i>
-                            <span>Sem Conservantes</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="py-20 bg-brand-100/60">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl shadow-xl border border-brand-100 overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-12">
-                    <div class="md:col-span-5 bg-brand-700 p-8 sm:p-12 text-white flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <h3 class="font-serif text-3xl font-bold">Faça sua Encomenda</h3>
-                            <p class="text-brand-100 text-sm leading-relaxed">
-                                Quer provar nosso famoso brownie com sorvete ou encomendar doces para sua festa ou café da tarde? Entre em contato conosco!
-                            </p>
-                        </div>
-                        <div class="space-y-4 pt-8">
-                            <div class="flex items-center space-x-3 text-sm text-brand-100">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                                <span>(21) 99888-7766</span>
-                            </div>
-                            <div class="flex items-center space-x-3 text-sm text-brand-100">
-                                <i class="fa-solid fa-envelope text-lg"></i>
-                                <span>contato@liledoces.com.br</span>
-                            </div>
-                            <div class="flex items-center space-x-3 text-sm text-brand-100">
-                                <i class="fa-solid fa-location-dot text-lg"></i>
-                                <span>Rio de Janeiro, RJ</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="md:col-span-7 p-8 sm:p-12">
-                        <form id="order-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-800 mb-1">Seu Nome</label>
-                                <input type="text" required class="w-full bg-brand-50 border border-brand-200 rounded-xl px-4 py-3 text-sm text-brand-900 focus:outline-none focus:border-brand-600 transition-colors" placeholder="Ex: Maria Silva">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-800 mb-1">WhatsApp / Telefone</label>
-                                <input type="tel" required class="w-full bg-brand-50 border border-brand-200 rounded-xl px-4 py-3 text-sm text-brand-900 focus:outline-none focus:border-brand-600 transition-colors" placeholder="(21) 99999-9999">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-800 mb-1">O que deseja pedir?</label>
-                                <select class="w-full bg-brand-50 border border-brand-200 rounded-xl px-4 py-3 text-sm text-brand-900 focus:outline-none focus:border-brand-600 transition-colors">
-                                    <option>Brownie Supreme com Sorvete (R$ 28,90)</option>
-                                    <option>Bolo Caseiro de Cenoura (R$ 45,00)</option>
-                                    <option>Tortinha de Frutas Vermelhas (R$ 16,50)</option>
-                                    <option>Outros / Encomenda personalizada</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-800 mb-1">Observações / Data desejada</label>
-                                <textarea rows="3" class="w-full bg-brand-50 border border-brand-200 rounded-xl px-4 py-3 text-sm text-brand-900 focus:outline-none focus:border-brand-600 transition-colors" placeholder="Conte-nos os detalhes..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-medium py-3.5 rounded-xl shadow-md transition-all text-sm">
-                                Enviar Pedido via WhatsApp
-                            </button>
-                        </form>
-                        <div id="form-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-center text-sm font-medium">
-                            Pedido simulado com sucesso! Entraremos em contato em breve.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-brand-900 text-brand-100 py-12 border-t border-brand-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center space-x-2">
-                <span class="font-serif text-2xl font-bold tracking-tight text-white">LILE</span>
-                <span class="text-xs uppercase tracking-widest text-brand-100/60 border-l border-brand-700 pl-2">Doces Artesanais</span>
-            </div>
-            <p class="text-xs text-brand-100/60">
-                &copy; 2026 LILE Doces Artesanais. Todos os direitos reservados.
+    <!-- Hero Section -->
+    <section class="relative bg-brand-dark text-brand-cream py-16 sm:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c68b59_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30">
+                Confeitaria artesanal com alma de chocolate nobre
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 max-w-4xl mx-auto text-brand-cream">
+                Onde cada mordida é um abraço de chocolate.
+            </h1>
+            <p class="text-base sm:text-xl text-stone-300 font-light max-w-2xl mx-auto mb-8 italic">
+                "Feito à mão e recheado de afeto!"
             </p>
-            <div class="flex space-x-4 text-brand-100">
-                <a href="#" class="hover:text-amber-300 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
-                <a href="#" class="hover:text-amber-300 transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
-                <a href="#" class="hover:text-amber-300 transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#produtos" class="w-full sm:w-auto bg-brand-caramel hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl transition-all transform hover:-translate-y-0.5 text-center">
+                    Ver Cardápio & Pedir
+                </a>
+                <a href="#rastreio-section" class="w-full sm:w-auto bg-stone-800 hover:bg-stone-700 text-brand-cream font-semibold px-8 py-4 rounded-xl shadow-xl transition-all border border-brand-caramel/40 text-center">
+                    <i class="fa-solid fa-magnifying-glass mr-2 text-brand-caramel"></i> Rastrear Pedido
+                </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Cardápio / Descrições sensoriais da LILE -->
+    <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
+            <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
+        </div>
+
+        <!-- Grade de Produtos Dinâmica (Disponíveis em cima, Indisponíveis embaixo) -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Renderizado via JavaScript -->
+        </div>
+
+        <!-- Seção de Acompanhar Pedido (Rastreio) -->
+        <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Tempo Real</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Acompanhe seu Pedido</h3>
+                <p class="text-stone-600 text-sm">Digite o número do seu pedido (ex: #LILE-1045) ou seu telefone cadastrado para consultar o status de entrega na cozinha.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                    <input type="text" id="tracking-input" placeholder="Ex: #LILE-1045 ou Telefone" class="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                    <button onclick="trackOrder()" class="bg-brand-dark hover:bg-brand-chocolate text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow">
+                        Consultar Status
+                    </button>
+                </div>
+
+                <div id="tracking-result" class="hidden mt-6 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-left space-y-4"></div>
+            </div>
+        </div>
+
+        <!-- Banner WhatsApp Direto -->
+        <div class="mt-12 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 text-center md:text-left">
+                <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-600">Atendimento Personalizado</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold">Prefere encomendar direto com a gente?</h3>
+                <p class="text-emerald-100 text-sm sm:text-base max-w-xl font-light">
+                    Clique no botão ao lado para falar diretamente no nosso WhatsApp. Tire dúvidas sobre tamanhos para festas ou cardápio sob encomenda!
+                </p>
+            </div>
+            <a href="https://wa.me/5521995335948?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="bg-white hover:bg-emerald-50 text-emerald-900 font-bold px-8 py-4 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center gap-3 shrink-0">
+                <i class="fa-brands fa-whatsapp text-2xl text-emerald-600"></i> Fazer Pedido no WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <!-- Modal de Gestão de Estoque -->
+    <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
+                <div>
+                    <h3 class="font-serif font-bold text-lg">Painel de Disponibilidade</h3>
+                    <p class="text-xs text-stone-400">Ative ou desative produtos do cardápio em tempo real</p>
+                </div>
+                <button onclick="closeStockModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div id="stock-items-list" class="p-6 overflow-y-auto space-y-3 flex-1 divide-y divide-stone-100"></div>
+            <div class="p-4 bg-stone-50 border-t text-center">
+                <button onclick="closeStockModal()" class="bg-brand-caramel text-white font-semibold px-6 py-2.5 rounded-xl text-sm shadow">Salvar & Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho de Compras -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-end transition-all">
+        <div class="bg-brand-cream w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-bag-shopping text-brand-caramel text-xl"></i>
+                    <h3 class="font-serif font-bold text-xl">Seu Carrinho</h3>
+                </div>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-white p-2 rounded-lg transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
+            </div>
+            
+            <!-- Seção de Cupom de Desconto Exclusivo (Primeiro Acesso) -->
+            <div class="p-4 bg-stone-100 border-t border-stone-200">
+                <div id="coupon-area" class="space-y-2">
+                    <p class="text-xs font-semibold text-brand-dark flex items-center gap-1">
+                        <i class="fa-solid fa-tag text-brand-caramel"></i> Cupom de Primeira Compra:
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-input" placeholder="Digite menos10%" class="flex-1 bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs uppercase font-mono focus:outline-none focus:border-brand-caramel">
+                        <button onclick="applyCoupon()" class="bg-stone-800 hover:bg-brand-dark text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors">Aplicar</button>
+                    </div>
+                    <p id="coupon-msg" class="text-xs font-medium"></p>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white border-t border-stone-200 space-y-3 shadow-lg">
+                <div id="discount-line" class="hidden justify-between items-center text-sm font-semibold text-emerald-600">
+                    <span>Desconto (menos10%):</span>
+                    <span id="discount-value">- R$ 0,00</span>
+                </div>
+                <div class="flex justify-between items-center text-lg font-bold text-brand-dark">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-emerald-600">R$ 0,00</span>
+                </div>
+                <button onclick="openCheckoutModal()" class="w-full bg-brand-caramel hover:bg-amber-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-credit-card"></i> Ir para Pagamento e Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Checkout e Pagamento Real -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
+                <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
+                <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 flex-1">
+                <form id="checkout-form" onsubmit="processPayment(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Nome Completo</label>
+                        <input type="text" id="client-name" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Seu nome">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Telefone / WhatsApp</label>
+                        <input type="tel" id="client-phone" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="(21) 99999-9999">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Opção de Entrega / Retirada</label>
+                        <select id="delivery-type" onchange="toggleAddressField()" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel mb-2">
+                            <option value="entrega">Entrega no Endereço (Delivery)</option>
+                            <option value="retirada">Retirada na Loja (Grátis)</option>
+                        </select>
+                    </div>
+                    <div id="address-container">
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Endereço de Entrega</label>
+                        <textarea id="client-address" rows="2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Rua, Número, Bairro, Complemento"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Forma de Pagamento</label>
+                        <select id="payment-method" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                            <option value="pix">PIX (Aprovação Instantânea)</option>
+                            <option value="cartao">Cartão de Crédito na Entrega</option>
+                            <option value="dinheiro">Dinheiro (Troco se necessário)</option>
+                        </select>
+                    </div>
+                    <div id="pix-box" class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center space-y-2">
+                        <p class="text-xs font-bold text-amber-900 uppercase">Chave PIX (CNPJ / Copia e Cola)</p>
+                        <div class="bg-white p-2 rounded-xl border border-amber-300 text-xs font-mono select-all text-stone-700">
+                            liledocesartesanais@gmail.com
+                        </div>
+                        <p class="text-xs text-amber-800">Faça o PIX do valor exato e clique em confirmar pagamento abaixo.</p>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 mt-4">
+                        <i class="fa-solid fa-lock"></i> Confirmar Pagamento & Enviar Pedido
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="success-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 text-center space-y-4">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif font-bold text-2xl text-brand-dark">Pedido Aprovado com Sucesso!</h3>
+            <p id="success-order-id" class="text-sm font-bold text-brand-caramel"></p>
+            <p class="text-sm text-stone-600 leading-relaxed">
+                Seu pagamento foi confirmado! O pedido já foi encaminhado para a nossa cozinha e está sendo preparado com muito carinho.
+            </p>
+            <div class="pt-4 space-y-2">
+                <button onclick="closeSuccessModal()" class="w-full bg-brand-dark hover:bg-brand-chocolate text-white font-semibold py-3 rounded-xl transition-colors">
+                    Acompanhar Status da Entrega
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Rodapé com Sobre Nós e Gerenciamento de Estoque -->
+    <footer id="contato" class="bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-caramel/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mb-16">
+            <div class="text-center">
+                <h2 id="sobre" class="font-serif text-2xl sm:text-3xl font-bold text-brand-cream mb-3">A arte de transformar chocolate em momentos inesquecíveis</h2>
+                <div class="w-20 h-1 bg-brand-caramel mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-6 text-stone-300 leading-relaxed text-sm sm:text-base">
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-heart"></i> O Propósito
+                    </h3>
+                    <p>
+                        Na LILE Doces Artesanais, acreditamos que um verdadeiro brownie não é apenas um bolo de chocolate: é uma experiência de texturas, memórias e afeto. Nascemos no Rio de Janeiro com um propósito muito claro: elevar o padrão do brownie de delivery, unindo a conveniência que você precisa ao rigor de uma confeitaria fina.
+                    </p>
+                </div>
+
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-burner"></i> Os Segredos da Casa
+                    </h3>
+                    <p>
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
+                    </p>
+                </div>
+
+                <div class="bg-stone-900/60 p-6 sm:p-8 rounded-3xl border border-brand-caramel/20 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-brand-caramel mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-gift"></i> A Nossa Promessa
+                    </h3>
+                    <p class="mb-3">
+                        Seja para acompanhar o seu café, presentear alguém especial ou salvar o seu dia com uma dose de doçura na medida certa, a LILE entrega mais do que doces: entregamos cuidado em formato de caixas kraft prontas para encantar.
+                    </p>
+                    <p class="font-serif italic font-semibold text-brand-caramel text-center text-base pt-1">
+                        Experimente o extraordinário no conforto da sua casa.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão de Acesso ao Painel de Estoque no Rodapé -->
+        <div class="max-w-xl mx-auto px-4 text-center mb-12">
+            <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
+                <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Interno)
+            </button>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 border-t border-stone-800 pt-8">
+            <div class="flex justify-center items-center space-x-3 mb-2">
+                <div class="w-8 h-8 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold">
+                    L
+                </div>
+                <span class="font-serif text-lg font-bold text-brand-cream">Lile Doces Artesanais</span>
+            </div>
+            <p class="text-sm">Cardápio Digital & Delivery — Rio de Janeiro, RJ</p>
+            <p class="text-xs text-stone-500 pt-4">
+                &copy; 2026 Lile Doces Artesanais. Todos os direitos reservados.
+            </p>
         </div>
     </footer>
 
+    <!-- Lógica JavaScript -->
     <script>
-        // Toggle mobile navigation
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        let products = [
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
+            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços visíveis de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque de pimenta e detalhe de pimenta dedo-de-moça.', available: true, type: 'single' },
+            { id: 4, name: 'Clássico LILE com amêndoas e cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal decorado com nips e amêndoas de cacau em perfeita harmonia.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie com Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'A massa estruturada e úmida da LILE exibe um brownie generosamente recheado com creme de Nutella.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
+            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico inconfundível recheado com doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50% Cacau', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Foto que mostra claramente a textura do brownie com recheio de brigadeiro gourmet 50% cacau.', available: true, type: 'single' },
+            { id: 9, name: 'Clássico LILE (Tradicional)', price: 9.99, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal clássico bem apetitoso, com casquinha crocante e interior fudgy.', available: true, type: 'single' },
+            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear.', available: true, type: 'single' },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear.', available: true, type: 'single' },
+            { id: 12, name: 'Kit Reunião e Eventos', price: 180.00, badge: 'EVENTOS', image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80', desc: 'Bandeja com seleção variada de brownies voltada para reuniões.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
+            { id: 13, name: 'Kit Festa 50 brownies', price: 280.00, badge: 'FESTAS', image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80', desc: 'Brownie para mesa de festa, ideal para comemorações e aniversários.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
+            { id: 14, name: 'Kit de 100 Brownies', price: 350.00, badge: 'GRANDE FESTA', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Produção em grande escala: caixa com 100 brownies para grandes eventos.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
+            { id: 16, name: 'Água Mineral 300 ml', price: 3.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80', desc: 'Garrafinha de água mineral de 300 ml refrescante.', available: true, type: 'single' }
+        ];
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        let cart = [];
+        let discountApplied = false;
+
+        function initStock() {
+            const savedStock = localStorage.getItem('lile_products_stock');
+            if (savedStock) {
+                const stockMap = JSON.parse(savedStock);
+                products = products.map(p => {
+                    if (stockMap[p.id] !== undefined) {
+                        return { ...p, available: stockMap[p.id] };
+                    }
+                    return p;
+                });
+            }
+        }
+
+        function saveStockToStorage() {
+            const stockMap = {};
+            products.forEach(p => {
+                stockMap[p.id] = p.available;
+            });
+            localStorage.setItem('lile_products_stock', JSON.stringify(stockMap));
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('lile_visited')) {
+                localStorage.setItem('lile_visited', 'true');
+                localStorage.setItem('lile_first_access', 'true');
+            } else {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+            
+            initStock();
+            renderProducts();
         });
 
-        // Form submission handler (no alerts used)
-        function handleFormSubmit(event) {
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            if(!grid) return;
+            let html = '';
+
+            const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
+
+            sortedProducts.forEach(p => {
+                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+                
+                if (p.type === 'single') {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <div>
+                                    <span class="text-xs text-stone-400 block">&nbsp;</span>
+                                    <span class="text-xl font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                                </div>
+                                ${p.available ? 
+                                    `<button onclick="addItem('${p.name}',${p.price})" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
+                                        <i class="fa-solid fa-plus"></i> Adicionar
+                                    </button>` :
+                                    `<button disabled class="bg-stone-300 text-stone-500 px-4 py-2.5 rounded-xl text-sm font-medium cursor-not-allowed">
+                                        Indisponível
+                                    </button>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
+                                    ${p.available ? `
+                                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                                            <div class="flex justify-between items-center">
+                                                <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                            <div class="flex justify-between items-center pt-1 border-t">
+                                                <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                        </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Produto temporariamente indisponível</p>'
+                                    }
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <span class="text-xs text-stone-500">${p.available ? 'Escolha o tipo acima' : 'Esgotado no momento'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function openStockModal() {
+            const listContainer = document.getElementById('stock-items-list');
+            if(!listContainer) return;
+            let stockHtml = '';
+
+            products.forEach(p => {
+                stockHtml += `
+                    <div class="flex items-center justify-between py-2.5">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${p.name}</h4>
+                            <span class="text-xs text-stone-500">${p.badge}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-semibold ${p.available ? 'text-emerald-600' : 'text-red-600'}">${p.available ? 'Disponível' : 'Indisponível'}</span>
+                            <button onclick="toggleProductStock(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.available ? 'bg-red-100 text-red-700 hover:bg-red-200' : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'}">
+                                ${p.available ? 'Marcar Indisponível' : 'Marcar Disponível'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            listContainer.innerHTML = stockHtml;
+            document.getElementById('stock-modal').classList.remove('hidden');
+            document.getElementById('stock-modal').classList.add('flex');
+        }
+
+        function closeStockModal() {
+            document.getElementById('stock-modal').classList.remove('flex');
+            document.getElementById('stock-modal').classList.add('hidden');
+            renderProducts();
+        }
+
+        function toggleProductStock(id) {
+            const prod = products.find(p => p.id === id);
+            if (prod) {
+                prod.available = !prod.available;
+                saveStockToStorage();
+                openStockModal();
+                renderProducts();
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                renderCart();
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        function addItem(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) { existing.quantity += 1; } else { cart.push({ name, price, quantity: 1 }); }
+            updateBadge();
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.remove('scale-125'), 200);
+            if(!document.getElementById('cart-modal').classList.contains('hidden')) {
+                renderCart();
+            }
+        }
+
+        function updateBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-badge').innerText = totalItems;
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toLowerCase();
+            const msgEl = document.getElementById('coupon-msg');
+            const isFirstAccess = localStorage.getItem('lile_first_access') === 'true';
+
+            if (code !== 'menos10%') {
+                msgEl.innerText = 'Cupom inválido.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            if (!isFirstAccess) {
+                msgEl.innerText = 'Este cupom é exclusivo para o primeiro acesso/compra no site.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            discountApplied = true;
+            msgEl.innerText = 'Cupom "menos10%" aplicado com sucesso! (10% OFF)';
+            msgEl.className = 'text-xs font-medium text-emerald-600';
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const totalEl = document.getElementById('cart-total');
+            const discountLine = document.getElementById('discount-line');
+            const discountValueEl = document.getElementById('discount-value');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
+                totalEl.innerText = 'R$ 0,00';
+                discountLine.classList.add('hidden');
+                discountApplied = false;
+                return;
+            }
+            let html = '', subtotal = 0;
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.quantity;
+                html += `
+                    <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${item.name}</h4>
+                            <span class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-semibold">Qtd: ${item.quantity}</span>
+                            <button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash text-xs"></i></button>
+                        </div>
+                    </div>`;
+            });
+            container.innerHTML = html;
+
+            let finalTotal = subtotal;
+            if (discountApplied) {
+                const discountAmount = subtotal * 0.10;
+                finalTotal = subtotal - discountAmount;
+                discountLine.classList.remove('hidden');
+                discountLine.classList.add('flex');
+                discountValueEl.innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+            } else {
+                discountLine.classList.add('hidden');
+            }
+
+            totalEl.innerText = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateBadge();
+            renderCart();
+        }
+
+        function toggleAddressField() {
+            const deliveryType = document.getElementById('delivery-type').value;
+            const addressContainer = document.getElementById('address-container');
+            const addressInput = document.getElementById('client-address');
+
+            if (deliveryType === 'retirada') {
+                addressContainer.classList.add('hidden');
+                addressInput.removeAttribute('required');
+                addressInput.value = 'Retirada na Loja Física';
+            } else {
+                addressContainer.classList.remove('hidden');
+                addressInput.setAttribute('required', 'true');
+                addressInput.value = '';
+            }
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let finalTotal = discountApplied ? subtotal * 0.90 : subtotal;
+
+            if (finalTotal < 20.00) {
+                alert('O valor mínimo para pedidos é de R$ 20,00. Adicione mais itens ao carrinho para continuar.');
+                return;
+            }
+
+            toggleCart();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.getElementById('checkout-modal').classList.add('flex');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('flex');
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function processPayment(event) {
             event.preventDefault();
-            const successBox = document.getElementById('form-success');
-            successBox.classList.remove('hidden');
-            document.getElementById('order-form').reset();
-            setTimeout(() => {
-                successBox.classList.add('hidden');
-            }, 5000);
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const deliveryType = document.getElementById('delivery-type').value;
+            const address = deliveryType === 'retirada' ? 'Retirada na Loja' : document.getElementById('client-address').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let total = discountApplied ? subtotal * 0.90 : subtotal;
+            const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
+
+            let itemsText = '';
+            cart.forEach(item => {
+                itemsText += `- ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')})\n`;
+            });
+
+            const orderData = {
+                orderId, name, phone, address, paymentMethod,
+                deliveryType,
+                items: [...cart], total,
+                status: 'Pagamento Aprovado / Em Preparo na Cozinha',
+                timestamp: new Date().toLocaleTimeString()
+            };
+
+            let orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('lile_orders', JSON.stringify(orders));
+
+            if (discountApplied) {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+
+            const meuWhatsApp = '5521995335948';
+            const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
+                                `*Cliente:* ${name}\n` +
+                                `*Telefone:* ${phone}\n` +
+                                `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}\n` +
+                                `*Endereço:* ${address}\n` +
+                                `*Pagamento:* ${paymentMethod.toUpperCase()}\n` +
+                                `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}\n` +
+                                `*Itens do Pedido:*\n${itemsText}\n` +
+                                `*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            const urlWhatsApp = `https://wa.me/${meuWhatsApp}?text=${encodeURIComponent(mensagemWpp)}`;
+
+            cart = [];
+            discountApplied = false;
+            updateBadge();
+            closeCheckoutModal();
+
+            document.getElementById('success-order-id').innerText = `Pedido: ${orderId}`;
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.remove('flex');
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('rastreio-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function trackOrder() {
+            const query = document.getElementById('tracking-input').value.trim();
+            const resultBox = document.getElementById('tracking-result');
+            if (!query) { alert('Digite o número do pedido ou telefone.'); return; }
+            const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
+            resultBox.classList.remove('hidden');
+            if (found) {
+                resultBox.innerHTML = `
+                    <div class="flex justify-between items-center border-b pb-3">
+                        <span class="font-bold text-brand-dark">${found.orderId}</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-stone-600 pt-2">
+                        <p><strong>Cliente:</strong> ${found.name}</p>
+                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}</p>
+                        <p><strong>Endereço:</strong> ${found.address}</p>
+                        <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
+                    </div>`;
+            } else {
+                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
+            }
         }
     </script>
 </body>
-            </html>
+</html>
