@@ -98,7 +98,7 @@
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica (Disponíveis em cima, Indisponíveis embaixo) -->
+        <!-- Grade de Produtos Dinâmica -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <!-- Renderizado via JavaScript -->
         </div>
@@ -169,7 +169,7 @@
                 <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
             </div>
             
-            <!-- Seção de Cupom de Desconto Exclusivo (Primeiro Acesso) -->
+            <!-- Seção de Cupom de Desconto Exclusivo -->
             <div class="p-4 bg-stone-100 border-t border-stone-200">
                 <div id="coupon-area" class="space-y-2">
                     <p class="text-xs font-semibold text-brand-dark flex items-center gap-1">
@@ -189,8 +189,8 @@
                     <span id="discount-value">- R$ 0,00</span>
                 </div>
                 <div class="flex justify-between items-center text-lg font-bold text-brand-dark">
-                    <span>Total:</span>
-                    <span id="cart-total" class="text-emerald-600">R$ 0,00</span>
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="text-stone-700">R$ 0,00</span>
                 </div>
                 <button onclick="openCheckoutModal()" class="w-full bg-brand-caramel hover:bg-amber-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-credit-card"></i> Ir para Pagamento e Checkout
@@ -199,11 +199,14 @@
         </div>
     </div>
 
-    <!-- Modal de Checkout e Pagamento Real -->
+    <!-- Modal de Checkout e Pagamento (Com Cálculo de Entrega e Pix CNPJ) -->
     <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
-                <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
+                <div>
+                    <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
+                    <p class="text-xs text-stone-300">Loja Central: Rua Cumata, 973 - Anchieta, RJ (Raio de 5km)</p>
+                </div>
                 <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-6 overflow-y-auto space-y-4 flex-1">
@@ -218,32 +221,62 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Opção de Entrega / Retirada</label>
-                        <select id="delivery-type" onchange="toggleAddressField()" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel mb-2">
-                            <option value="entrega">Entrega no Endereço (Delivery)</option>
-                            <option value="retirada">Retirada na Loja (Grátis)</option>
+                        <select id="delivery-type" onchange="toggleDeliveryType()" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel mb-2">
+                            <option value="entrega">Entrega Motoboy Local (Até 5km)</option>
+                            <option value="retirada">Retirada na Loja Física (Grátis)</option>
                         </select>
                     </div>
-                    <div id="address-container">
-                        <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Endereço de Entrega</label>
-                        <textarea id="client-address" rows="2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Rua, Número, Bairro, Complemento"></textarea>
+
+                    <!-- Campos de Endereço e Seleção de Bairro para Cálculo de Frete -->
+                    <div id="delivery-address-section" class="space-y-3 p-4 bg-stone-50 rounded-2xl border border-stone-200">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-brand-dark mb-1"><i class="fa-solid fa-location-dot text-brand-caramel mr-1"></i> Selecione o Bairro (Delivery Local)</label>
+                            <select id="delivery-neighborhood" onchange="updateDeliveryFee()" class="w-full bg-white border border-stone-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-caramel">
+                                <option value="anchieta">Anchieta (R$ 5,00)</option>
+                                <option value="parque-anchieta">Parque Anchieta (R$ 6,00)</option>
+                                <option value="ricardo-albuquerque">Ricardo de Albuquerque (R$ 7,00)</option>
+                                <option value="nilopolis">Nilópolis - Centro/Divisa (R$ 8,00)</option>
+                                <option value="guadalupe">Guadalupe (R$ 9,00)</option>
+                                <option value="costa-barros">Costa Barros (R$ 9,00)</option>
+                                <option value="pavuna">Pavuna (R$ 10,00)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Endereço Completo (Rua, Número, Bloco/Complemento)</label>
+                            <input type="text" id="client-street-address" class="w-full bg-white border border-stone-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-caramel" placeholder="Ex: Rua Exemplo, 123 - Ap 202">
+                        </div>
                     </div>
+
                     <div>
                         <label class="block text-xs font-semibold uppercase text-stone-600 mb-1">Forma de Pagamento</label>
-                        <select id="payment-method" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
-                            <option value="pix">PIX (Aprovação Instantânea)</option>
+                        <select id="payment-method" onchange="togglePaymentMethodInfo()" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
+                            <option value="pix">PIX (CNPJ - Enviar comprovante)</option>
                             <option value="cartao">Cartão de Crédito na Entrega</option>
                             <option value="dinheiro">Dinheiro (Troco se necessário)</option>
                         </select>
                     </div>
-                    <div id="pix-box" class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center space-y-2">
-                        <p class="text-xs font-bold text-amber-900 uppercase">Chave PIX (CNPJ / Copia e Cola)</p>
-                        <div class="bg-white p-2 rounded-xl border border-amber-300 text-xs font-mono select-all text-stone-700">
-                            liledocesartesanais@gmail.com
+
+                    <!-- Caixa Pix CNPJ e Instrução de Comprovante -->
+                    <div id="pix-box" class="p-4 bg-amber-50 border border-amber-300 rounded-2xl text-center space-y-2">
+                        <p class="text-xs font-bold text-amber-900 uppercase"><i class="fa-solid fa-qrcode mr-1"></i> Chave PIX Oficial (CNPJ)</p>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-300 text-sm font-mono font-bold select-all text-stone-800 tracking-wider">
+                            27760408000118
                         </div>
-                        <p class="text-xs text-amber-800">Faça o PIX do valor exato e clique em confirmar pagamento abaixo.</p>
+                        <p class="text-xs text-amber-900 font-medium">
+                            ⚠️ <strong>Atenção:</strong> Após realizar o pagamento via PIX no valor exato, <strong>envie o comprovante junto com o seu pedido</strong> no WhatsApp que abrirá a seguir!
+                        </p>
                     </div>
+
+                    <!-- Resumo de Valores no Checkout -->
+                    <div class="p-4 bg-stone-100 rounded-2xl space-y-1.5 text-xs text-stone-700">
+                        <div class="flex justify-between"><span>Produtos:</span> <span id="summary-subtotal">R$ 0,00</span></div>
+                        <div id="summary-discount-row" class="flex justify-between text-emerald-600 font-semibold hidden"><span>Desconto:</span> <span id="summary-discount">R$ 0,00</span></div>
+                        <div class="flex justify-between"><span>Taxa de Entrega:</span> <span id="summary-delivery">R$ 5,00</span></div>
+                        <div class="flex justify-between text-sm font-bold text-brand-dark pt-2 border-t border-stone-200"><span>Total Geral:</span> <span id="summary-total" class="text-emerald-600">R$ 0,00</span></div>
+                    </div>
+
                     <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 mt-4">
-                        <i class="fa-solid fa-lock"></i> Confirmar Pagamento & Enviar Pedido
+                        <i class="fa-solid fa-lock"></i> Confirmar Pedido & Enviar Comprovante
                     </button>
                 </form>
             </div>
@@ -256,10 +289,10 @@
             <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="font-serif font-bold text-2xl text-brand-dark">Pedido Aprovado com Sucesso!</h3>
+            <h3 class="font-serif font-bold text-2xl text-brand-dark">Pedido Registrado com Sucesso!</h3>
             <p id="success-order-id" class="text-sm font-bold text-brand-caramel"></p>
             <p class="text-sm text-stone-600 leading-relaxed">
-                Seu pagamento foi confirmado! O pedido já foi encaminhado para a nossa cozinha e está sendo preparado com muito carinho.
+                O seu pedido foi enviado para o nosso atendimento no WhatsApp. Não se esqueça de <strong>enviar o comprovante do PIX</strong> para agilizar a preparação na cozinha!
             </p>
             <div class="pt-4 space-y-2">
                 <button onclick="closeSuccessModal()" class="w-full bg-brand-dark hover:bg-brand-chocolate text-white font-semibold py-3 rounded-xl transition-colors">
@@ -292,7 +325,7 @@
                         <i class="fa-solid fa-fire-burner"></i> Os Segredos da Casa
                     </h3>
                     <p>
-                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro. Combinamos técnicas artesanais e toques de especiarias e infusões exclusivas da casa que despertam o paladar a cada mordida.
+                        Aqui, cada fornada é tratada como um projeto exclusivo. Não abrimos mão de selecionar ingredientes de alta qualidade — do chocolate nobre que garante os bolsões cremosos à nossa base rigorosamente testada para entregar aquela casquinha perfeita por fora e o interior densamente úmido (fudgy) por dentro.
                     </p>
                 </div>
 
@@ -324,7 +357,7 @@
                 </div>
                 <span class="font-serif text-lg font-bold text-brand-cream">Lile Doces Artesanais</span>
             </div>
-            <p class="text-sm">Cardápio Digital & Delivery — Rio de Janeiro, RJ</p>
+            <p class="text-sm">Cardápio Digital & Delivery — Rua Cumata, 973 - Anchieta, Rio de Janeiro, RJ</p>
             <p class="text-xs text-stone-500 pt-4">
                 &copy; 2026 Lile Doces Artesanais. Todos os direitos reservados.
             </p>
@@ -354,6 +387,18 @@
 
         let cart = [];
         let discountApplied = false;
+        let deliveryFee = 5.00; // Taxa padrão inicial para Anchieta
+
+        // Tabela de bairros e taxas de motoboy com base no raio de 5km de Rua Cumata 973, Anchieta RJ
+        const neighborhoodFees = {
+            'anchieta': 5.00,
+            'parque-anchieta': 6.00,
+            'ricardo-albuquerque': 7.00,
+            'nilopolis': 8.00,
+            'guadalupe': 9.00,
+            'costa-barros': 9.00,
+            'pavuna': 10.00
+        };
 
         function initStock() {
             const savedStock = localStorage.getItem('lile_products_stock');
@@ -562,13 +607,13 @@
 
         function renderCart() {
             const container = document.getElementById('cart-items-container');
-            const totalEl = document.getElementById('cart-total');
+            const subtotalEl = document.getElementById('cart-subtotal');
             const discountLine = document.getElementById('discount-line');
             const discountValueEl = document.getElementById('discount-value');
 
             if (cart.length === 0) {
                 container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
-                totalEl.innerText = 'R$ 0,00';
+                subtotalEl.innerText = 'R$ 0,00';
                 discountLine.classList.add('hidden');
                 discountApplied = false;
                 return;
@@ -590,10 +635,10 @@
             });
             container.innerHTML = html;
 
-            let finalTotal = subtotal;
+            let finalSubtotal = subtotal;
             if (discountApplied) {
                 const discountAmount = subtotal * 0.10;
-                finalTotal = subtotal - discountAmount;
+                finalSubtotal = subtotal - discountAmount;
                 discountLine.classList.remove('hidden');
                 discountLine.classList.add('flex');
                 discountValueEl.innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
@@ -601,7 +646,7 @@
                 discountLine.classList.add('hidden');
             }
 
-            totalEl.innerText = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
+            subtotalEl.innerText = `R$ ${finalSubtotal.toFixed(2).replace('.', ',')}`;
         }
 
         function removeItem(index) {
@@ -610,20 +655,55 @@
             renderCart();
         }
 
-        function toggleAddressField() {
+        function toggleDeliveryType() {
             const deliveryType = document.getElementById('delivery-type').value;
-            const addressContainer = document.getElementById('address-container');
-            const addressInput = document.getElementById('client-address');
-
+            const addressSection = document.getElementById('delivery-address-section');
+            
             if (deliveryType === 'retirada') {
-                addressContainer.classList.add('hidden');
-                addressInput.removeAttribute('required');
-                addressInput.value = 'Retirada na Loja Física';
+                addressSection.classList.add('hidden');
+                deliveryFee = 0.00;
             } else {
-                addressContainer.classList.remove('hidden');
-                addressInput.setAttribute('required', 'true');
-                addressInput.value = '';
+                addressSection.classList.remove('hidden');
+                updateDeliveryFee();
             }
+            updateCheckoutSummary();
+        }
+
+        function updateDeliveryFee() {
+            const neighborhood = document.getElementById('delivery-neighborhood').value;
+            deliveryFee = neighborhoodFees[neighborhood] || 5.00;
+            updateCheckoutSummary();
+        }
+
+        function togglePaymentMethodInfo() {
+            const method = document.getElementById('payment-method').value;
+            const pixBox = document.getElementById('pix-box');
+            if (method === 'pix') {
+                pixBox.classList.remove('hidden');
+            } else {
+                pixBox.classList.add('hidden');
+            }
+        }
+
+        function updateCheckoutSummary() {
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let discountAmount = discountApplied ? subtotal * 0.10 : 0;
+            let discountedSubtotal = subtotal - discountAmount;
+            let total = discountedSubtotal + deliveryFee;
+
+            document.getElementById('summary-subtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            
+            const discRow = document.getElementById('summary-discount-row');
+            if (discountApplied) {
+                discRow.classList.remove('hidden');
+                discRow.classList.add('flex');
+                document.getElementById('summary-discount').innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+            } else {
+                discRow.classList.add('hidden');
+            }
+
+            document.getElementById('summary-delivery').innerText = deliveryFee === 0 ? 'Grátis (Retirada)' : `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+            document.getElementById('summary-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
         function openCheckoutModal() {
@@ -638,6 +718,8 @@
             }
 
             toggleCart();
+            updateDeliveryFee();
+            togglePaymentMethodInfo();
             document.getElementById('checkout-modal').classList.remove('hidden');
             document.getElementById('checkout-modal').classList.add('flex');
         }
@@ -652,11 +734,22 @@
             const name = document.getElementById('client-name').value;
             const phone = document.getElementById('client-phone').value;
             const deliveryType = document.getElementById('delivery-type').value;
-            const address = deliveryType === 'retirada' ? 'Retirada na Loja' : document.getElementById('client-address').value;
+            
+            let addressInfo = '';
+            if (deliveryType === 'retirada') {
+                addressInfo = 'Retirada na Loja Física (Rua Cumata, 973 - Anchieta)';
+            } else {
+                const neighborhoodSelect = document.getElementById('delivery-neighborhood');
+                const neighborhoodName = neighborhoodSelect.options[neighborhoodSelect.selectedIndex].text;
+                const street = document.getElementById('client-street-address').value || 'Endereço não especificado';
+                addressInfo = `${street} - Bairro: ${neighborhoodName}`;
+            }
+
             const paymentMethod = document.getElementById('payment-method').value;
             
             let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let total = discountApplied ? subtotal * 0.90 : subtotal;
+            let discountAmount = discountApplied ? subtotal * 0.10 : 0;
+            let total = (subtotal - discountAmount) + deliveryFee;
             const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
 
             let itemsText = '';
@@ -665,10 +758,10 @@
             });
 
             const orderData = {
-                orderId, name, phone, address, paymentMethod,
-                deliveryType,
+                orderId, name, phone, address: addressInfo, paymentMethod,
+                deliveryType, deliveryFee,
                 items: [...cart], total,
-                status: 'Pagamento Aprovado / Em Preparo na Cozinha',
+                status: 'Aguardando Comprovante / Em Preparo na Cozinha',
                 timestamp: new Date().toLocaleTimeString()
             };
 
@@ -681,15 +774,18 @@
             }
 
             const meuWhatsApp = '5521995335948';
+            let pixNotice = paymentMethod === 'pix' ? '\n*PIX CNPJ:* 27760408000118\n*(Favor enviar o comprovante junto com este pedido!)*\n' : '';
+
             const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
                                 `*Cliente:* ${name}\n` +
                                 `*Telefone:* ${phone}\n` +
-                                `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}\n` +
-                                `*Endereço:* ${address}\n` +
-                                `*Pagamento:* ${paymentMethod.toUpperCase()}\n` +
-                                `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}\n` +
+                                `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega por Motoboy'}\n` +
+                                `*Endereço:* ${addressInfo}\n` +
+                                `*Pagamento:* ${paymentMethod.toUpperCase()}${pixNotice}\n` +
+                                `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}` +
+                                `*Taxa de Entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}\n\n` +
                                 `*Itens do Pedido:*\n${itemsText}\n` +
-                                `*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+                                `*Total Geral:* R$ ${total.toFixed(2).replace('.', ',')}`;
 
             const urlWhatsApp = `https://wa.me/${meuWhatsApp}?text=${encodeURIComponent(mensagemWpp)}`;
 
@@ -722,13 +818,14 @@
                 resultBox.innerHTML = `
                     <div class="flex justify-between items-center border-b pb-3">
                         <span class="font-bold text-brand-dark">${found.orderId}</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
+                        <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
                     </div>
                     <div class="space-y-2 text-xs text-stone-600 pt-2">
                         <p><strong>Cliente:</strong> ${found.name}</p>
-                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega'}</p>
+                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega Local'}</p>
                         <p><strong>Endereço:</strong> ${found.address}</p>
-                        <p><strong>Total:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
+                        <p><strong>Taxa de Entrega:</strong> R$ ${found.deliveryFee.toFixed(2).replace('.', ',')}</p>
+                        <p><strong>Total Geral:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
                     </div>`;
             } else {
                 resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
