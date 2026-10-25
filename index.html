@@ -36,9 +36,8 @@
     <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md text-brand-cream shadow-md border-b border-brand-caramel/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <!-- Logo Atualizada com a Imagem Oficial -->
-                <div class="w-12 h-12 rounded-full bg-brand-cream overflow-hidden shadow-inner flex items-center justify-center p-0.5 border border-brand-caramel/40">
-                    <img src="logo.png" alt="Lile Doces Artesanais Logo" class="w-full h-full object-cover rounded-full">
+                <div class="w-10 h-10 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold text-xl shadow-inner">
+                    L
                 </div>
                 <div>
                     <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-brand-cream block leading-tight">Lile Doces</span>
@@ -355,9 +354,8 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 border-t border-stone-800 pt-8">
             <div class="flex justify-center items-center space-x-3 mb-2">
-                <!-- Logo Atualizada no Rodapé -->
-                <div class="w-8 h-8 rounded-full bg-brand-cream overflow-hidden shadow-inner flex items-center justify-center p-0.5 border border-brand-caramel/40">
-                    <img src="logo.png" alt="Lile Doces Artesanais Logo" class="w-full h-full object-cover rounded-full">
+                <div class="w-8 h-8 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold">
+                    L
                 </div>
                 <span class="font-serif text-lg font-bold text-brand-cream">Lile Doces Artesanais</span>
             </div>
@@ -454,4 +452,411 @@
                         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
                             <div>
                                 <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
-                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <div>
+                                    <span class="text-xs text-stone-400 block">Preço un.</span>
+                                    <span class="text-xl font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                                </div>
+                                ${p.available ? `
+                                    <div class="flex items-center gap-1.5 bg-stone-100 p-1.5 rounded-xl border border-stone-200 shadow-inner">
+                                        <button onclick="updateItemQuantity('${p.name}', -1, ${p.price})" class="w-8 h-8 rounded-lg bg-white shadow hover:bg-stone-200 flex items-center justify-center font-bold text-brand-dark transition-colors" title="Diminuir">-</button>
+                                        <span class="font-bold text-sm px-2 text-brand-dark min-w-[24px] text-center">${currentQty}</span>
+                                        <button onclick="updateItemQuantity('${p.name}', 1, ${p.price})" class="w-8 h-8 rounded-lg bg-brand-caramel hover:bg-amber-700 shadow flex items-center justify-center font-bold text-white transition-colors" title="Aumentar">+</button>
+                                    </div>` :
+                                    `<button disabled class="bg-stone-300 text-stone-500 px-4 py-2.5 rounded-xl text-sm font-medium cursor-not-allowed">
+                                        Indisponível
+                                    </button>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
+                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
+                                    ${p.available ? `
+                                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
+                                            <div class="flex justify-between items-center">
+                                                <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                            <div class="flex justify-between items-center pt-1 border-t">
+                                                <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
+                                                <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
+                                            </div>
+                                        </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Produto temporariamente indisponível</p>'
+                                    }
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                                <span class="text-xs text-stone-500">${p.available ? 'Escolha o tipo acima' : 'Esgotado no momento'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function openStockModal() {
+            const listContainer = document.getElementById('stock-items-list');
+            if(!listContainer) return;
+            let stockHtml = '';
+
+            products.forEach(p => {
+                stockHtml += `
+                    <div class="flex items-center justify-between py-2.5">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${p.name}</h4>
+                            <span class="text-xs text-stone-500">${p.badge}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-semibold ${p.available ? 'text-emerald-600' : 'text-red-600'}">${p.available ? 'Disponível' : 'Indisponível'}</span>
+                            <button onclick="toggleProductStock(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.available ? 'bg-red-100 text-red-700 hover:bg-red-200' : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'}">
+                                ${p.available ? 'Marcar Indisponível' : 'Marcar Disponível'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            listContainer.innerHTML = stockHtml;
+            document.getElementById('stock-modal').classList.remove('hidden');
+            document.getElementById('stock-modal').classList.add('flex');
+        }
+
+        function closeStockModal() {
+            document.getElementById('stock-modal').classList.remove('flex');
+            document.getElementById('stock-modal').classList.add('hidden');
+            renderProducts();
+        }
+
+        function toggleProductStock(id) {
+            const prod = products.find(p => p.id === id);
+            if (prod) {
+                prod.available = !prod.available;
+                saveStockToStorage();
+                openStockModal();
+                renderProducts();
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                renderCart();
+            } else {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        function addItem(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) { existing.quantity += 1; } else { cart.push({ name, price, quantity: 1 }); }
+            updateBadge();
+            renderProducts();
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.remove('scale-125'), 200);
+            if(!document.getElementById('cart-modal').classList.contains('hidden')) {
+                renderCart();
+            }
+        }
+
+        function updateItemQuantity(name, change, price) {
+            let item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            } else if (change > 0 && price) {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateBadge();
+            renderProducts();
+            if (!document.getElementById('cart-modal').classList.contains('hidden')) {
+                renderCart();
+            }
+        }
+
+        function updateBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-badge').innerText = totalItems;
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toLowerCase();
+            const msgEl = document.getElementById('coupon-msg');
+            const isFirstAccess = localStorage.getItem('lile_first_access') === 'true';
+
+            if (code !== 'menos10%') {
+                msgEl.innerText = 'Cupom inválido.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            if (!isFirstAccess) {
+                msgEl.innerText = 'Este cupom é exclusivo para o primeiro acesso/compra no site.';
+                msgEl.className = 'text-xs font-medium text-red-600';
+                return;
+            }
+
+            discountApplied = true;
+            msgEl.innerText = 'Cupom "menos10%" aplicado com sucesso! (10% OFF)';
+            msgEl.className = 'text-xs font-medium text-emerald-600';
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const discountLine = document.getElementById('discount-line');
+            const discountValueEl = document.getElementById('discount-value');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
+                subtotalEl.innerText = 'R$ 0,00';
+                discountLine.classList.add('hidden');
+                discountApplied = false;
+                return;
+            }
+            let html = '', subtotal = 0;
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.quantity;
+                html += `
+                    <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">${item.name}</h4>
+                            <span class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-semibold">Qtd: ${item.quantity}</span>
+                            <button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash text-xs"></i></button>
+                        </div>
+                    </div>`;
+            });
+            container.innerHTML = html;
+
+            let finalSubtotal = subtotal;
+            if (discountApplied) {
+                const discountAmount = subtotal * 0.10;
+                finalSubtotal = subtotal - discountAmount;
+                discountLine.classList.remove('hidden');
+                discountLine.classList.add('flex');
+                discountValueEl.innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+            } else {
+                discountLine.classList.add('hidden');
+            }
+
+            subtotalEl.innerText = `R$ ${finalSubtotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateBadge();
+            renderProducts();
+            renderCart();
+        }
+
+        function toggleDeliveryType() {
+            const deliveryType = document.getElementById('delivery-type').value;
+            const addressSection = document.getElementById('delivery-address-section');
+            
+            if (deliveryType === 'retirada') {
+                addressSection.classList.add('hidden');
+                deliveryFee = 0.00;
+            } else {
+                addressSection.classList.remove('hidden');
+                updateDeliveryFee();
+            }
+            updateCheckoutSummary();
+        }
+
+        function updateDeliveryFee() {
+            const neighborhood = document.getElementById('delivery-neighborhood').value;
+            deliveryFee = neighborhoodFees[neighborhood] || 5.00;
+            updateCheckoutSummary();
+        }
+
+        function togglePaymentMethodInfo() {
+            const method = document.getElementById('payment-method').value;
+            const pixBox = document.getElementById('pix-box');
+            if (method === 'pix') {
+                pixBox.classList.remove('hidden');
+            } else {
+                pixBox.classList.add('hidden');
+            }
+        }
+
+        function updateCheckoutSummary() {
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let discountAmount = discountApplied ? subtotal * 0.10 : 0;
+            let discountedSubtotal = subtotal - discountAmount;
+            let total = discountedSubtotal + deliveryFee;
+
+            document.getElementById('summary-subtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            
+            const discRow = document.getElementById('summary-discount-row');
+            if (discountApplied) {
+                discRow.classList.remove('hidden');
+                discRow.classList.add('flex');
+                document.getElementById('summary-discount').innerText = `- R$ ${discountAmount.toFixed(2).replace('.', ',')}`;
+            } else {
+                discRow.classList.add('hidden');
+            }
+
+            document.getElementById('summary-delivery').innerText = deliveryFee === 0 ? 'Grátis (Retirada)' : `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+            document.getElementById('summary-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let finalTotal = discountApplied ? subtotal * 0.90 : subtotal;
+
+            if (finalTotal < 20.00) {
+                alert('O valor mínimo para pedidos é de R$ 20,00. Adicione mais itens ao carrinho para continuar.');
+                return;
+            }
+
+            toggleCart();
+            updateDeliveryFee();
+            togglePaymentMethodInfo();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.getElementById('checkout-modal').classList.add('flex');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('flex');
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function processPayment(event) {
+            event.preventDefault();
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const deliveryType = document.getElementById('delivery-type').value;
+            
+            let addressInfo = '';
+            if (deliveryType === 'retirada') {
+                addressInfo = 'Retirada na Loja Física (Rua Cumata, 973 - Anchieta)';
+            } else {
+                const neighborhoodSelect = document.getElementById('delivery-neighborhood');
+                const neighborhoodName = neighborhoodSelect.options[neighborhoodSelect.selectedIndex].text;
+                const street = document.getElementById('client-street-address').value || 'Endereço não especificado';
+                addressInfo = `${street} - Bairro: ${neighborhoodName}`;
+            }
+
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let discountAmount = discountApplied ? subtotal * 0.10 : 0;
+            let total = (subtotal - discountAmount) + deliveryFee;
+            const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
+
+            let itemsText = '';
+            cart.forEach(item => {
+                itemsText += `- ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')})\n`;
+            });
+
+            const orderData = {
+                orderId, name, phone, address: addressInfo, paymentMethod,
+                deliveryType, deliveryFee,
+                items: [...cart], total,
+                status: 'Aguardando Comprovante / Em Preparo na Cozinha',
+                timestamp: new Date().toLocaleTimeString()
+            };
+
+            let orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('lile_orders', JSON.stringify(orders));
+
+            if (discountApplied) {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+
+            const meuWhatsApp = '5521995335948';
+            let pixNotice = paymentMethod === 'pix' ? '\n*PIX CNPJ:* 27760408000118\n*(Favor enviar o comprovante junto com este pedido!)*\n' : '';
+
+            const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
+                                `*Cliente:* ${name}\n` +
+                                `*Telefone:* ${phone}\n` +
+                                `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega por Motoboy'}\n` +
+                                `*Endereço:* ${addressInfo}\n` +
+                                `*Pagamento:* ${paymentMethod.toUpperCase()}${pixNotice}\n` +
+                                `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}` +
+                                `*Taxa de Entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}\n\n` +
+                                `*Itens do Pedido:*\n${itemsText}\n` +
+                                `*Total Geral:* R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            const urlWhatsApp = `https://wa.me/${meuWhatsApp}?text=${encodeURIComponent(mensagemWpp)}`;
+
+            cart = [];
+            discountApplied = false;
+            updateBadge();
+            renderProducts();
+            closeCheckoutModal();
+
+            document.getElementById('success-order-id').innerText = `Pedido: ${orderId}`;
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.remove('flex');
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('rastreio-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function trackOrder() {
+            const query = document.getElementById('tracking-input').value.trim();
+            const resultBox = document.getElementById('tracking-result');
+            if (!query) { alert('Digite o número do pedido ou telefone.'); return; }
+            const orders = JSON.parse(localStorage.getItem('lile_orders') || '[]');
+            const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase() || o.phone.includes(query));
+            resultBox.classList.remove('hidden');
+            if (found) {
+                resultBox.innerHTML = `
+                    <div class="flex justify-between items-center border-b pb-3">
+                        <span class="font-bold text-brand-dark">${found.orderId}</span>
+                        <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">${found.status}</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-stone-600 pt-2">
+                        <p><strong>Cliente:</strong> ${found.name}</p>
+                        <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega Local'}</p>
+                        <p><strong>Endereço:</strong> ${found.address}</p>
+                        <p><strong>Taxa de Entrega:</strong> R$ ${found.deliveryFee.toFixed(2).replace('.', ',')}</p>
+                        <p><strong>Total Geral:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
+                    </div>`;
+            } else {
+                resultBox.innerHTML = `<p class="text-red-600 text-sm font-medium">Nenhum pedido encontrado com "${query}".</p>`;
+            }
+        }
+    </script>
+</body>
+    </html>
