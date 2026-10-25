@@ -66,8 +66,10 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative bg-brand-dark text-brand-cream py-16 sm:py-24 overflow-hidden">
+    <!-- Hero Section com Imagem Food Porn de Fundo -->
+    <section class="relative bg-brand-dark text-brand-cream py-20 sm:py-32 overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1920&q=80');">
+        <!-- Camada Escura Overlay para Legibilidade -->
+        <div class="absolute inset-0 bg-brand-dark/85 backdrop-blur-[2px]"></div>
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c68b59_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30">
@@ -367,7 +369,7 @@
     <!-- Lógica JavaScript -->
     <script>
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
             { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços visíveis de nozes selecionadas na massa.', available: true, type: 'single' },
             { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque de pimenta e detalhe de pimenta dedo-de-moça.', available: true, type: 'single' },
             { id: 4, name: 'Clássico LILE com amêndoas e cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal decorado com nips e amêndoas de cacau em perfeita harmonia.', available: true, type: 'single' },
@@ -442,6 +444,8 @@
 
             sortedProducts.forEach(p => {
                 const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+                const cartItem = cart.find(item => item.name === p.name);
+                const currentQty = cartItem ? cartItem.quantity : 0;
                 
                 if (p.type === 'single') {
                     html += `
@@ -459,13 +463,15 @@
                             </div>
                             <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
                                 <div>
-                                    <span class="text-xs text-stone-400 block">&nbsp;</span>
+                                    <span class="text-xs text-stone-400 block">Preço un.</span>
                                     <span class="text-xl font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
                                 </div>
-                                ${p.available ? 
-                                    `<button onclick="addItem('${p.name}',${p.price})" class="bg-brand-chocolate hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shadow flex items-center gap-2 active:scale-95">
-                                        <i class="fa-solid fa-plus"></i> Adicionar
-                                    </button>` :
+                                ${p.available ? `
+                                    <div class="flex items-center gap-1.5 bg-stone-100 p-1.5 rounded-xl border border-stone-200 shadow-inner">
+                                        <button onclick="updateItemQuantity('${p.name}', -1, ${p.price})" class="w-8 h-8 rounded-lg bg-white shadow hover:bg-stone-200 flex items-center justify-center font-bold text-brand-dark transition-colors" title="Diminuir">-</button>
+                                        <span class="font-bold text-sm px-2 text-brand-dark min-w-[24px] text-center">${currentQty}</span>
+                                        <button onclick="updateItemQuantity('${p.name}', 1, ${p.price})" class="w-8 h-8 rounded-lg bg-brand-caramel hover:bg-amber-700 shadow flex items-center justify-center font-bold text-white transition-colors" title="Aumentar">+</button>
+                                    </div>` :
                                     `<button disabled class="bg-stone-300 text-stone-500 px-4 py-2.5 rounded-xl text-sm font-medium cursor-not-allowed">
                                         Indisponível
                                     </button>`
@@ -569,10 +575,28 @@
             const existing = cart.find(item => item.name === name);
             if (existing) { existing.quantity += 1; } else { cart.push({ name, price, quantity: 1 }); }
             updateBadge();
+            renderProducts();
             const badge = document.getElementById('cart-badge');
             badge.classList.add('scale-125');
             setTimeout(() => badge.classList.remove('scale-125'), 200);
             if(!document.getElementById('cart-modal').classList.contains('hidden')) {
+                renderCart();
+            }
+        }
+
+        function updateItemQuantity(name, change, price) {
+            let item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            } else if (change > 0 && price) {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateBadge();
+            renderProducts();
+            if (!document.getElementById('cart-modal').classList.contains('hidden')) {
                 renderCart();
             }
         }
@@ -652,6 +676,7 @@
         function removeItem(index) {
             cart.splice(index, 1);
             updateBadge();
+            renderProducts();
             renderCart();
         }
 
@@ -792,6 +817,7 @@
             cart = [];
             discountApplied = false;
             updateBadge();
+            renderProducts();
             closeCheckoutModal();
 
             document.getElementById('success-order-id').innerText = `Pedido: ${orderId}`;
