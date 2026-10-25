@@ -364,25 +364,41 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript -->
+    <!-- Lógica JavaScript com o Novo Cardápio Extraído da Planilha -->
     <script>
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
-            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços visíveis de nozes selecionadas na massa.', available: true, type: 'single' },
-            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque de pimenta e detalhe de pimenta dedo-de-moça.', available: true, type: 'single' },
-            { id: 4, name: 'Clássico LILE com amêndoas e cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal decorado com nips e amêndoas de cacau em perfeita harmonia.', available: true, type: 'single' },
-            { id: 5, name: 'Brownie com Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'A massa estruturada e úmida da LILE exibe um brownie generosamente recheado com creme de Nutella.', available: true, type: 'single' },
-            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
-            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico inconfundível recheado com doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
-            { id: 8, name: 'Brownie Brigadeiro Gourmet 50% Cacau', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Foto que mostra claramente a textura do brownie com recheio de brigadeiro gourmet 50% cacau.', available: true, type: 'single' },
-            { id: 9, name: 'Clássico LILE (Tradicional)', price: 9.99, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal clássico bem apetitoso, com casquinha crocante e interior fudgy.', available: true, type: 'single' },
-            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear.', available: true, type: 'single' },
-            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear.', available: true, type: 'single' },
-            { id: 12, name: 'Kit Reunião e Eventos', price: 180.00, badge: 'EVENTOS', image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80', desc: 'Bandeja com seleção variada de brownies voltada para reuniões.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
-            { id: 13, name: 'Kit Festa 50 brownies', price: 280.00, badge: 'FESTAS', image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80', desc: 'Brownie para mesa de festa, ideal para comemorações e aniversários.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
-            { id: 14, name: 'Kit de 100 Brownies', price: 350.00, badge: 'GRANDE FESTA', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Produção em grande escala: caixa com 100 brownies para grandes eventos.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
-            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 300 ml', price: 3.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80', desc: 'Garrafinha de água mineral de 300 ml refrescante.', available: true, type: 'single' }
+            { id: 1, name: '2 Brownies Recheados + 1 Tradicional + Coca-cola', price: 34.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'O combo perfeito para compartilhar! Acompanha 2 brownies recheados à sua escolha, 1 brownie tradicional delicioso e 1 Coca-Cola lata estupidamente gelada.', available: true, type: 'single' },
+            { id: 2, name: '2 Brownies Recheados + Coca-cola', price: 28.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'A combinação perfeita! 2 brownies artesanais à sua escolha acompanhado de uma Coca-Cola lata estupidamente gelada com preço especial de promoção.', available: true, type: 'single' },
+            { id: 3, name: 'Brownie Brigadeiro Gourmet', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Massa 50% cacau recheada com brigadeiro de panela aveludado e raspas de chocolate nobre.', available: true, type: 'single' },
+            { id: 4, name: 'Brownie de Casadinho', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'A harmonia perfeita entre a cremosidade do brigadeiro branco artesanal e o nosso clássico brownie.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie de Nutella', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie artesanal com recheio cremoso e generoso de Nutella pura.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie Ninho com Nutella', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'Nosso tradicional brownie artesanal com casquinha crocante e massa super molhadinha, recheado generosamente com brigadeiro gourmet de Leite Ninho e Nutella pura.', available: true, type: 'single' },
+            { id: 7, name: 'Clássico Lile', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=800&q=80', desc: 'A essência do verdadeiro brownie artesanal. Casquinha levemente crocante e um interior ultra cremoso, enriquecido com bolsões de chocolate meio amargo nobre.', available: true, type: 'single' },
+            { id: 8, name: 'Clássico Lile com Amêndoas de Cacau', price: 14.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'Intensidade suprema com nibs e amêndoas de cacau crocante em perfeita harmonia com o brownie', available: true, type: 'single' },
+            { id: 9, name: 'Clássico Lile com Nozes', price: 14.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 10, name: 'Clássico Lile com Pimenta', price: 14.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque equilibrado de pimenta.', available: true, type: 'single' },
+            { id: 11, name: 'Doce de Leite Artesanal', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Nossa clássico inconfundível de massa úmida e casquinha perfeita, generosamente recheado com um doce de leite artesanal.', available: true, type: 'single' },
+            { id: 12, name: 'Kit com 3 Brownies', price: 35.00, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear ou presentear.', available: true, type: 'single' },
+            { id: 13, name: 'O Desejado Nutella', price: 12.50, badge: 'BROWNIES', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'Para os verdadeiros apaixonados por intensidade. A massa estruturada e úmida da LILE encontra o recheio mais avelã Nutella.', available: true, type: 'single' },
+            { id: 14, name: 'Bolo de Pote Brigadeiro Gourmet', price: 12.90, badge: 'POTE', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'O queridinho de todos na versão mais intensa! Massa fofinha e super molhadinha feita com cacau 50%, intercalado com brigadeiro artesanal.', available: true, type: 'single' },
+            { id: 15, name: 'Bolo de Pote Doce de Leite', price: 12.90, badge: 'POTE', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas de massa fofinha e molhadinha, recheadas com um doce de leite super cremoso irresistível.', available: true, type: 'single' },
+            { id: 16, name: 'Brownie de Pote Lile', price: 17.90, badge: 'POTE', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Nosso brownie artesanal bem molhadinho montado em camadas intercaladas de brigadeiro gourmet de Leite Ninho e Nutella pura. (Pote 250ml).', available: true, type: 'single' },
+            { id: 17, name: 'Brownie no Pote com Mousse de Nutella & Brigadeiro Gourmet', price: 18.90, badge: 'POTE', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas do nosso brownie artesanal abraçados por camadas de mousse de Nutella e brigadeiro gourmet.', available: true, type: 'single' },
+            { id: 18, name: 'Brownie no Pote com Mousse de Nutella & Chocolate Branco', price: 18.90, badge: 'POTE', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas do nosso brownie artesanal abraçados por camadas de mousse de Nutella e brigadeiro gourmet.', available: true, type: 'single' },
+            { id: 19, name: 'Fatia Brownie de Ninho, Nutella & Oreo', price: 21.90, badge: 'SUGESTÃO DA LILE DOCES', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'Nossa base artesanal de brownie super molhadinha e densa, coberta com brigadeiro de Leite Ninho, fios de Nutella e biscoitos Oreo.', available: true, type: 'single' },
+            { id: 20, name: 'Fatia Brownie Ninho com Lacta Branco & Oreo', price: 21.90, badge: 'SUGESTÃO DA LILE DOCES', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Fatia artesanal de brownie molhadinho, coberta com creme de Leite Ninho, pedaços de chocolate branco Lacta e biscoito Oreo.', available: true, type: 'single' },
+            { id: 21, name: 'Copão da Felicidade (Ninho, Nutella, Oreo & Choc. Branco)', price: 26.90, badge: 'O MAIS PEDIDO', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'Cubos macios de brownie artesanal intercalados com creme de Leite Ninho e muita Nutella pura, Oreo e chocolate branco.', available: true, type: 'single' },
+            { id: 22, name: 'Copão da Felicidade (Ninho, Brigadeiro & Nutella)', price: 26.90, badge: 'O MAIS PEDIDO', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'Pedacinhos macios do nosso brownie artesanal intercalados com creme aveludado de Ninho, brigadeiro cremoso e muita Nutella.', available: true, type: 'single' },
+            { id: 23, name: 'Copão da Felicidade de Kitkat', price: 26.90, badge: 'O MAIS PEDIDO', image: 'https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas de brownie artesanal, creme de chocolate, mousse leve e pedaços crocantes de Kitkat.', available: true, type: 'single' },
+            { id: 24, name: 'Copão da Felicidade de Morango', price: 26.90, badge: 'O MAIS PEDIDO', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Camadas intercaladas de brownie molhadinho, recheio cremoso de Leite Ninho, Nutella e morangos frescos fatiados.', available: true, type: 'single' },
+            { id: 25, name: '2 Brownie no Pote', price: 32.90, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas do nosso brownie artesanal abraçados por camadas de mousse de Nutella e brigadeiro gourmet.', available: true, type: 'single' },
+            { id: 26, name: '2 Copos da Felicidade.', price: 41.90, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'Combo com 2 copões super caprichados em camadas alternadas do nosso brownie artesanal, creme de Ninho, brigadeiro e Nutella.', available: true, type: 'single' },
+            { id: 27, name: 'Combo 3 Fatias Brownies', price: 42.90, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'Combo especial com 3 fatias generosas dos nossos sabores campeões de vendas.', available: true, type: 'single' },
+            { id: 28, name: 'Brownie na Marmita com Sorvete de Flocos', price: 23.90, badge: 'BROWNIE COM SORVETE', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Cubos de brownie artesanal cobertos com calda cremosa de chocolate, acompanhados por bola de sorvete de flocos. (500ml)', available: true, type: 'single' },
+            { id: 29, name: 'Sobremesa Perfeita para Dois', price: 51.90, badge: 'BROWNIE COM SORVETE', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: '2 caixinhas individuais recheadas com brownie artesanal, acompanhado por sorvete cremoso.', available: true, type: 'single' },
+            { id: 30, name: 'Empadão de Camarão Cremoso', price: 21.90, badge: 'EMPADÕES', image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80', desc: 'Recheio generoso de camarão bem temperadinho especial, envolvido por uma massa leve e crocante.', available: true, type: 'single' },
+            { id: 31, name: 'Empadão de Frango C/ Catupiry', price: 16.90, badge: 'EMPADÕES', image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80', desc: 'Massa leve e amanteigada, recheada com frango desfiado bem temperado e camada generosa de Catupiry.', available: true, type: 'single' },
+            { id: 32, name: 'Empadão de Frango Tradicional', price: 13.45, badge: 'EMPADÕES', image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80', desc: 'Massa amanteigada leve e douradinha, recheada generosamente com frango desfiado bem temperadinho.', available: true, type: 'single' }
         ];
 
         let cart = [];
@@ -441,7 +457,7 @@
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
-                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'O MAIS PEDIDO' ? 'bg-amber-600' : 'bg-brand-caramel';
                 
                 if (p.type === 'single') {
                     html += `
@@ -470,37 +486,6 @@
                                         Indisponível
                                     </button>`
                                 }
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    html += `
-                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
-                            <div>
-                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
-                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
-                                    ${!p.available ? '<span class="absolute top-4 right-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
-                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-2">${p.name}</h3>
-                                    <p class="text-stone-600 text-sm leading-relaxed mb-4">${p.desc}</p>
-                                    ${p.available ? `
-                                        <div class="space-y-2 text-xs font-medium text-stone-700 bg-stone-50 p-3 rounded-xl border">
-                                            <div class="flex justify-between items-center">
-                                                <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
-                                                <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                                            </div>
-                                            <div class="flex justify-between items-center pt-1 border-t">
-                                                <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
-                                                <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg">Adicionar</button>
-                                            </div>
-                                        </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Produto temporariamente indisponível</p>'
-                                    }
-                                </div>
-                            </div>
-                            <div class="p-6 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                                <span class="text-xs text-stone-500">${p.available ? 'Escolha o tipo acima' : 'Esgotado no momento'}</span>
                             </div>
                         </div>
                     `;
