@@ -67,15 +67,15 @@
     </header>
 
     <!-- Hero Section com Imagem Food Porn de Fundo -->
-    <section class="relative bg-brand-dark text-brand-cream py-24 sm:py-36 overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1920&q=80');">
+    <section class="relative bg-brand-dark text-brand-cream py-20 sm:py-32 overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=1920&q=80');">
         <!-- Camada Escura Overlay para Legibilidade -->
         <div class="absolute inset-0 bg-brand-dark/85 backdrop-blur-[2px]"></div>
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c68b59_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30 shadow-md">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30">
                 Confeitaria artesanal com alma de chocolate nobre
             </span>
-            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 max-w-4xl mx-auto text-brand-cream leading-tight">
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 max-w-4xl mx-auto text-brand-cream">
                 Onde cada mordida é um abraço de chocolate.
             </h1>
             <p class="text-base sm:text-xl text-stone-300 font-light max-w-2xl mx-auto mb-8 italic">
@@ -95,9 +95,9 @@
     <!-- Cardápio / Descrições sensoriais da LILE -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div class="text-center mb-12">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Cardápio Artesanal LILE</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Monte seu pedido diretamente nos cards abaixo com os botões de quantidade e feche no WhatsApp com rapidez. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
         <!-- Grade de Produtos Dinâmica -->
@@ -207,7 +207,7 @@
             <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between">
                 <div>
                     <h3 class="font-serif font-bold text-xl">Finalizar Pedido & Pagamento</h3>
-                    <p class="text-xs text-stone-300">Loja Central: Rua Cumata, 973 - Anchieta, RJ</p>
+                    <p class="text-xs text-stone-300">Loja Central: Rua Cumata, 973 - Anchieta, RJ (Raio de 5km)</p>
                 </div>
                 <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
@@ -369,24 +369,29 @@
     <!-- Lógica JavaScript -->
     <script>
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 27.90, badge: 'FOOD PORN', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Brownie quentinho e denso acompanhado de uma generosa bola de sorvete de flocos e calda brilhante.', available: true },
-            { id: 2, name: 'Copo da felicidade', price: 29.90, badge: 'DESTAQUE', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80', desc: 'Camadas generosas de creme belga, brigadeiro gourmet, pedaços de brownie e muito chocolate.', available: true },
-            { id: 3, name: 'Fatia de brownie', price: 22.90, badge: 'FAMOSO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'Fatia robusta de brownie artesanal com casquinha crocante e interior fudgy derretendo na boca.', available: true },
-            { id: 4, name: 'Pote de brownie', price: 18.90, badge: 'DELÍCIA', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Pote recheado com cubos de brownie molhadinho intercalados com doce de leite artesanal.', available: true },
-            { id: 5, name: 'Mousse de maracujá', price: 14.99, badge: 'REFRESCANTE', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Mousse de maracujá aveludado, aerado e com calda agridoce artesanal de sementes frescas.', available: true },
-            { id: 6, name: 'Torta de limão', price: 14.99, badge: 'CLASSICO', image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80', desc: 'Torta de limão equilibrada com creme cítrico suave e cobertura impecável de suspiros dourados.', available: true },
-            { id: 7, name: 'Sacolé de uva', price: 14.98, badge: 'GELADINHO', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Sacolé gourmet cremoso feito com polpa natural de uva selecionada e pedaços da fruta.', available: true },
-            { id: 8, name: 'Geninho com Nutella', price: 12.99, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'O famoso geladinho gourmet da casa com recheio cremoso e generosa espiral de Nutella pura.', available: true },
-            { id: 9, name: 'Bolo de pote', price: 9.99, badge: 'FAVORITO', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Bolo de pote molhadinho com recheio cremoso de chocolate nobre. Praticidade e sabor irresistível.', available: true },
-            { id: 10, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços visíveis de nozes selecionadas.', available: true },
-            { id: 11, name: 'Brownie com Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Massa úmida recheada com o autêntico creme de avelã Nutella.', available: true },
-            { id: 12, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true }
+            { id: 1, name: 'Brownie com sorvete', price: 19.50, badge: 'NOVIDADE', image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
+            { id: 2, name: 'Clássico LILE com nozes', price: 12.50, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80', desc: 'A receita tradicional enriquecida com crocantes pedaços visíveis de nozes selecionadas na massa.', available: true, type: 'single' },
+            { id: 3, name: 'Clássico LILE com pimenta', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80', desc: 'Uma experiência sensorial ousada que combina cacau nobre com um toque de pimenta e detalhe de pimenta dedo-de-moça.', available: true, type: 'single' },
+            { id: 4, name: 'Clássico LILE com amêndoas e cacau', price: 14.00, badge: 'EDIÇÃO ESPECIAL', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal decorado com nips e amêndoas de cacau em perfeita harmonia.', available: true, type: 'single' },
+            { id: 5, name: 'Brownie com Nutella', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80', desc: 'A massa estruturada e úmida da LILE exibe um brownie generosamente recheado com creme de Nutella.', available: true, type: 'single' },
+            { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
+            { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80', desc: 'Nosso clássico inconfundível recheado com doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50% Cacau', price: 12.50, badge: 'PROMOÇÃO', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80', desc: 'Foto que mostra claramente a textura do brownie com recheio de brigadeiro gourmet 50% cacau.', available: true, type: 'single' },
+            { id: 9, name: 'Clássico LILE (Tradicional)', price: 9.99, badge: 'CLÁSSICO', image: 'https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=800&q=80', desc: 'Brownie artesanal clássico bem apetitoso, com casquinha crocante e interior fudgy.', available: true, type: 'single' },
+            { id: 10, name: 'Kit com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear.', available: true, type: 'single' },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear.', available: true, type: 'single' },
+            { id: 12, name: 'Kit Reunião e Eventos', price: 180.00, badge: 'EVENTOS', image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80', desc: 'Bandeja com seleção variada de brownies voltada para reuniões.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
+            { id: 13, name: 'Kit Festa 50 brownies', price: 280.00, badge: 'FESTAS', image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80', desc: 'Brownie para mesa de festa, ideal para comemorações e aniversários.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
+            { id: 14, name: 'Kit de 100 Brownies', price: 350.00, badge: 'GRANDE FESTA', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80', desc: 'Produção em grande escala: caixa com 100 brownies para grandes eventos.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 6.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
+            { id: 16, name: 'Água Mineral 300 ml', price: 3.00, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80', desc: 'Garrafinha de água mineral de 300 ml refrescante.', available: true, type: 'single' }
         ];
 
         let cart = [];
         let discountApplied = false;
-        let deliveryFee = 5.00;
+        let deliveryFee = 5.00; // Taxa padrão inicial para Anchieta
 
+        // Tabela de bairros e taxas de motoboy com base no raio de 5km de Rua Cumata 973, Anchieta RJ
         const neighborhoodFees = {
             'anchieta': 5.00,
             'parque-anchieta': 6.00,
@@ -419,38 +424,16 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('lile_visited')) {
+                localStorage.setItem('lile_visited', 'true');
+                localStorage.setItem('lile_first_access', 'true');
+            } else {
+                localStorage.setItem('lile_first_access', 'false');
+            }
+            
             initStock();
             renderProducts();
-            updateCartUI();
         });
-
-        function getProductQuantity(id) {
-            const item = cart.find(i => i.id === id);
-            return item ? item.quantity : 0;
-        }
-
-        function changeQuantity(id, delta) {
-            const product = products.find(p => p.id === id);
-            if (!product || !product.available) return;
-
-            let cartItem = cart.find(i => i.id === id);
-            if (cartItem) {
-                cartItem.quantity += delta;
-                if (cartItem.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            } else if (delta > 0) {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    quantity: 1
-                });
-            }
-
-            renderProducts();
-            updateCartUI();
-        }
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
@@ -460,320 +443,13 @@
             const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
 
             sortedProducts.forEach(p => {
-                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'FOOD PORN' ? 'bg-amber-700' : 'bg-brand-caramel';
-                const qty = getProductQuantity(p.id);
-
-                html += `
-                    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
-                        <div>
-                            <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
-                                <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
-                                ${!p.available ? '<span class="absolute inset-0 bg-black/60 text-white font-bold flex items-center justify-center text-sm uppercase tracking-wider z-20">Esgotado Temporariamente</span>' : ''}
-                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="font-serif font-bold text-lg text-brand-dark leading-snug">${p.name}</h3>
-                                    <span class="text-brand-chocolate font-bold text-base shrink-0 ml-2">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
-                                </div>
-                                <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4">${p.desc}</p>
-                            </div>
-                        </div>
-                        <div class="px-6 pb-6 pt-0">
-                            ${p.available ? `
-                                <div class="flex items-center justify-between bg-stone-50 border border-stone-200 rounded-xl p-2">
-                                    <span class="text-xs font-semibold text-stone-700 uppercase">Quantidade:</span>
-                                    <div class="flex items-center space-x-3">
-                                        <button onclick="changeQuantity(${p.id}, -1)" class="w-8 h-8 rounded-lg bg-white border border-stone-300 text-stone-700 hover:bg-stone-100 font-bold flex items-center justify-center shadow-sm transition-transform active:scale-95">
-                                            <i class="fa-solid fa-minus text-xs"></i>
-                                        </button>
-                                        <span class="font-bold text-brand-dark text-sm w-5 text-center" id="qty-val-${p.id}">${qty}</span>
-                                        <button onclick="changeQuantity(${p.id}, 1)" class="w-8 h-8 rounded-lg bg-brand-caramel text-white hover:bg-amber-700 font-bold flex items-center justify-center shadow transition-transform active:scale-95">
-                                            <i class="fa-solid fa-plus text-xs"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            ` : `
-                                <button disabled class="w-full bg-stone-200 text-stone-400 font-semibold py-3 rounded-xl text-xs uppercase tracking-wider cursor-not-allowed">Produto Indisponível</button>
-                            `}
-                        </div>
-                    </div>
-                `;
-            });
-            grid.innerHTML = html;
-        }
-
-        function updateCartUI() {
-            const badge = document.getElementById('cart-badge');
-            const container = document.getElementById('cart-items-container');
-            const subtotalEl = document.getElementById('cart-subtotal');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            if(badge) badge.innerText = totalItems;
-
-            if(!container) return;
-
-            if(cart.length === 0) {
-                container.innerHTML = '<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>';
-                if(subtotalEl) subtotalEl.innerText = 'R$ 0,00';
-                return;
-            }
-
-            let html = '';
-            let subtotal = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                html += `
-                    <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
-                        <div class="flex-1 pr-3">
-                            <h4 class="font-semibold text-sm text-brand-dark">${item.name}</h4>
-                            <span class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="changeQuantity(${item.id}, -1)" class="w-7 h-7 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-700 font-bold flex items-center justify-center text-xs"><i class="fa-solid fa-minus"></i></button>
-                            <span class="text-xs font-bold w-5 text-center">${item.quantity}</span>
-                            <button onclick="changeQuantity(${item.id}, 1)" class="w-7 h-7 bg-brand-caramel hover:bg-amber-700 text-white rounded-lg font-bold flex items-center justify-center text-xs"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                        <span class="font-bold text-xs text-brand-dark w-16 text-right">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-
-            let finalSubtotal = subtotal;
-            if(discountApplied) {
-                const discountVal = subtotal * 0.10;
-                finalSubtotal -= discountVal;
-                document.getElementById('discount-line').classList.remove('hidden');
-                document.getElementById('discount-value').innerText = `- R$ ${discountVal.toFixed(2).replace('.', ',')}`;
-            } else {
-                document.getElementById('discount-line').classList.add('hidden');
-            }
-
-            if(subtotalEl) subtotalEl.innerText = `R$ ${finalSubtotal.toFixed(2).replace('.', ',')}`;
-        }
-
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            if(modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            } else {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
-        }
-
-        function applyCoupon() {
-            const input = document.getElementById('coupon-input');
-            const msg = document.getElementById('coupon-msg');
-            if(!input) return;
-
-            const val = input.value.trim().toLowerCase();
-            if(val === 'menos10%') {
-                discountApplied = true;
-                msg.className = 'text-xs font-medium text-emerald-600';
-                msg.innerText = 'Cupom aplicado com sucesso (-10%)!';
-                updateCartUI();
-            } else {
-                discountApplied = false;
-                msg.className = 'text-xs font-medium text-red-600';
-                msg.innerText = 'Cupom inválido ou expirado.';
-                updateCartUI();
-            }
-        }
-
-        function openCheckoutModal() {
-            if(cart.length === 0) {
-                alert('Seu carrinho está vazio!');
-                return;
-            }
-
-            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            if(subtotal < 20.00) {
-                alert('O pedido mínimo para entrega é de R$ 20,00.');
-                return;
-            }
-
-            toggleCart();
-            const modal = document.getElementById('checkout-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            updateCheckoutSummary();
-        }
-
-        function closeCheckoutModal() {
-            const modal = document.getElementById('checkout-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function toggleDeliveryType() {
-            const type = document.getElementById('delivery-type').value;
-            const addressSec = document.getElementById('delivery-address-section');
-            if(type === 'retirada') {
-                addressSec.classList.add('hidden');
-                deliveryFee = 0;
-            } else {
-                addressSec.classList.remove('hidden');
-                updateDeliveryFee();
-            }
-            updateCheckoutSummary();
-        }
-
-        function updateDeliveryFee() {
-            const neighborhood = document.getElementById('delivery-neighborhood').value;
-            deliveryFee = neighborhoodFees[neighborhood] || 5.00;
-            updateCheckoutSummary();
-        }
-
-        function togglePaymentMethodInfo() {
-            const method = document.getElementById('payment-method').value;
-            const pixBox = document.getElementById('pix-box');
-            if(method === 'pix') {
-                pixBox.classList.remove('hidden');
-            } else {
-                pixBox.classList.add('hidden');
-            }
-        }
-
-        function updateCheckoutSummary() {
-            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let discount = discountApplied ? subtotal * 0.10 : 0;
-            let totalProducts = subtotal - discount;
-            let totalGeneral = totalProducts + deliveryFee;
-
-            document.getElementById('summary-subtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-            if(discountApplied) {
-                document.getElementById('summary-discount-row').classList.remove('hidden');
-                document.getElementById('summary-discount').innerText = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
-            } else {
-                document.getElementById('summary-discount-row').classList.add('hidden');
-            }
-            document.getElementById('summary-delivery').innerText = `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
-            document.getElementById('summary-total').innerText = `R$ ${totalGeneral.toFixed(2).replace('.', ',')}`;
-        }
-
-        function processPayment(event) {
-            event.preventDefault();
-            const name = document.getElementById('client-name').value;
-            const phone = document.getElementById('client-phone').value;
-            const deliveryType = document.getElementById('delivery-type').value;
-            const neighborhood = document.getElementById('delivery-neighborhood') ? document.getElementById('delivery-neighborhood').value : 'Retirada';
-            const streetAddress = document.getElementById('client-street-address') ? document.getElementById('client-street-address').value : 'Retirada na Loja';
-            const paymentMethod = document.getElementById('payment-method').value;
-
-            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let discount = discountApplied ? subtotal * 0.10 : 0;
-            let totalProducts = subtotal - discount;
-            let finalDelivery = deliveryType === 'retirada' ? 0 : deliveryFee;
-            let totalGeneral = totalProducts + finalDelivery;
-
-            const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
-
-            let message = `*NOVO PEDIDO ${orderId}*%0A%0A`;
-            message += `*Cliente:* ${name}%0A`;
-            message += `*Telefone:* ${phone}%0A`;
-            message += `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega Motoboy'}%0A`;
-            if(deliveryType === 'entrega') {
-                message += `*Bairro:* ${neighborhood}%0A`;
-                message += `*Endereço:* ${streetAddress}%0A`;
-            }
-            message += `*Pagamento:* ${paymentMethod.toUpperCase()}%0A%0A`;
-            message += `*ITENS DO PEDIDO:*%0A`;
-            cart.forEach(item => {
-                message += `- ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2)})%0A`;
-            });
-            message += `%0A*Subtotal:* R$ ${subtotal.toFixed(2)}`;
-            if(discountApplied) {
-                message += `%0A*Desconto:* - R$ ${discount.toFixed(2)}`;
-            }
-            message += `%0A*Taxa Entrega:* R$ ${finalDelivery.toFixed(2)}`;
-            message += `%0A*TOTAL GERAL:* R$ ${totalGeneral.toFixed(2)}%0A%0A`;
-            message += `Endereço da Loja: Rua Cumata, 973 - Anchieta, RJ.`;
-
-            closeCheckoutModal();
-            document.getElementById('success-order-id').innerText = `Pedido ${orderId}`;
-            const successModal = document.getElementById('success-modal');
-            successModal.classList.remove('hidden');
-            successModal.classList.add('flex');
-
-            cart = [];
-            renderProducts();
-            updateCartUI();
-
-            setTimeout(() => {
-                window.open(`https://wa.me/5521995335948?text=${message}`, '_blank');
-            }, 1200);
-        }
-
-        function closeSuccessModal() {
-            const successModal = document.getElementById('success-modal');
-            successModal.classList.add('hidden');
-            successModal.classList.remove('flex');
-            window.location.href = '#rastreio-section';
-        }
-
-        function trackOrder() {
-            const input = document.getElementById('tracking-input').value.trim();
-            const result = document.getElementById('tracking-result');
-            if(!input) {
-                alert('Digite o número do pedido ou telefone.');
-                return;
-            }
-            result.classList.remove('hidden');
-            result.innerHTML = `
-                <div class="flex items-center gap-3 text-brand-dark">
-                    <i class="fa-solid fa-spinner fa-spin text-brand-caramel text-xl"></i>
-                    <div>
-                        <p class="font-bold text-sm">Buscando pedido ${input}...</p>
-                        <p class="text-xs text-stone-500">Status atual: <span class="text-emerald-600 font-bold">Em preparo na cozinha artesanal (Rua Cumata, 973 - Anchieta)</span></p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function openStockModal() {
-            const modal = document.getElementById('stock-modal');
-            const list = document.getElementById('stock-items-list');
-            let html = '';
-
-            products.forEach(p => {
-                html += `
-                    <div class="flex items-center justify-between py-2">
-                        <div>
-                            <p class="font-semibold text-sm text-brand-dark">${p.name}</p>
-                            <span class="text-xs text-stone-500">R$ ${p.price.toFixed(2)}</span>
-                        </div>
-                        <button onclick="toggleProductStock(${p.id})" class="px-4 py-1.5 rounded-xl text-xs font-bold transition-colors ${p.available ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' : 'bg-red-100 text-red-800 hover:bg-red-200'}">
-                            ${p.available ? 'Disponível' : 'Esgotado'}
-                        </button>
-                    </div>
-                `;
-            });
-            list.innerHTML = html;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeStockModal() {
-            const modal = document.getElementById('stock-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            saveStockToStorage();
-            renderProducts();
-        }
-
-        function toggleProductStock(id) {
-            const product = products.find(p => p.id === id);
-            if(product) {
-                product.available = !product.available;
-                openStockModal();
-            }
-        }
-    </script>
-</body>
-</html>
+                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+                const cartItem = cart.find(item => item.name === p.name);
+                const currentQty = cartItem ? cartItem.quantity : 0;
+                
+                if (p.type === 'single') {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                            <div>
+                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-52">
+                                    <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>${!p
