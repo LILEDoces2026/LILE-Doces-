@@ -53,10 +53,6 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Botão Rastreio Mobile -->
-                <a href="#rastreio-section" class="md:hidden bg-stone-800 text-brand-caramel p-3 rounded-full text-sm flex items-center justify-center shadow" title="Rastrear Pedido">
-                    <i class="fa-solid fa-truck-fast"></i>
-                </a>
                 <!-- Botão Carrinho -->
                 <button onclick="toggleCart()" class="relative bg-brand-caramel hover:bg-amber-700 text-white p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center" aria-label="Carrinho de Compras">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
@@ -66,12 +62,9 @@
         </div>
     </header>
 
-    <!-- Hero Section com a foto exata enviada (1001560862.jpg) de fundo -->
+    <!-- Hero Section -->
     <section class="relative text-brand-cream py-16 sm:py-24 overflow-hidden bg-cover bg-center" style="background-image: url('1001560862.jpg');">
-        <!-- Camada de sobreposição escura para garantir legibilidade dos textos -->
         <div class="absolute inset-0 bg-brand-dark/80"></div>
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c68b59_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span class="inline-block px-4 py-1.5 rounded-full bg-brand-chocolate text-brand-caramel text-xs uppercase font-semibold tracking-widest mb-4 border border-brand-caramel/30">
                 Confeitaria artesanal com alma de chocolate nobre
@@ -86,64 +79,53 @@
                 <a href="#produtos" class="w-full sm:w-auto bg-brand-caramel hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl transition-all transform hover:-translate-y-0.5 text-center">
                     Ver Cardápio & Pedir
                 </a>
-                <a href="#rastreio-section" class="w-full sm:w-auto bg-stone-800 hover:bg-stone-700 text-brand-cream font-semibold px-8 py-4 rounded-xl shadow-xl transition-all border border-brand-caramel/40 text-center">
-                    <i class="fa-solid fa-magnifying-glass mr-2 text-brand-caramel"></i> Rastrear Pedido
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Cardápio / Descrições sensoriais da LILE -->
+    <!-- Cardápio / Com Imagens Incorporadas Diretamente nas Células ao Lado de Cada Produto -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div class="text-center mb-12">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Cardápio Artesanal</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias individuais, kits para festas ou bebidas e adicione ao pedido com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Escolha suas delícias e adicione ao pedido. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica com imagens incorporadas nas células -->
+        <!-- Grade de Produtos com Imagem nas Células -->
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Renderizado via JavaScript atualizado -->
-        </div>
-
-        <!-- Seção de Acompanhar Pedido (Rastreio) -->
-        <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
-            <div class="max-w-2xl mx-auto text-center space-y-4">
-                <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Tempo Real</span>
-                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Acompanhe seu Pedido</h3>
-                <p class="text-stone-600 text-sm">Digite o número do seu pedido (ex: #LILE-1045) ou seu telefone cadastrado para consultar o status de entrega na cozinha.</p>
-                
-                <div class="flex flex-col sm:flex-row gap-3 pt-4">
-                    <input type="text" id="tracking-input" placeholder="Ex: #LILE-1045 ou Telefone" class="flex-1 bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-caramel">
-                    <button onclick="trackOrder()" class="bg-brand-dark hover:bg-brand-chocolate text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow">
-                        Consultar Status
-                    </button>
-                </div>
-
-                <div id="tracking-result" class="hidden mt-6 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-left space-y-4"></div>
-            </div>
-        </div>
-
-        <!-- Banner WhatsApp Direto -->
-        <div class="mt-12 bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="space-y-3 text-center md:text-left">
-                <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-600">Atendimento Personalizado</span>
-                <h3 class="font-serif text-2xl sm:text-3xl font-bold">Prefere encomendar direto com a gente?</h3>
-                <p class="text-emerald-100 text-sm sm:text-base max-w-xl font-light">
-                    Clique no botão ao lado para falar diretamente no nosso WhatsApp. Tire dúvidas sobre tamanhos para festas ou cardápio sob encomenda!
-                </p>
-            </div>
-            <a href="https://wa.me/5521995335948?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="bg-white hover:bg-emerald-50 text-emerald-900 font-bold px-8 py-4 rounded-2xl shadow-lg transition-transform hover:scale-105 flex items-center gap-3 shrink-0">
-                <i class="fa-brands fa-whatsapp text-2xl text-emerald-600"></i> Fazer Pedido no WhatsApp
-            </a>
+            <!-- Os itens serão injetados via JavaScript com a imagem lado a lado -->
         </div>
     </main>
 
-    <!-- Modais e Scripts mantidos integralmente -->
-    <!-- (Mantido o restante dos modais de carrinho, checkout, etc.) -->
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-end transition-all">
+        <div class="bg-brand-cream w-full max-w-md h-full shadow-2xl flex flex-col justify-between">
+            <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-bag-shopping text-brand-caramel text-xl"></i>
+                    <h3 class="font-serif font-bold text-xl">Seu Carrinho</h3>
+                </div>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
+            </div>
+            <div class="p-6 bg-white border-t border-stone-200 space-y-3 shadow-lg">
+                <div class="flex justify-between items-center text-lg font-bold text-brand-dark">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="text-stone-700">R$ 0,00</span>
+                </div>
+                <button onclick="alert('Indo para o checkout...')" class="w-full bg-brand-caramel hover:bg-amber-700 text-white font-bold py-4 rounded-xl shadow-lg">
+                    Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Dados de Produtos com as fotos incorporadas diretamente em cada linha/célula correspondente
+        // Array de produtos com a foto exata (1001560862.jpg) incorporada diretamente em cada célula correspondente
         const products = [
             { id: 1, name: "Brownie Brigadeiro Gourmet", price: 12.00, desc: "Massa úmida de chocolate meio amargo com generosa camada de brigadeiro cremoso.", img: "1001560862.jpg", available: true },
             { id: 2, name: "O Desejado Nutella", price: 16.00, desc: "Nosso clássico brownie recheado e coberto com puro creme de avelã Nutella.", img: "1001560862.jpg", available: true },
@@ -153,18 +135,16 @@
         ];
 
         let cart = [];
-        let discount = 0;
-        let appliedCouponName = "";
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = products.map(p => `
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-stone-200 flex flex-col justify-between transition-all hover:shadow-lg">
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-stone-200 flex flex-col justify-between">
+                    <!-- Célula do produto com a imagem incorporada diretamente ao lado do nome -->
                     <div class="flex items-center p-4 border-b border-stone-100 gap-4 bg-stone-50/50">
-                        <!-- Imagem incorporada diretamente ao lado do nome do produto -->
                         <img src="${p.img}" alt="${p.name}" class="w-16 h-16 object-cover rounded-xl shadow-sm shrink-0 border border-stone-200">
                         <div>
-                            <span class="text-xs font-semibold text-brand-caramel uppercase tracking-wider">Artesanal</span>
+                            <span class="text-xs font-semibold text-brand-caramel uppercase tracking-wider">Item de Linha</span>
                             <h3 class="font-serif font-bold text-lg text-brand-dark leading-tight">${p.name}</h3>
                         </div>
                     </div>
@@ -172,12 +152,9 @@
                         <p class="text-stone-600 text-sm leading-relaxed">${p.desc}</p>
                         <div class="flex items-center justify-between pt-2">
                             <span class="font-bold text-xl text-brand-chocolate">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
-                            ${p.available ? 
-                                `<button onclick="addToCart(${p.id})" class="bg-brand-caramel hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow transition-transform active:scale-95 flex items-center gap-2">
-                                    <i class="fa-solid fa-plus text-xs"></i> Adicionar
-                                </button>` :
-                                `<span class="text-xs font-bold bg-stone-200 text-stone-500 px-3 py-2 rounded-xl">Esgotado</span>`
-                            }
+                            <button onclick="addToCart(${p.id})" class="bg-brand-caramel hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow transition-transform active:scale-95 flex items-center gap-2">
+                                <i class="fa-solid fa-plus text-xs"></i> Adicionar
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -193,7 +170,7 @@
                 cart.push({ ...product, qty: 1 });
             }
             updateCartUI();
-            toggleCart(true);
+            toggleCart();
         }
 
         function updateCartUI() {
@@ -219,57 +196,22 @@
                             <span class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.qty}</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 bg-white border rounded-lg text-stone-600 hover:bg-stone-100 flex items-center justify-center font-bold">-</button>
-                        <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
-                        <button onclick="changeQty(${item.id}, 1)" class="w-7 h-7 bg-white border rounded-lg text-stone-600 hover:bg-stone-100 flex items-center justify-center font-bold">+</button>
-                    </div>
                 </div>
             `).join('');
 
             let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            let finalSubtotal = subtotal - discount;
-            subtotalEl.textContent = `R$ ${Math.max(0, finalSubtotal).toFixed(2).replace('.', ',')}`;
+            subtotalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
         }
 
-        function changeQty(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            }
-            updateCartUI();
-        }
-
-        function toggleCart(forceOpen = false) {
+        function toggleCart() {
             const modal = document.getElementById('cart-modal');
-            if (forceOpen) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            } else {
-                modal.classList.toggle('hidden');
-                modal.classList.toggle('flex');
-            }
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
         }
 
-        function applyCoupon() {
-            const code = document.getElementById('coupon-input').value.trim().toLowerCase();
-            const msg = document.getElementById('coupon-msg');
-            const discountLine = document.getElementById('discount-line');
-            const discountValEl = document.getElementById('discount-value');
-
-            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-            if (code === 'menos10%') {
-                discount = subtotal * 0.10;
-                appliedCouponName = 'menos10%';
-                msg.textContent = "Cupom aplicado com sucesso (-10%)!";
-                msg.className = "text-xs font-medium text-emerald-600";
-                discountLine.classList.remove('hidden');
-                discountLine.classList.add('flex');
-                discountValEl.textContent = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
-                updateCartUI();
-            } else {
-                msg
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
