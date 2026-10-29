@@ -36,8 +36,8 @@
     <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md text-brand-cream shadow-md border-b border-brand-caramel/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold text-xl shadow-inner">
-                    L
+                <div class="w-12 h-12 rounded-full bg-brand-caramel/20 flex items-center justify-center overflow-hidden border border-brand-caramel/40 shadow-inner">
+                    <img src="https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-logo-1792037706223.webp" alt="Lile Doces Artesanais Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <span class="font-serif text-lg sm:text-xl font-bold tracking-wide text-brand-cream block leading-tight">Lile</span>
@@ -77,7 +77,7 @@
                 O melhor brownie de Anchieta
             </h1>
             <p class="text-sm sm:text-base text-brand-caramel font-medium tracking-widest uppercase mb-8">
-                Brownies fudgy com casquinha craquelada,copos da felicidade supreme e potes transbordando recheio. O verdadeiro sabor do chocolate nobre com cremosidade unica e entrega rapida na sua porta.Peça agora! 
+                Brownies fudgy com casquinha craquelada, copos da felicidade supreme e potes transbordando recheio. O verdadeiro sabor do chocolate nobre com cremosidade única e entrega rápida na sua porta. Peça agora! 
             </p>
             <div class="flex justify-center items-center">
                 <a href="#produtos" class="bg-brand-caramel hover:bg-amber-700 text-white font-semibold px-8 py-3.5 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5 text-center text-sm sm:text-base">
@@ -92,7 +92,7 @@
         <div class="text-center mb-12">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Você merece um docinho,escolha seus favoritos e adicione seu pedido ao carrinho com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Você merece um docinho, escolha seus favoritos e adicione seu pedido ao carrinho com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
         <!-- Grade de Produtos Dinâmica (4 Colunas no Desktop) -->
@@ -357,8 +357,8 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 border-t border-stone-800 pt-8">
             <div class="flex justify-center items-center space-x-3 mb-2">
-                <div class="w-8 h-8 rounded-full bg-brand-caramel flex items-center justify-center text-brand-dark font-serif font-bold">
-                    L
+                <div class="w-10 h-10 rounded-full bg-brand-caramel/20 flex items-center justify-center overflow-hidden border border-brand-caramel/40">
+                    <img src="https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-logo-1792037706223.webp" alt="Lile Logo" class="w-full h-full object-cover">
                 </div>
                 <span class="font-serif text-lg font-bold text-brand-cream">Lile Doces Artesanais</span>
             </div>
@@ -405,7 +405,7 @@
             { id: 31, name: 'Empadão de frango', price: 12.90, badge: 'SALGADOS', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
             { id: 32, name: 'Empadão de camarão', price: 12.90, badge: 'SALGADOS', image: 'https://www.sumerbol.com.br/uploads/images/2018/03/1521812772.jpg', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
             { id: 33, name: 'Coxinha com cream cheese', price: 12.90, badge: 'SALGADOS', image: 'https://images.unsplash.com/photo-1624371414411-04285897e937?auto=format&fit=crop&w=800&q=80', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' }
-                ];
+        ];
 
         let cart = [];
         let discountApplied = false;
@@ -665,15 +665,13 @@
                 return;
             }
 
-            // Exibir a área de sugestões com 15% de desconto no carrinho se houver itens
             upsellSection.classList.remove('hidden');
             let upsellHtml = '';
-            // Filtrar produtos específicos solicitados (Água, Coca-Cola, brownies, tortinha, empadão)
             const suggestKeywords = ['água', 'coca-cola', 'brownie', 'tortinha', 'empadão'];
             const suggestedProducts = products.filter(p => p.available && suggestKeywords.some(k => p.name.toLowerCase().includes(k))).slice(0, 5);
 
             suggestedProducts.forEach(sp => {
-                const discountedPrice = sp.price * 0.85; // 15% de desconto
+                const discountedPrice = sp.price * 0.85; 
                 upsellHtml += `
                     <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-amber-200 text-xs">
                         <div class="flex items-center gap-2 overflow-hidden">
