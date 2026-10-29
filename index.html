@@ -166,6 +166,16 @@
                 <p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>
             </div>
             
+            <!-- SEÇÃO DE SUGESTÕES / UPSELL ANTES DO CHECKOUT (15% OFF) -->
+            <div id="cart-upsell-section" class="px-6 py-3 bg-amber-50/80 border-t border-amber-200 hidden">
+                <p class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-2 flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-brand-caramel"></i> Aproveite e leve com 15% OFF:
+                </p>
+                <div id="cart-upsell-items" class="space-y-2 max-h-40 overflow-y-auto pr-1">
+                    <!-- Renderizado dinamicamente via JS -->
+                </div>
+            </div>
+
             <!-- Seção de Cupom de Desconto Exclusivo -->
             <div class="p-4 bg-stone-100 border-t border-stone-200">
                 <div id="coupon-area" class="space-y-2">
@@ -643,14 +653,47 @@
             const subtotalEl = document.getElementById('cart-subtotal');
             const discountLine = document.getElementById('discount-line');
             const discountValueEl = document.getElementById('discount-value');
+            const upsellSection = document.getElementById('cart-upsell-section');
+            const upsellItemsContainer = document.getElementById('cart-upsell-items');
 
             if (cart.length === 0) {
                 container.innerHTML = `<p class="text-stone-500 text-center py-12">Seu carrinho está vazio.</p>`;
                 subtotalEl.innerText = 'R$ 0,00';
                 discountLine.classList.add('hidden');
+                upsellSection.classList.add('hidden');
                 discountApplied = false;
                 return;
             }
+
+            // Exibir a área de sugestões com 15% de desconto no carrinho se houver itens
+            upsellSection.classList.remove('hidden');
+            let upsellHtml = '';
+            // Filtrar produtos específicos solicitados (Água, Coca-Cola, brownies, tortinha, empadão)
+            const suggestKeywords = ['água', 'coca-cola', 'brownie', 'tortinha', 'empadão'];
+            const suggestedProducts = products.filter(p => p.available && suggestKeywords.some(k => p.name.toLowerCase().includes(k))).slice(0, 5);
+
+            suggestedProducts.forEach(sp => {
+                const discountedPrice = sp.price * 0.85; // 15% de desconto
+                upsellHtml += `
+                    <div class="flex items-center justify-between bg-white p-2 rounded-xl border border-amber-200 text-xs">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <img src="${sp.image}" class="w-9 h-9 object-cover rounded-lg shrink-0">
+                            <div class="truncate">
+                                <p class="font-bold text-brand-dark truncate">${sp.name}</p>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-stone-400 line-through text-[10px]">R$ ${sp.price.toFixed(2).replace('.', ',')}</span>
+                                    <span class="text-emerald-600 font-bold">R$ ${discountedPrice.toFixed(2).replace('.', ',')} <span class="text-[9px] text-amber-700 bg-amber-100 px-1 rounded">15% OFF</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="addItem('${sp.name} (Oferta 15% OFF)', ${discountedPrice})" class="bg-brand-caramel hover:bg-amber-700 text-white font-bold px-2.5 py-1.5 rounded-lg shrink-0 transition-all">
+                            + Add
+                        </button>
+                    </div>
+                `;
+            });
+            upsellItemsContainer.innerHTML = upsellHtml;
+
             let html = '', subtotal = 0;
             cart.forEach((item, index) => {
                 subtotal += item.price * item.quantity;
