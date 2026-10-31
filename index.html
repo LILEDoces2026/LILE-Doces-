@@ -47,6 +47,7 @@
 
             <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
                 <a href="#produtos" class="hover:text-brand-caramel transition-colors">Cardápio</a>
+                <a href="#avaliacoes" class="hover:text-brand-caramel transition-colors">Avaliações</a>
                 <a href="#rastreio-section" class="hover:text-brand-caramel transition-colors">Acompanhar Pedido</a>
                 <a href="#sobre" class="hover:text-brand-caramel transition-colors">Sobre Nós</a>
                 <a href="#contato" class="hover:text-brand-caramel transition-colors">Contato</a>
@@ -100,6 +101,95 @@
             <!-- Renderizado via JavaScript -->
         </div>
 
+        <!-- NOVA SEÇÃO: Avaliações dos Clientes (Inserida exatamente abaixo da lista de cardápio) -->
+        <section id="avaliacoes" class="mt-20 pt-8 border-t border-stone-200">
+            <div class="text-center mb-12">
+                <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Depoimentos Reais</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark mt-2">O que nossos clientes dizem</h3>
+                <div class="w-20 h-1 bg-brand-caramel mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Avaliação 1 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-transform hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Cliente J***a" class="w-12 h-12 rounded-full object-cover border-2 border-brand-caramel/40">
+                                <div>
+                                    <h4 class="font-bold text-brand-dark text-sm">J***a</h4>
+                                    <span class="text-xs text-stone-400">11/10/2026 19:18</span>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-500 text-sm gap-0.5">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+
+                        <!-- Tags da Avaliação -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Como na foto</span>
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Comida excelente</span>
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Recomendaria</span>
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Bem embalado</span>
+                        </div>
+                    </div>
+
+                    <!-- Resposta da Loja -->
+                    <div class="bg-stone-50 rounded-2xl p-4 border border-stone-200 text-xs space-y-1.5">
+                        <p class="font-bold text-brand-dark flex items-center gap-1.5">
+                            <i class="fa-solid fa-store text-brand-caramel"></i> Em análise / Resposta da LILE:
+                        </p>
+                        <p class="text-stone-600 leading-relaxed italic">
+                            "Muito obrigada pelo carinho e pela avaliação! Ficamos felizes demais que tenha gostado, será sempre bem-vinda á LILE Doces..."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Avaliação 2 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-transform hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Cliente G***a" class="w-12 h-12 rounded-full object-cover border-2 border-brand-caramel/40">
+                                <div>
+                                    <h4 class="font-bold text-brand-dark text-sm">G***a</h4>
+                                    <span class="text-xs text-stone-400">12/10/2026 13:28</span>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-500 text-sm gap-0.5">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+
+                        <!-- Tags da Avaliação -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Bem embalado</span>
+                            <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Serviço atencioso</span>
+                        </div>
+                    </div>
+
+                    <!-- Resposta da Loja -->
+                    <div class="bg-stone-50 rounded-2xl p-4 border border-stone-200 text-xs space-y-1.5">
+                        <p class="font-bold text-brand-dark flex items-center gap-1.5">
+                            <i class="fa-solid fa-store text-brand-caramel"></i> Em análise / Resposta da LILE:
+                        </p>
+                        <p class="text-stone-600 leading-relaxed italic">
+                            "Muito obrigado pela preferência e pelas 5 estrelas! É um prazer atender você. Até a próxima! ✨🤎 LILE Doces agradece..."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção de Acompanhar Pedido (Rastreio) -->
         <div id="rastreio-section" class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
             <div class="max-w-2xl mx-auto text-center space-y-4">
@@ -150,10 +240,9 @@
         </div>
     </div>
 
-    <!-- Modal do Carrinho de Compras (Refatorado para Layout Limpo e Sem Sobreposição) -->
+    <!-- Modal do Carrinho de Compras -->
     <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-end transition-all">
         <div class="bg-brand-cream w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
-            <!-- Cabeçalho do Carrinho -->
             <div class="p-5 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-caramel/20 shrink-0">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-bag-shopping text-brand-caramel text-xl"></i>
@@ -164,9 +253,7 @@
                 </button>
             </div>
             
-            <!-- Corpo Rolável do Carrinho (Com espaçamento e estrutura limpa) -->
             <div class="p-5 overflow-y-auto flex-1 space-y-5">
-                <!-- Lista de Itens do Pedido -->
                 <div id="cart-items-container" class="space-y-3">
                     <p class="text-stone-500 text-center py-8">Seu carrinho está vazio.</p>
                 </div>
@@ -188,17 +275,14 @@
                     <p id="cutlery-warning" class="text-[11px] text-red-600 font-semibold mt-2 hidden">⚠️ Por favor, escolha se precisa de talher ou não para continuar.</p>
                 </div>
                 
-                <!-- SEÇÃO DE SUGESTÕES / UPSELL COM ÁGUA E COCA-COLA -->
+                <!-- SEÇÃO DE UPSELL -->
                 <div id="cart-upsell-section" class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200 shadow-sm hidden">
                     <p class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                         <i class="fa-solid fa-bolt text-brand-caramel"></i> Aproveite e leve com desconto:
                     </p>
-                    <div id="cart-upsell-items" class="space-y-2 max-h-44 overflow-y-auto pr-1">
-                        <!-- Renderizado dinamicamente via JS -->
-                    </div>
+                    <div id="cart-upsell-items" class="space-y-2 max-h-44 overflow-y-auto pr-1"></div>
                 </div>
 
-                <!-- Seção de Cupom de Desconto Exclusivo -->
                 <div class="p-3.5 bg-stone-100/80 rounded-2xl border border-stone-200">
                     <div id="coupon-area" class="space-y-2">
                         <p class="text-xs font-semibold text-brand-dark flex items-center gap-1.5">
@@ -213,7 +297,6 @@
                 </div>
             </div>
 
-            <!-- Rodapé Fixo do Carrinho (Subtotal e Botão Checkout) -->
             <div class="p-5 bg-white border-t border-stone-200 space-y-3 shadow-lg shrink-0">
                 <div id="discount-line" class="hidden justify-between items-center text-sm font-semibold text-emerald-600">
                     <span>Desconto (menos10%):</span>
@@ -331,7 +414,7 @@
         </div>
     </div>
 
-    <!-- Footer / Rodapé com Sobre Nós e Gerenciamento de Estoque -->
+    <!-- Footer / Rodapé -->
     <footer id="contato" class="bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-caramel/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mb-16">
             <div class="text-center">
@@ -372,7 +455,6 @@
             </div>
         </div>
 
-        <!-- Botão de Acesso ao Painel de Estoque no Rodapé -->
         <div class="max-w-xl mx-auto px-4 text-center mb-12">
             <button onclick="openStockModal()" class="bg-stone-900 hover:bg-stone-800 text-brand-cream px-6 py-3.5 rounded-2xl shadow-lg border border-brand-caramel/40 text-xs font-semibold flex items-center justify-center gap-2 mx-auto transition-all hover:scale-105">
                 <i class="fa-solid fa-sliders text-brand-caramel"></i> Gerenciar Estoque / Disponibilidade (Painel Interno)
@@ -434,7 +516,7 @@
         let cart = [];
         let discountApplied = false;
         let deliveryFee = 5.00;
-        let cutlerySelected = null; // null = não escolhido, true = sim (R$ 1,90), false = não
+        let cutlerySelected = null;
 
         const neighborhoodFees = {
             'anchieta': 5.00,
@@ -717,7 +799,6 @@
                 return;
             }
 
-            // Exibir seções quando houver itens
             cutlerySection.classList.remove('hidden');
             upsellSection.classList.remove('hidden');
 
@@ -763,7 +844,6 @@
                     </div>`;
             });
 
-            // Adicionar taxa do talher e guardanapo no subtotal se selecionado
             if (cutlerySelected === true) {
                 subtotal += 1.90;
                 html += `
@@ -857,7 +937,6 @@
         function openCheckoutModal() {
             if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
             
-            // VALIDAÇÃO OBRIGATÓRIA DA ESCOLHA DE TALHER
             if (cutlerySelected === null) {
                 const warningEl = document.getElementById('cutlery-warning');
                 warningEl.classList.remove('hidden');
