@@ -81,7 +81,7 @@
                 Brownies fudgy com casquinha craquelada, copos da felicidade supreme e potes transbordando recheio. O verdadeiro sabor do chocolate nobre com cremosidade única e entrega rápida na sua porta. Peça agora! 
             </p>
             
-            <!-- NOVO CONTAINER LEVE COM MICRO-ELEMENTOS (2 COLUNAS EM LINHA ÚNICA) -->
+            <!-- CONTAINER LEVE COM MICRO-ELEMENTOS -->
             <div class="inline-flex items-center justify-center bg-[#4a281c]/80 backdrop-blur-md border border-brand-caramel/30 rounded-2xl px-5 py-3 shadow-lg mb-8 max-w-full">
                 <div class="grid grid-cols-2 divide-x divide-brand-caramel/30 text-xs sm:text-sm font-medium text-brand-cream tracking-wide">
                     <div class="px-3 sm:px-4 flex items-center justify-center gap-1.5 whitespace-nowrap">
@@ -104,18 +104,71 @@
 
     <!-- Cardápio / Descrições sensoriais da LILE -->
     <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div class="text-center mb-12">
+        <div class="text-center mb-8">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
             <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Você merece um docinho, escolha seus favoritos e adicione seu pedido ao carrinho com facilidade. Pedido mínimo: <strong>R$ 20,00</strong>.</p>
         </div>
 
-        <!-- Grade de Produtos Dinâmica (4 Colunas no Desktop) -->
+        <!-- 1. FILTRO RÁPIDO POR CATEGORIAS NO TOPO -->
+        <div class="sticky top-20 z-30 bg-brand-cream/90 backdrop-blur-md py-3 mb-10 border-y border-stone-200">
+            <div class="flex items-center justify-center gap-2 overflow-x-auto no-scrollbar px-2">
+                <button onclick="scrollToCategory('secao-combos')" class="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-full shadow-md whitespace-nowrap transition-all transform hover:scale-105 flex items-center gap-1.5">
+                    <i class="fa-solid fa-fire text-amber-300"></i> Combos & Kits
+                </button>
+                <button onclick="scrollToCategory('secao-mais-vendidos')" class="bg-brand-dark hover:bg-brand-chocolate text-brand-cream font-medium text-xs sm:text-sm px-4 py-2 rounded-full shadow whitespace-nowrap transition-all border border-brand-caramel/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-star text-amber-400"></i> Queridinhos
+                </button>
+                <button onclick="scrollToCategory('secao-copos')" class="bg-white hover:bg-stone-100 text-brand-dark font-medium text-xs sm:text-sm px-4 py-2 rounded-full shadow border border-stone-300 whitespace-nowrap transition-all">
+                    Copos da Felicidade
+                </button>
+                <button onclick="scrollToCategory('secao-brownies')" class="bg-white hover:bg-stone-100 text-brand-dark font-medium text-xs sm:text-sm px-4 py-2 rounded-full shadow border border-stone-300 whitespace-nowrap transition-all">
+                    Brownies
+                </button>
+                <button onclick="scrollToCategory('secao-bebidas')" class="bg-white hover:bg-stone-100 text-brand-dark font-medium text-xs sm:text-sm px-4 py-2 rounded-full shadow border border-stone-300 whitespace-nowrap transition-all">
+                    Bebidas
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. SEÇÃO AGRESSIVA DE COMBOS E KITS (TOPO DO CARDÁPIO) -->
+        <section id="secao-combos" class="mb-14 bg-gradient-to-br from-amber-500/10 via-amber-100/40 to-stone-100 p-6 sm:p-8 rounded-3xl border border-brand-caramel/30 shadow-lg relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-caramel/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                <div>
+                    <span class="bg-red-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">Pague Menos & Leve Mais</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark mt-2">🔥 Combos para a Galera & Casal</h3>
+                    <p class="text-stone-600 text-xs sm:text-sm">Economize garantindo suas combinações perfeitas em doses duplas ou triplas.</p>
+                </div>
+            </div>
+            <div id="combo-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Preenchido dinamicamente via JS -->
+            </div>
+        </section>
+
+        <!-- 3. DESTAQUE PARA OS MAIS VENDIDOS (QUERIDINHOS DA LILE) -->
+        <section id="secao-mais-vendidos" class="mb-14">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <span class="text-brand-caramel font-bold text-xs uppercase tracking-widest block">Favoritos dos Clientes</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">⭐ Os Queridinhos da LILE</h3>
+                </div>
+                <div class="w-16 sm:w-32 h-0.5 bg-brand-caramel/30"></div>
+            </div>
+            <div id="bestsellers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Preenchido dinamicamente via JS -->
+            </div>
+        </section>
+
+        <!-- CARDÁPIO COMPLETO -->
+        <div class="mb-6 pt-4 border-t border-stone-200" id="secao-brownies">
+            <h3 class="font-serif text-2xl font-bold text-brand-dark mb-6">Cardápio Completo</h3>
+        </div>
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Renderizado via JavaScript -->
         </div>
 
-        <!-- NOVA SEÇÃO: Avaliações dos Clientes (Inserida exatamente abaixo da lista de cardápio) -->
+        <!-- Avaliações dos Clientes -->
         <section id="avaliacoes" class="mt-20 pt-8 border-t border-stone-200">
             <div class="text-center mb-12">
                 <span class="bg-brand-caramel/10 text-brand-chocolate text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-caramel/30">Depoimentos Reais</span>
@@ -145,7 +198,6 @@
                             </div>
                         </div>
 
-                        <!-- Tags da Avaliação -->
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Como na foto</span>
                             <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Comida excelente</span>
@@ -154,7 +206,6 @@
                         </div>
                     </div>
 
-                    <!-- Resposta da Loja -->
                     <div class="bg-stone-50 rounded-2xl p-4 border border-stone-200 text-xs space-y-1.5">
                         <p class="font-bold text-brand-dark flex items-center gap-1.5">
                             <i class="fa-solid fa-store text-brand-caramel"></i> Em análise / Resposta da LILE:
@@ -185,14 +236,12 @@
                             </div>
                         </div>
 
-                        <!-- Tags da Avaliação -->
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Bem embalado</span>
                             <span class="bg-amber-50 text-amber-900 border border-amber-200 text-xs px-3 py-1 rounded-xl font-medium">Serviço atencioso</span>
                         </div>
                     </div>
 
-                    <!-- Resposta da Loja -->
                     <div class="bg-stone-50 rounded-2xl p-4 border border-stone-200 text-xs space-y-1.5">
                         <p class="font-bold text-brand-dark flex items-center gap-1.5">
                             <i class="fa-solid fa-store text-brand-caramel"></i> Em análise / Resposta da LILE:
@@ -203,14 +252,14 @@
                     </div>
                 </div>
 
-                <!-- Avaliação 3: Jessica S. -->
+                <!-- Avaliação 3: J. S. -->
                 <div class="bg-white rounded-3xl p-6 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-transform hover:-translate-y-1">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center space-x-3">
                                 <div class="w-10 h-10 rounded-full bg-brand-caramel/20 flex items-center justify-center font-bold text-brand-chocolate text-sm border border-brand-caramel/40">J</div>
                                 <div>
-                                    <h4 class="font-bold text-brand-dark text-sm">Jessica S.</h4>
+                                    <h4 class="font-bold text-brand-dark text-sm">J. S.</h4>
                                     <span class="text-[11px] text-stone-400">12/10/2026</span>
                                 </div>
                             </div>
@@ -394,6 +443,35 @@
             </a>
         </div>
     </main>
+
+    <!-- 4. POP-UP LIMPO COMBO DO DIA (Aparece 1s após carregar) -->
+    <div id="promo-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-brand-caramel/30 relative animate-fade-in">
+            <!-- Botão Fechar X -->
+            <button onclick="closePromoModal()" class="absolute top-3 right-3 bg-stone-900/60 hover:bg-stone-900 text-white w-9 h-9 rounded-full flex items-center justify-center text-lg z-20 transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="relative h-48 bg-brand-dark overflow-hidden">
+                <img src="https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352475094.webp" alt="Combo Especial" class="w-full h-full object-cover opacity-85">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 bg-red-600 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow">🔥 Oferta Limitada</span>
+            </div>
+            <div class="p-6 text-center space-y-4">
+                <h3 class="font-serif font-bold text-2xl text-brand-dark">Combo do Dia LILE ✨</h3>
+                <p class="text-xs sm:text-sm text-stone-600">3 Brownies Recheados à sua escolha + 1 Coca-Cola trincando de gelada com desconto exclusivo!</p>
+                <div class="flex justify-center items-baseline gap-2 bg-amber-50 py-2.5 rounded-2xl border border-amber-200">
+                    <span class="text-stone-400 line-through text-sm">R$ 52,00</span>
+                    <span class="text-2xl font-bold text-emerald-600">R$ 47,40</span>
+                </div>
+                <button onclick="addPromoComboAndOpenCart()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl shadow-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-cart-shopping"></i> Quero esse com desconto!
+                </button>
+                <button onclick="closePromoModal()" class="text-xs text-stone-500 underline font-medium hover:text-brand-dark block mx-auto">
+                    Não, quero ver o cardápio completo
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Gestão de Estoque -->
     <div id="stock-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -650,28 +728,28 @@
     <!-- Lógica JavaScript -->
     <script>
         let products = [
-            { id: 1, name: 'Brownie com sorvete', price: 23.50, badge: 'NOVIDADE', image: 'https://media.istockphoto.com/id/628596566/pt/foto/chocolate-fudgy-brownie-with-vanilla-ice-cream-on-top.jpg?s=612x612&w=0&k=20&c=bS08ir2Eyi3CQCvoNiwSzG9jlCEg7H0CqrbaULPT0XM=', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete de flocos e calda.', available: true, type: 'single' },
-            { id: 2, name: 'Combo 2 Brownie com sorvete', price: 47.80, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792366547641.webp', desc: 'A receita para duas pessoas, Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single' },
-            { id: 3, name: '3 Fatias de Brownie', price: 42.90, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354886093.webp', desc: 'combo especial com 3 fatias generosas dos nossos sabores campeões de vendas: 1x Fatia Ninho com Lacta Branco e Oreo - cremosidade e crocância perfeita. 1x Fatia Ninho, Nutella e Oreo - o encontro dos maiores favoritos. 1x Fatia Clássica Ninho com Nutella - a combinação tradicional imbatível. Feitos com massa artesanal de brownie super molhadinha e ingredientes de alta qualidade. Perfeito para partilhar ou para matar a fome de doce em grande estilo.', available: true, type: 'single' },
-            { id: 4, name: '2 Brownie no pote', price: 14.00, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354722861.webp', desc: 'Nosso brownie artesanal bem molhadinho montado em camadas intercaladas de brigadeiro gourmet de Leite Ninho e Nutella pura. Uma explosão de sabor a cada colherada! (Pote 250ml).', available: true, type: 'single' },
-            { id: 5, name: 'Brownie com Nutella', price: 12.50, badge: 'O MAIS PEDIDO', image: 'https://i0.wp.com/strawberryinthedesert.com/wp-content/uploads/2023/01/Nutella-Brownies-2.jpg?resize=720%2C500&ssl=1', desc: 'A massa estruturada e úmida da LILE exibe um brownie generosamente recheado com creme de Nutella.', available: true, type: 'single' },
+            { id: 1, name: 'Brownie com sorvete', price: 23.50, badge: 'NOVIDADE', image: 'https://media.istockphoto.com/id/628596566/pt/foto/chocolate-fudgy-brownie-with-vanilla-ice-cream-on-top.jpg?s=612x612&w=0&k=20&c=bS08ir2Eyi3CQCvoNiwSzG9jlCEg7H0CqrbaULPT0XM=', desc: 'Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete de flocos e calda.', available: true, type: 'single', isBestseller: true },
+            { id: 2, name: 'Combo 2 Brownie com sorvete', price: 47.80, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792366547641.webp', desc: 'A receita para duas pessoas, Nosso clássico brownie quentinho acompanhado de uma generosa bola de sorvete artesanal e calda.', available: true, type: 'single', isCombo: true },
+            { id: 3, name: '3 Fatias de Brownie', price: 42.90, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354886093.webp', desc: 'combo especial com 3 fatias generosas dos nossos sabores campeões de vendas.', available: true, type: 'single', isCombo: true },
+            { id: 4, name: '2 Brownie no pote', price: 14.00, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354722861.webp', desc: 'Nosso brownie artesanal bem molhadinho montado em camadas intercaladas de brigadeiro gourmet de Leite Ninho e Nutella pura.', available: true, type: 'single', isCombo: true },
+            { id: 5, name: 'Brownie com Nutella', price: 12.50, badge: 'O MAIS PEDIDO', image: 'https://i0.wp.com/strawberryinthedesert.com/wp-content/uploads/2023/01/Nutella-Brownies-2.jpg?resize=720%2C500&ssl=1', desc: 'A massa estruturada e úmida da LILE exibe um brownie generosamente recheado com creme de Nutella.', available: true, type: 'single', isBestseller: true },
             { id: 6, name: 'Brownie de Casadinho', price: 12.50, badge: 'PROMOÇÃO', image: 'https://static-media.hotmart.com/J88UpfSt4DHh67L8USezzxNQ67M=/300x300/smart/filters:format(webp):background_color(white)/hotmart/product_pictures/75e0fddb-3d26-42eb-a999-456a3023838e/BROWNIERECHEADO_Umdosnossosqueridinhosporaqui____brownierecheado_brownie_cafeteria_cafeteriaconjunto.jpg?w=920', desc: 'Brownie de casadinho com a dupla camada clássica de recheio, como dois tipos de brigadeiro branco e preto.', available: true, type: 'single' },
             { id: 7, name: 'Brownie de Doce de Leite', price: 12.50, badge: 'PROMOÇÃO', image: 'https://cdn.oceanserver.com.br/lojas/gymchef/uploads_produto/brownie-foto-site-1-69000e5bb448a.png', desc: 'Nosso clássico inconfundível recheado com doce de leite artesanal de textura aveludada.', available: true, type: 'single' },
-            { id: 8, name: 'Brownie Brigadeiro Gourmet 50% Cacau', price: 12.50, badge: 'O MAIS PEDIDO', image: 'https://i0.wp.com/www.eucozinhando.com.br/wp-content/uploads/2020/05/brownie-re-cheado-de-nutella.jpg?resize=600%2C338&ssl=1', desc: 'Foto que mostra claramente a textura do brownie com recheio de brigadeiro gourmet 50% cacau.', available: true, type: 'single' },
+            { id: 8, name: 'Brownie Brigadeiro Gourmet 50% Cacau', price: 12.50, badge: 'O MAIS PEDIDO', image: 'https://i0.wp.com/www.eucozinhando.com.br/wp-content/uploads/2020/05/brownie-re-cheado-de-nutella.jpg?resize=600%2C338&ssl=1', desc: 'Foto que mostra claramente a textura do brownie com recheio de brigadeiro gourmet 50% cacau.', available: true, type: 'single', isBestseller: true },
             { id: 9, name: 'Brownie (Tradicional)', price: 9.99, badge: 'MENOS É MAIS', image: 'https://images.unsplash.com/photo-1600668293501-7e18590b199d?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D', desc: 'Brownie artesanal clássico bem apetitoso, com casquinha crocante e interior fudgy.', available: true, type: 'single' },
-            { id: 10, name: 'Combo com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://vejario.abril.com.br/wp-content/uploads/2017/08/fabio-rossi_divulgac3a7c3a3o.jpg?quality=70&w=640&h=360&crop=1', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear.', available: true, type: 'single' },
-            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://theproductboxes.co.uk/wp-content/uploads/2024/12/Empty-Brownie-Boxes.webp', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear.', available: true, type: 'single' },
-            { id: 12, name: 'Kit 20 Brownies', price: 180.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Bandeja com seleção variada de brownies voltada para reuniões.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}] },
-            { id: 13, name: 'Kit 50 Brownies', price: 280.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Brownie para mesa de festa, ideal para comemorações e aniversários.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}] },
-            { id: 14, name: 'Kit 100 Brownies', price: 350.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Produção em grande escala: caixa com 100 brownies para grandes eventos.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}] },
-            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 9.90, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single' },
-            { id: 16, name: 'Água Mineral 510 ml', price: 3.90, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D', desc: 'Garrafinha de água mineral de 510 ml refrescante.', available: true, type: 'options', options: [{name: 'com gás', price: 4.90}, {name: 'sem gás', price: 3.90}] },
-            { id: 17, name: '3 brownie`s + Coca-cola', price: 47.40, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352475094.webp', desc: 'Acompanha 3 brownies recheados à sua escolha +1 Coca-Cola lata estupidamente gelada.', available: true, type: 'single' },
-            { id: 18, name: '2 brownie`s + Coca-cola', price: 34.90, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352511932.webp', desc: 'Acompanha 2 brownies recheados à sua escolha +1 Coca-Cola lata estupidamente gelada.', available: true, type: 'single' },
-            { id: 19, name: 'Empadão + Brownie + Coca-cola', price: 39.30, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1793566353150.webp', desc: 'Nosso empadão de frango recheado, acompanhado de um brownie e uma Coca-Cola geladinha.', available: true, type: 'single' },
+            { id: 10, name: 'Combo com 3 Brownies', price: 35.00, badge: 'KIT', image: 'https://vejario.abril.com.br/wp-content/uploads/2017/08/fabio-rossi_divulgac3a7c3a3o.jpg?quality=70&w=640&h=360&crop=1', desc: 'Seleção com 3 deliciosos brownies sortidos/especiais para saborear.', available: true, type: 'single', isCombo: true },
+            { id: 11, name: 'Caixa Presenteável (4 Unidades)', price: 59.90, badge: 'PRESENTE', image: 'https://theproductboxes.co.uk/wp-content/uploads/2024/12/Empty-Brownie-Boxes.webp', desc: 'Caixa especial com 4 unidades de brownies selecionados, ideal para presentear.', available: true, type: 'single', isCombo: true },
+            { id: 12, name: 'Kit 20 Brownies', price: 180.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Bandeja com seleção variada de brownies voltada para reuniões.', available: true, type: 'options', options: [{name: 'Tradicional', price: 180.00}, {name: 'Recheado', price: 210.00}], isCombo: true },
+            { id: 13, name: 'Kit 50 Brownies', price: 280.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Brownie para mesa de festa, ideal para comemorações e aniversários.', available: true, type: 'options', options: [{name: 'Tradicional', price: 280.00}, {name: 'Recheado', price: 350.00}], isCombo: true },
+            { id: 14, name: 'Kit 100 Brownies', price: 350.00, badge: 'ENCOMENDAS', image: 'https://internovias.com.br/wp-content/uploads/2020/07/2-2.jpg', desc: 'Produção em grande escala: caixa com 100 brownies para grandes eventos.', available: true, type: 'options', options: [{name: 'Tradicional', price: 350.00}, {name: 'Recheado', price: 400.00}], isCombo: true },
+            { id: 15, name: 'Refrigerante Coca-Cola 350ml', price: 9.90, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80', desc: 'Lata 350ml bem gelada para acompanhar seu momento doce.', available: true, type: 'single', category: 'bebidas' },
+            { id: 16, name: 'Água Mineral 510 ml', price: 3.90, badge: 'BEBIDA', image: 'https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D', desc: 'Garrafinha de água mineral de 510 ml refrescante.', available: true, type: 'options', options: [{name: 'com gás', price: 4.90}, {name: 'sem gás', price: 3.90}], category: 'bebidas' },
+            { id: 17, name: '3 brownie`s + Coca-cola', price: 47.40, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352475094.webp', desc: 'Acompanha 3 brownies recheados à sua escolha +1 Coca-Cola lata estupidamente gelada.', available: true, type: 'single', isCombo: true },
+            { id: 18, name: '2 brownie`s + Coca-cola', price: 34.90, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352511932.webp', desc: 'Acompanha 2 brownies recheados à sua escolha +1 Coca-Cola lata estupidamente gelada.', available: true, type: 'single', isCombo: true },
+            { id: 19, name: 'Empadão + Brownie + Coca-cola', price: 39.30, badge: 'COMBO', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1793566353150.webp', desc: 'Nosso empadão de frango recheado, acompanhado de um brownie e uma Coca-Cola geladinha.', available: true, type: 'single', isCombo: true },
             { id: 20, name: 'Fatia de brownie', price: 24.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792352767980.webp', desc: ' A cremosidade do Leite Ninho e Nutella, finalizada com o toque crocante do biscoito Oreo.', available: true, type: 'single' },
-            { id: 21, name: 'Copo da felicidade', price: 29.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792688677229.webp', desc: 'mousse de Nutella combinado com a intensidade do nosso brigadeiro artesanal, montados em camadas generosas de pura felicidade.', available: true, type: 'single' },
-            { id: 22, name: '2 Copos da felicidade', price: 49.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354800374.webp', desc: 'A cremosidade do Leite Ninho e Nutella, finalizada com o toque crocante do biscoito Oreo.', available: true, type: 'single' },
+            { id: 21, name: 'Copo da felicidade', price: 29.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792688677229.webp', desc: 'mousse de Nutella combinado com a intensidade do nosso brigadeiro artesanal, montados em camadas generosas.', available: true, type: 'single', isBestseller: true, category: 'copos' },
+            { id: 22, name: '2 Copos da felicidade', price: 49.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792354800374.webp', desc: 'A cremosidade do Leite Ninho e Nutella, finalizada com o toque crocante do biscoito Oreo em dose dupla!', available: true, type: 'single', isCombo: true, category: 'copos' },
             { id: 23, name: 'Empadão de costela', price: 21.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1793502667521.webp', desc: 'Massa super leve que derrete na boca, com recheio costela desfiada, suculenta e temperada na medida certa', available: true, type: 'single' },
             { id: 24, name: 'Pote de brownie', price: 18.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://cdn.vendanozap.app/uploads/9da236f6-2ea1-4f61-a7c1-6626e75cf98c-img-1792040363122.webp', desc: ' brownie artesanal molhadinho, mergulhados em camadas generosas de recheios ultra cremosos para comer de colher.', available: true, type: 'single' },
             { id: 25, name: 'Bolo de pote', price: 9.90, badge: 'PAGUE MENOS LEVE MAIS', image: 'https://minhasreceitinhas.com.br/wp-content/uploads/2023/10/Bolo-no-pote-pra-vender-730x365.jpeg', desc: 'Camadas generosas de massa super fofinha e recheios artesanais ultra cremosos', available: true, type: 'single' },
@@ -731,87 +809,132 @@
             
             initStock();
             renderProducts();
+
+            // POP-UP PROMO DO DIA (1 segundo após carregar a página)
+            setTimeout(() => {
+                const modal = document.getElementById('promo-modal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                }
+            }, 1000);
         });
 
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            if(!grid) return;
-            let html = '';
+        function closePromoModal() {
+            const modal = document.getElementById('promo-modal');
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
 
-            const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
+        function addPromoComboAndOpenCart() {
+            addItem('3 brownie`s + Coca-cola', 47.40);
+            closePromoModal();
+            toggleCart();
+        }
 
-            sortedProducts.forEach(p => {
-                const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
-                const cartItem = cart.find(item => item.name === p.name);
-                const currentQty = cartItem ? cartItem.quantity : 0;
-                
-                if (p.type === 'single') {
-                    html += `
-                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
-                            <div>
-                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-44">
-                                    <span class="absolute top-3 left-3 ${badgeColor} text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
-                                    ${!p.available ? '<span class="absolute top-3 right-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
-                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-1 line-clamp-1">${p.name}</h3>
-                                    <p class="text-stone-600 text-xs leading-relaxed mb-3 line-clamp-2">${p.desc}</p>
-                                </div>
+        function scrollToCategory(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function createProductCardHTML(p) {
+            const badgeColor = p.badge === 'PROMOÇÃO' ? 'bg-red-600' : p.badge === 'EDIÇÃO ESPECIAL' ? 'bg-amber-600' : 'bg-brand-caramel';
+            const cartItem = cart.find(item => item.name === p.name);
+            const currentQty = cartItem ? cartItem.quantity : 0;
+            
+            if (p.type === 'single') {
+                return `
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                        <div>
+                            <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-44">
+                                <span class="absolute top-3 left-3 ${badgeColor} text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                ${!p.available ? '<span class="absolute top-3 right-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
                             </div>
-                            <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                                <div>
-                                    <span class="text-[10px] text-stone-400 block">Preço un.</span>
-                                    <span class="text-lg font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
-                                </div>
+                            <div class="p-4">
+                                <h3 class="font-serif text-lg font-bold text-brand-dark mb-1 line-clamp-1">${p.name}</h3>
+                                <p class="text-stone-600 text-xs leading-relaxed mb-3 line-clamp-2">${p.desc}</p>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                            <div>
+                                <span class="text-[10px] text-stone-400 block">Preço un.</span>
+                                <span class="text-lg font-bold text-emerald-600">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                            ${p.available ? `
+                                <div class="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200 shadow-inner">
+                                    <button onclick="updateItemQuantity('${p.name}', -1, ${p.price})" class="w-7 h-7 rounded-lg bg-white shadow hover:bg-stone-200 flex items-center justify-center font-bold text-brand-dark transition-colors" title="Diminuir">-</button>
+                                    <span class="font-bold text-xs px-1.5 text-brand-dark min-w-[20px] text-center">${currentQty}</span>
+                                    <button onclick="updateItemQuantity('${p.name}', 1, ${p.price})" class="w-7 h-7 rounded-lg bg-brand-caramel hover:bg-amber-700 shadow flex items-center justify-center font-bold text-white transition-colors" title="Aumentar">+</button>
+                                </div>` :
+                                `<button disabled class="bg-stone-300 text-stone-500 px-3 py-2 rounded-xl text-xs font-medium cursor-not-allowed">
+                                    Indisponível
+                                </button>`
+                            }
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
+                        <div>
+                            <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-44">
+                                <span class="absolute top-3 left-3 ${badgeColor} text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
+                                ${!p.available ? '<span class="absolute top-3 right-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-serif text-lg font-bold text-brand-dark mb-1 line-clamp-1">${p.name}</h3>
+                                <p class="text-stone-600 text-xs leading-relaxed mb-3 line-clamp-2">${p.desc}</p>
                                 ${p.available ? `
-                                    <div class="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200 shadow-inner">
-                                        <button onclick="updateItemQuantity('${p.name}', -1, ${p.price})" class="w-7 h-7 rounded-lg bg-white shadow hover:bg-stone-200 flex items-center justify-center font-bold text-brand-dark transition-colors" title="Diminuir">-</button>
-                                        <span class="font-bold text-xs px-1.5 text-brand-dark min-w-[20px] text-center">${currentQty}</span>
-                                        <button onclick="updateItemQuantity('${p.name}', 1, ${p.price})" class="w-7 h-7 rounded-lg bg-brand-caramel hover:bg-amber-700 shadow flex items-center justify-center font-bold text-white transition-colors" title="Aumentar">+</button>
-                                    </div>` :
-                                    `<button disabled class="bg-stone-300 text-stone-500 px-3 py-2 rounded-xl text-xs font-medium cursor-not-allowed">
-                                        Indisponível
-                                    </button>`
+                                    <div class="space-y-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 p-2.5 rounded-xl border">
+                                        <div class="flex justify-between items-center">
+                                            <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
+                                            <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2 py-1 rounded-lg">Adicionar</button>
+                                        </div>
+                                        <div class="flex justify-between items-center pt-1 border-t">
+                                            <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
+                                            <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2 py-1 rounded-lg">Adicionar</button>
+                                        </div>
+                                    </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Esgotado</p>'
                                 }
                             </div>
                         </div>
-                    `;
-                } else {
-                    html += `
-                        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-stone-200/60 flex flex-col justify-between ${!p.available ? 'opacity-60 grayscale-[30%]' : ''}">
-                            <div>
-                                <div class="relative bg-stone-100 text-center border-b border-stone-100 overflow-hidden h-44">
-                                    <span class="absolute top-3 left-3 ${badgeColor} text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">${p.badge}</span>
-                                    ${!p.available ? '<span class="absolute top-3 right-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow z-10">ESGOTADO</span>' : ''}
-                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-serif text-lg font-bold text-brand-dark mb-1 line-clamp-1">${p.name}</h3>
-                                    <p class="text-stone-600 text-xs leading-relaxed mb-3 line-clamp-2">${p.desc}</p>
-                                    ${p.available ? `
-                                        <div class="space-y-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 p-2.5 rounded-xl border">
-                                            <div class="flex justify-between items-center">
-                                                <span>Tradicional (R$ ${p.options[0].price.toFixed(2).replace('.', ',')})</span>
-                                                <button onclick="addItem('${p.name} - Tradicional',${p.options[0].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2 py-1 rounded-lg">Adicionar</button>
-                                            </div>
-                                            <div class="flex justify-between items-center pt-1 border-t">
-                                                <span>Recheado (R$ ${p.options[1].price.toFixed(2).replace('.', ',')})</span>
-                                                <button onclick="addItem('${p.name} - Recheado',${p.options[1].price})" class="bg-brand-caramel hover:bg-amber-700 text-white px-2 py-1 rounded-lg">Adicionar</button>
-                                            </div>
-                                        </div>` : '<p class="text-xs text-red-600 font-bold text-center py-2">Esgotado</p>'
-                                    }
-                                </div>
-                            </div>
-                            <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
-                                <span class="text-[11px] text-stone-500">${p.available ? 'Escolha o tipo' : 'Indisponível'}</span>
-                            </div>
+                        <div class="p-4 pt-0 flex items-center justify-between border-t border-stone-100 mt-auto">
+                            <span class="text-[11px] text-stone-500">${p.available ? 'Escolha o tipo' : 'Indisponível'}</span>
                         </div>
-                    `;
-                }
-            });
+                    </div>
+                `;
+            }
+        }
 
-            grid.innerHTML = html;
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const comboGrid = document.getElementById('combo-grid');
+            const bestsellersGrid = document.getElementById('bestsellers-grid');
+
+            if(!grid) return;
+
+            const sortedProducts = [...products].sort((a, b) => (b.available === true) - (a.available === true));
+
+            // Renderizar Combos
+            if (comboGrid) {
+                const combos = sortedProducts.filter(p => p.isCombo);
+                comboGrid.innerHTML = combos.map(p => createProductCardHTML(p)).join('');
+            }
+
+            // Renderizar Mais Vendidos
+            if (bestsellersGrid) {
+                const bestsellers = sortedProducts.filter(p => p.isBestseller);
+                bestsellersGrid.innerHTML = bestsellers.map(p => createProductCardHTML(p)).join('');
+            }
+
+            // Renderizar Cardápio Completo
+            grid.innerHTML = sortedProducts.map(p => createProductCardHTML(p)).join('');
         }
 
         function openStockModal() {
@@ -1253,4 +1376,4 @@
         }
     </script>
 </body>
-                    </html>
+</html>
