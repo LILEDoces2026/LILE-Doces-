@@ -107,7 +107,7 @@
         <div class="text-center mb-8">
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mb-3">Descrições sensoriais da LILE</h2>
             <div class="w-24 h-1 bg-brand-caramel mx-auto mb-4 rounded-full"></div>
-            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Delivery todos os dias de 10:00h as 22:00hs. Pedido mínimo: <strong>R$ 25,00</strong>.</p>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">Delivery todos os dias de 10:00h as 22:00hs. Pedido mínimo: <strong>R$ 25,00</strong>. 🚚 **Frete Grátis** nas compras a partir de <strong>R$ 60,00</strong>!</p>
         </div>
 
         <!-- 1. FILTRO RÁPIDO POR CATEGORIAS NO TOPO -->
@@ -518,6 +518,11 @@
             <div class="p-5 overflow-y-auto flex-1 space-y-5">
                 <div id="cart-items-container" class="space-y-3">
                     <p class="text-stone-500 text-center py-8">Seu carrinho está vazio.</p>
+                </div>
+
+                <!-- ALERTA DE FRETE GRÁTIS -->
+                <div id="free-shipping-alert" class="p-3 bg-amber-50 rounded-2xl border border-amber-300 text-center text-xs font-semibold text-amber-900 hidden">
+                    <!-- Dinâmico via JS -->
                 </div>
 
                 <!-- OPÇÃO OBRIGATÓRIA DE TALHER E GUARDANAPO -->
@@ -1094,6 +1099,7 @@
             const upsellSection = document.getElementById('cart-upsell-section');
             const upsellItemsContainer = document.getElementById('cart-upsell-items');
             const cutlerySection = document.getElementById('cart-cutlery-section');
+            const freeShippingAlert = document.getElementById('free-shipping-alert');
 
             if (cart.length === 0) {
                 container.innerHTML = `<p class="text-stone-500 text-center py-8">Seu carrinho está vazio.</p>`;
@@ -1101,6 +1107,7 @@
                 discountLine.classList.add('hidden');
                 upsellSection.classList.add('hidden');
                 cutlerySection.classList.add('hidden');
+                freeShippingAlert.classList.add('hidden');
                 discountApplied = false;
                 cutlerySelected = null;
                 return;
@@ -1108,6 +1115,7 @@
 
             cutlerySection.classList.remove('hidden');
             upsellSection.classList.remove('hidden');
+            freeShippingAlert.classList.remove('hidden');
 
             let upsellHtml = '';
             const mandatoryUpsellKeywords = ['água', 'coca-cola'];
@@ -1166,6 +1174,17 @@
 
             container.innerHTML = html;
 
+            // Lógica do Frete Grátis a partir de R$ 60,00
+            const freteGratisMeta = 60.00;
+            if (subtotal < freteGratisMeta) {
+                const falta = freteGratisMeta - subtotal;
+                freeShippingAlert.className = 'p-3 bg-amber-50 rounded-2xl border border-amber-300 text-center text-xs font-semibold text-amber-900';
+                freeShippingAlert.innerHTML = `Faltam apenas <strong>R$ ${falta.toFixed(2).replace('.', ',')}</strong> para você ganhar <span class="text-emerald-700 font-bold">FRETE GRÁTIS</span>!`;
+            } else {
+                freeShippingAlert.className = 'p-3 bg-emerald-50 rounded-2xl border border-emerald-300 text-center text-xs font-bold text-emerald-800';
+                freeShippingAlert.innerHTML = `🎉 Parabéns! Você ganhou <span class="underline">FRETE GRÁTIS</span>!`;
+            }
+
             let finalSubtotal = subtotal;
             if (discountApplied) {
                 const discountAmount = subtotal * 0.10;
@@ -1202,8 +1221,23 @@
         }
 
         function updateDeliveryFee() {
-            const neighborhood = document.getElementById('delivery-neighborhood').value;
-            deliveryFee = neighborhoodFees[neighborhood] || 5.00;
+            const deliveryType = document.getElementById('delivery-type').value;
+            if (deliveryType === 'retirada') {
+                deliveryFee = 0.00;
+            } else {
+                let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                if (cutlerySelected === true) {
+                    subtotal += 1.90;
+                }
+                
+                // Se subtotal for >= 60, Frete Grátis (0.00)
+                if (subtotal >= 60.00) {
+                    deliveryFee = 0.00;
+                } else {
+                    const neighborhood = document.getElementById('delivery-neighborhood').value;
+                    deliveryFee = neighborhoodFees[neighborhood] || 5.00;
+                }
+            }
             updateCheckoutSummary();
         }
 
@@ -1222,6 +1256,18 @@
             if (cutlerySelected === true) {
                 subtotal += 1.90;
             }
+
+            // Garante reavaliação do frete grátis antes de calcular o total
+            const deliveryType = document.getElementById('delivery-type').value;
+            if (deliveryType === 'entrega') {
+                if (subtotal >= 60.00) {
+                    deliveryFee = 0.00;
+                } else {
+                    const neighborhood = document.getElementById('delivery-neighborhood').value;
+                    deliveryFee = neighborhoodFees[neighborhood] || 5.00;
+                }
+            }
+
             let discountAmount = discountApplied ? subtotal * 0.10 : 0;
             let discountedSubtotal = subtotal - discountAmount;
             let total = discountedSubtotal + deliveryFee;
@@ -1237,7 +1283,12 @@
                 discRow.classList.add('hidden');
             }
 
-            document.getElementById('summary-delivery').innerText = deliveryFee === 0 ? 'Grátis (Retirada)' : `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+            if (deliveryFee === 0) {
+                document.getElementById('summary-delivery').innerText = deliveryType === 'retirada' ? 'Grátis (Retirada)' : 'GRÁTIS (Pedido acima de R$ 60)';
+            } else {
+                document.getElementById('summary-delivery').innerText = `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+            }
+            
             document.getElementById('summary-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
@@ -1295,6 +1346,12 @@
             if (cutlerySelected === true) {
                 subtotal += 1.90;
             }
+
+            // Validação final de frete grátis para o pedido
+            if (deliveryType === 'entrega' && subtotal >= 60.00) {
+                deliveryFee = 0.00;
+            }
+
             let discountAmount = discountApplied ? subtotal * 0.10 : 0;
             let total = (subtotal - discountAmount) + deliveryFee;
             const orderId = '#LILE-' + Math.floor(1000 + Math.random() * 9000);
@@ -1329,6 +1386,15 @@
             const meuWhatsApp = '5521995335948';
             let pixNotice = paymentMethod === 'pix' ? '\n*PIX CNPJ:* 27760408000118\n*(Favor enviar o comprovante junto com este pedido!)*\n' : '';
 
+            let taxaEntregaTexto = '';
+            if (deliveryType === 'retirada') {
+                taxaEntregaTexto = 'Grátis (Retirada)';
+            } else if (subtotal >= 60.00) {
+                taxaEntregaTexto = 'GRÁTIS (Pedido acima de R$ 60)';
+            } else {
+                taxaEntregaTexto = `R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+            }
+
             const mensagemWpp = `*Novo Pedido Confirmado!* ${orderId}\n\n` +
                                 `*Cliente:* ${name}\n` +
                                 `*Telefone:* ${phone}\n` +
@@ -1336,7 +1402,7 @@
                                 `*Endereço:* ${addressInfo}\n` +
                                 `*Pagamento:* ${paymentMethod.toUpperCase()}${pixNotice}\n` +
                                 `${discountApplied ? '*Cupom:* menos10% (10% OFF)\n' : ''}` +
-                                `*Taxa de Entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}\n\n` +
+                                `*Taxa de Entrega:* ${taxaEntregaTexto}\n\n` +
                                 `*Itens do Pedido:*\n${itemsText}\n` +
                                 `*Total Geral:* R$ ${total.toFixed(2).replace('.', ',')}`;
 
@@ -1379,7 +1445,7 @@
                         <p><strong>Cliente:</strong> ${found.name}</p>
                         <p><strong>Tipo:</strong> ${found.deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega Local'}</p>
                         <p><strong>Endereço:</strong> ${found.address}</p>
-                        <p><strong>Taxa de Entrega:</strong> R$ ${found.deliveryFee.toFixed(2).replace('.', ',')}</p>
+                        <p><strong>Taxa de Entrega:</strong> ${found.deliveryFee === 0 ? 'GRÁTIS' : 'R$ ' + found.deliveryFee.toFixed(2).replace('.', ',')}</p>
                         <p><strong>Total Geral:</strong> R$ ${found.total.toFixed(2).replace('.', ',')}</p>
                     </div>`;
             } else {
